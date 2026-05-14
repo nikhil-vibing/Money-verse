@@ -22,7 +22,7 @@
       "x": 320,
       "y": 144,
       "displayName_key": "landmark.mayas-room",
-      "note": "Visible-only 2nd-floor room. NPC routed via ladder at (4,8). Maya descends to courtyard for 12:30 lunch and to building-entrance at 21:00."
+      "note": "Visible-only 2nd-floor room. NPC routed via ladder at (4,8). Wren descends to courtyard for 12:30 lunch and to building-entrance at 21:00."
     },
     {
       "id": "bhola-office",
@@ -75,14 +75,14 @@
       "x": 480,
       "y": 96,
       "displayName_key": "landmark.rooftop",
-      "note": "Schedule location for Maya tulsi tending and Aarav venting. Visible from playable area; entered via Maya ladder during late-game arcs."
+      "note": "Schedule location for Wren tulsi tending and Arlo venting. Visible from playable area; entered via Wren ladder during late-game arcs."
     },
     {
       "id": "building-entrance",
       "x": 64,
       "y": 272,
       "displayName_key": "landmark.building-entrance",
-      "note": "Postbox + bicycle stand. Dabbawala loading point. Dipu's bench."
+      "note": "Postbox + bicycle stand. Dabbawala loading point. Tobias's bench."
     },
     {
       "id": "street",
@@ -133,7 +133,7 @@
     {
       "id": "lakshmi-route-out",
       "points": [[64, 320], [16, 528]],
-      "note": "Lakshmi exits via west-street and returns; off-map portion abstracted."
+      "note": "Lia exits via west-street and returns; off-map portion abstracted."
     },
     {
       "id": "biscuit-circuit",
@@ -148,7 +148,7 @@
     {
       "id": "dipu-bench-route",
       "points": [[608, 208], [64, 272]],
-      "note": "Dipu kaka from his room to the building-entrance bench at 10:00 and 16:00."
+      "note": "Tobias from his room to the building-entrance bench at 10:00 and 16:00."
     },
     {
       "id": "aarav-drift",

@@ -1,13 +1,13 @@
 {
   "id": "maya-didi",
   "displayName_key": "npc.maya-didi.displayName",
-  "role": "Mentor / first guide. ~28, lives upstairs. Replaces the tutorial.",
+  "role": "Mentor / first guide. ~28, lives upstairs. Replaces the tutorial. Warm-patient sensei cadence — short sentences, present tense, observation before instruction.",
   "district": "chawl-mohalla",
   "voiceExamples": [
-    "Arre, sit. Tea first, lecture later.",
-    "You don't have to know everything. You have to know one thing today.",
-    "Listen na — money is just attention. Look at it, it stops running away.",
-    "Three envelopes. That's it. Don't make it complicated.",
-    "Mistake? Good. Now you have a story instead of just a number."
+    "Sit. Tea first. Lesson after.",
+    "Money is attention. Today, give it some.",
+    "Three envelopes. That is the whole lesson. Don't complicate it.",
+    "A mistake? Good. Now you have a story instead of a number.",
+    "You don't have to know everything. One thing today is enough."
   ]
 }

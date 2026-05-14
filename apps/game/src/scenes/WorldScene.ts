@@ -55,9 +55,9 @@ const NPC_INTERACT_RADIUS_PX = 36;
 const QUEST_GIVER_NPC_ID = "maya-didi";
 /** Whimsy #2 — Biscuit trails the player for 3s after a pet. */
 const BISCUIT_FOLLOW_MS = 3000;
-/** Whimsy #3 — Maa's landline rings after 5min of inactivity. */
+/** Whimsy #3 — Mom's landline rings after 5min of inactivity. */
 const MAA_STALL_MS = 5 * 60 * 1000;
-/** Whimsy share-move — Maa's achaar jar appears after 10 real minutes. */
+/** Whimsy share-move — Mom's achaar jar appears after 10 real minutes. */
 const ACHAAR_JAR_DELAY_MS = 10 * 60 * 1000;
 
 export class WorldScene extends Phaser.Scene {
@@ -82,7 +82,7 @@ export class WorldScene extends Phaser.Scene {
   private onStoryDialogClose: (() => void) | undefined;
   /** Last time the player interacted with anything. Stall timer baseline. */
   private lastInteractAt = 0;
-  /** Whether Maa's stall interrupt has already fired this session. */
+  /** Whether Mom's stall interrupt has already fired this session. */
   private maaInterruptFired = false;
   /** The jar of achaar — undefined until ACHAAR_JAR_DELAY_MS has elapsed. */
   private achaarJar: JarOfAchaar | undefined;
@@ -489,7 +489,7 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /**
-   * Whimsy #3 — Maa's landline rings after ≥5 real-time minutes of
+   * Whimsy #3 — Mom's landline rings after ≥5 real-time minutes of
    * inactivity *during onboarding only*. Once per session. No popup
    * machinery; just routes through the existing DialogScene so it
    * reads exactly like every other line in the game.
@@ -502,8 +502,8 @@ export class WorldScene extends Phaser.Scene {
     this.maaInterruptFired = true;
     const dialog = this.scene.get("Dialog");
     dialog.events.emit("dialog:show", {
-      speaker: "Maa",
-      lines: ["Beta, busy ho kya?", "Khaana khaaya?"],
+      speaker: "Ma",
+      lines: ["Are you busy? Tell me.", "Did you eat?"],
       onClose: () => {
         this.lastInteractAt = this.time.now;
       },
@@ -513,7 +513,7 @@ export class WorldScene extends Phaser.Scene {
   /**
    * Whimsy share-move — schedule the achaar jar to appear after
    * ACHAAR_JAR_DELAY_MS. The promise was made during the onboarding
-   * (implicitly — Maya mentions Maa) and the jar is the game keeping
+   * (implicitly — Wren mentions Mom) and the jar is the game keeping
    * that promise without dialog. Pillar #8: no popup, no XP.
    */
   private scheduleAchaarJar(): void {

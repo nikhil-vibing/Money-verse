@@ -15,16 +15,16 @@ export function FinalCTA() {
         className="absolute inset-0 -z-10"
         style={{
           backgroundImage:
-            "radial-gradient(60% 80% at 50% 100%, rgba(255,59,59,0.16), transparent 60%), radial-gradient(40% 60% at 50% 0%, rgba(245,180,58,0.08), transparent 60%)",
+            "radial-gradient(60% 80% at 50% 100%, rgba(244,185,66,0.16), transparent 60%), radial-gradient(40% 60% at 50% 0%, rgba(106,156,67,0.08), transparent 60%)",
         }}
       />
       <div aria-hidden="true" className="grain absolute inset-0 -z-10 opacity-20" />
 
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[var(--color-crimson)]">
-          <span className="h-px w-8 bg-[var(--color-crimson)]" />
+        <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[var(--color-amber)]">
+          <span className="h-px w-8 bg-[var(--color-amber)]" />
           The door is open
-          <span className="h-px w-8 bg-[var(--color-crimson)]" />
+          <span className="h-px w-8 bg-[var(--color-amber)]" />
         </span>
 
         <h2
@@ -33,7 +33,7 @@ export function FinalCTA() {
         >
           Pick up the
           <br />
-          <span className="italic font-normal text-[var(--color-crimson)]">first quest.</span>
+          <span className="italic font-normal text-[var(--color-amber)]">first quest.</span>
         </h2>
 
         <p className="mx-auto mt-8 max-w-lg text-[var(--color-paper-dim)]">
@@ -45,7 +45,7 @@ export function FinalCTA() {
           <a
             ref={ctaRef}
             href="/play"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[var(--color-paper)] px-10 py-5 text-[17px] font-medium text-[var(--color-ink)] shadow-[0_30px_90px_-20px_rgba(255,59,59,0.55)] transition-shadow duration-300 hover:shadow-[0_40px_110px_-15px_rgba(255,59,59,0.7)]"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[var(--color-paper)] px-10 py-5 text-[17px] font-medium text-[var(--color-ink)] shadow-[0_30px_90px_-20px_rgba(244,185,66,0.5)] transition-shadow duration-300 hover:shadow-[0_40px_110px_-15px_rgba(244,185,66,0.6)]"
             data-magnetic
           >
             <span className="relative z-10">Start playing free</span>
@@ -57,7 +57,7 @@ export function FinalCTA() {
             </span>
             <span
               aria-hidden="true"
-              className="absolute inset-0 z-0 translate-y-full bg-[var(--color-crimson)] transition-transform duration-500 ease-out group-hover:translate-y-0"
+              className="absolute inset-0 z-0 translate-y-full bg-[var(--color-amber)] transition-transform duration-500 ease-out group-hover:translate-y-0"
             />
             <span
               aria-hidden="true"

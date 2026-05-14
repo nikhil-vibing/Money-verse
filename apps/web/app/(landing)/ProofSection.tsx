@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     quote:
-      "I stopped checking my brokerage app every five minutes after a single Ninja-Finance quest. Boring is the point.",
+      "I stopped checking my brokerage app every five minutes after a single Ninja Money-verse quest. Boring is the point.",
     name: "Dylan, 24",
     where: "Brooklyn · designer",
   },
@@ -97,7 +97,7 @@ export function ProofSection() {
             >
               <svg
                 aria-hidden="true"
-                className="mb-5 text-[var(--color-crimson)]"
+                className="mb-5 text-[var(--color-amber)]"
                 width="28"
                 height="22"
                 viewBox="0 0 28 22"
@@ -122,8 +122,8 @@ export function ProofSection() {
 
 function Eyebrow({ children }: { children: string }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-crimson)]">
-      <span className="h-px w-6 bg-[var(--color-crimson)]" />
+    <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-amber)]">
+      <span className="h-px w-6 bg-[var(--color-amber)]" />
       {children}
     </span>
   );

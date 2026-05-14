@@ -1,4 +1,4 @@
-# Pixel-2026 — Modernising Money-verse's Pixel Aesthetic
+# Pixel-2026 — Modernising Ninja Money-verse's Pixel Aesthetic
 
 > **Author:** master-researcher subagent. **Date:** 2026-05-14. **Scope:** the user's complaint — *"everything is so small and tiny and 2 much 80s like, I want 2026 style pixelated art master it and implement it."*
 >
@@ -26,7 +26,7 @@ Not taste — measurable technical decisions. Wherever we sit left, the gap is t
 | **HUD** | Boxy in-world panels | Diegetic 9-slice + soft drop-shadow + typewriter |
 | **Drop shadow** | None / hard 1px | Soft 35-50% alpha ellipse under every prop |
 
-Money-verse sits hard-left on every axis except postFX (`WorldScene.applyCameraPostFx()` already wires bloom + vignette + tilt-shift + gradient) — but the lift is muted because the substrate has nothing to bloom from. Fix priority: **shading depth → environmental animation → postFX**.
+Ninja Money-verse sits hard-left on every axis except postFX (`WorldScene.applyCameraPostFx()` already wires bloom + vignette + tilt-shift + gradient) — but the lift is muted because the substrate has nothing to bloom from. Fix priority: **shading depth → environmental animation → postFX**.
 
 ---
 

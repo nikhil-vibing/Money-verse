@@ -1,6 +1,6 @@
 # Third-party asset attribution
 
-> Every external asset used in Money-verse is listed here with its source, author, licence, and attribution text. The `art-curator` agent adds entries as it sources assets. No asset is committed without a corresponding entry.
+> Every external asset used in Ninja Money-verse is listed here with its source, author, licence, and attribution text. The `art-curator` agent adds entries as it sources assets. No asset is committed without a corresponding entry.
 
 ## Format
 
@@ -36,7 +36,7 @@
 
 ### Chawl Pixel 8 (in-game BMFont)
 - Source: built at predev/prebuild from `apps/game/scripts/build-pixel-font.mjs`
-- Author: Money-verse (hand-authored 5x7 glyph grids)
+- Author: Ninja Money-verse (hand-authored 5x7 glyph grids)
 - Licence: CC0 1.0 Universal — see `apps/game/public/fonts/LICENCE.txt`
 - Attribution: not required
 - Dimensions / details: 5x7 glyphs on 128x96 atlas, 9-px line height, 95 printable ASCII glyphs + ₹ (U+20B9)
@@ -114,7 +114,7 @@
 - Attribution: Not required.
 - Dimensions / details: 16x16 base sprite; idle + 6-frame walk cycle in 4 directions; male + female bases.
 - Local path: `assets/chawl-mohalla/npcs/base-anon/`
-- Modified: planned — *this is our character base*; we will re-skin into Maya didi, Aarav, Bhola seth, Sushila aunty, Drumming Kid, Lakshmi dabbawala. Saree / kurta / shirt-pant overlays painted in-house.
+- Modified: planned — *this is our character base*; we will re-skin into Wren, Arlo, Bhola seth, Mara, Drumming Kid, Lia. Saree / kurta / shirt-pant overlays painted in-house.
 
 ### NPC — sean-noonan-top-down-smart-old-man (PRIMARY for Bhola seth)
 - Source: https://opengameart.org/content/top-down-smart-old-man
@@ -130,9 +130,9 @@
 - Author: Antifarea
 - Licence: CC-BY 3.0
 - Attribution: "Art by Antifarea. Commissioned by OpenGameArt.org (https://opengameart.org/) — CC-BY 3.0"
-- Dimensions / details: 16x18; 4-frame walk cycle; priest / nun / merchant / cultist / captain / 6 elementals. Useful as bases for Ravi anna (chai vendor) and the kirana-aunty.
+- Dimensions / details: 16x18; 4-frame walk cycle; priest / nun / merchant / cultist / captain / 6 elementals. Useful as bases for Kai (chai vendor) and the kirana-aunty.
 - Local path: `assets/chawl-mohalla/npcs/antifarea-set/`
-- Modified: planned — re-skin merchant → Ravi anna (chai vendor), nun → Sushila aunty.
+- Modified: planned — re-skin merchant → Kai (chai vendor), nun → Mara.
 
 ### NPC — pebonius-surtizens (ALTERNATIVE NPCs)
 - Source: https://opengameart.org/content/surtizens

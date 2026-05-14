@@ -43,15 +43,15 @@ function ShurikenMesh() {
     <group ref={groupRef}>
       <mesh geometry={geometry}>
         <meshStandardMaterial
-          color="#1a1924"
-          metalness={0.92}
-          roughness={0.18}
-          emissive="#ff3b3b"
-          emissiveIntensity={0.05}
+          color="#2a2118"
+          metalness={0.88}
+          roughness={0.22}
+          emissive="#f4b942"
+          emissiveIntensity={0.07}
         />
       </mesh>
-      <mesh geometry={geometry} scale={1.005}>
-        <meshBasicMaterial color="#ff3b3b" wireframe transparent opacity={0.16} />
+      <mesh geometry={geometry} scale={1.006}>
+        <meshBasicMaterial color="#f4b942" wireframe transparent opacity={0.18} />
       </mesh>
     </group>
   );
@@ -60,10 +60,10 @@ function ShurikenMesh() {
 function SceneLights() {
   return (
     <>
-      <ambientLight intensity={0.32} />
-      <directionalLight position={[5, 6, 8]} intensity={1.2} color="#f5b43a" />
-      <directionalLight position={[-6, -2, 3]} intensity={0.7} color="#ff3b3b" />
-      <pointLight position={[0, 0, 5]} intensity={0.6} color="#f6f3eb" />
+      <ambientLight intensity={0.34} />
+      <directionalLight position={[5, 6, 8]} intensity={1.25} color="#f4b942" />
+      <directionalLight position={[-6, -2, 3]} intensity={0.6} color="#6a9c43" />
+      <pointLight position={[0, 0, 5]} intensity={0.55} color="#f4ecd0" />
     </>
   );
 }
@@ -79,7 +79,7 @@ function Static2DFallback() {
         <svg viewBox="0 0 24 24" className="h-full w-full shuriken-stroke" aria-hidden="true">
           <path
             d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"
-            fill="var(--color-crimson)"
+            fill="var(--color-amber)"
           />
           <circle cx="12" cy="12" r="1.6" fill="var(--color-ink)" />
         </svg>
@@ -110,13 +110,18 @@ export function HeroBackdrop() {
 
       <div
         aria-hidden="true"
-        className="absolute -left-32 top-10 h-[420px] w-[420px] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(255,59,59,0.5), transparent 70%)" }}
+        className="absolute -left-32 top-10 h-[420px] w-[420px] rounded-full opacity-50 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(244,185,66,0.55), transparent 70%)" }}
       />
       <div
         aria-hidden="true"
-        className="absolute -right-32 bottom-10 h-[520px] w-[520px] rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(245,180,58,0.45), transparent 70%)" }}
+        className="absolute -right-32 bottom-10 h-[520px] w-[520px] rounded-full opacity-35 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(106,156,67,0.45), transparent 70%)" }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(139,74,47,0.38), transparent 70%)" }}
       />
 
       <div aria-hidden="true" className="absolute inset-0">

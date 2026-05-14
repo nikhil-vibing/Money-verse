@@ -96,9 +96,9 @@ fill(ground, 4, 8, 55, 9, 15);
 // 1st-floor interior rooms wooden floor (only inside the kholis)
 // Player's kholi: x=18..25, y=10..16
 fill(ground, 18, 10, 25, 16, 4);
-// Aarav's kholi: x=27..33, y=10..16
+// Arlo's kholi: x=27..33, y=10..16
 fill(ground, 27, 10, 33, 16, 4);
-// Dipu kaka's kholi: x=35..41, y=10..16
+// Tobias's kholi: x=35..41, y=10..16
 fill(ground, 35, 10, 41, 16, 4);
 // Extra (locked) kholis (visual): x=10..16 and x=43..50
 fill(ground, 10, 10, 16, 16, 4);
@@ -114,7 +114,7 @@ fill(ground, 0, 18, W - 1, 23, 2);
 // Courtyard cement y=24..30
 fill(ground, 0, 24, W - 1, 30, 3);
 
-// Kirana shop floor (Sushila): x=8..16, y=24..29
+// Kirana shop floor (Mara): x=8..16, y=24..29
 fill(ground, 8, 24, 16, 29, 5);
 // Chai stall floor area: x=20..27, y=24..28
 fill(ground, 20, 24, 27, 28, 5);
@@ -143,13 +143,13 @@ fill(walls, 18, 16, 25, 16, 10); // bottom
 fill(walls, 18, 11, 18, 15, 10); // left
 fill(walls, 25, 11, 25, 15, 10); // right
 
-// Aarav kholi walls
+// Arlo kholi walls
 fill(walls, 27, 10, 33, 10, 10);
 fill(walls, 27, 16, 33, 16, 10);
 fill(walls, 27, 11, 27, 15, 10);
 fill(walls, 33, 11, 33, 15, 10);
 
-// Dipu kholi walls
+// Tobias kholi walls
 fill(walls, 35, 10, 41, 10, 10);
 fill(walls, 35, 16, 41, 16, 10);
 fill(walls, 35, 11, 35, 15, 10);
@@ -169,11 +169,11 @@ fill(walls, 50, 11, 50, 15, 11);
 fill(walls, 0, 17, W - 1, 17, 10);
 // Door cuts (open in walls layer, replaced by doors in props)
 set(walls, 21, 17, 0); // player kholi door tile
-set(walls, 30, 17, 0); // Aarav kholi door
-set(walls, 38, 17, 0); // Dipu kholi door
+set(walls, 30, 17, 0); // Arlo kholi door
+set(walls, 38, 17, 0); // Tobias kholi door
 set(walls, 4, 17, 0); // building-entrance (west)
 
-// Kirana shop walls (Sushila) — open on south (alley) side
+// Kirana shop walls (Mara) — open on south (alley) side
 fill(walls, 8, 23, 16, 23, 11); // north counter face -> open to alley
 fill(walls, 8, 24, 8, 29, 11); // west wall
 fill(walls, 16, 24, 16, 29, 11); // east wall
@@ -222,18 +222,18 @@ set(props, 19, 15, 53); // emergency jar shelf (quest emergency-seed)
 set(props, 21, 13, 49); // wall calendar
 set(props, 25, 15, 33); // plant pot inside
 
-// Aarav kholi: gaming setup vibes
+// Arlo kholi: gaming setup vibes
 set(props, 28, 11, 30); // bed
 set(props, 31, 12, 32);
 
-// Dipu kholi: newspaper bench
+// Tobias kholi: newspaper bench
 set(props, 36, 11, 30);
 set(props, 39, 12, 32);
 
 // Door props on alley-facing wall
 set(props, 21, 17, 20); // player kholi door (closed)
-set(props, 30, 17, 20); // Aarav door
-set(props, 38, 17, 20); // Dipu door
+set(props, 30, 17, 20); // Arlo door
+set(props, 38, 17, 20); // Tobias door
 // Rent notice pinned to player's door (quest rent-day)
 set(props, 21, 16, 51);
 
@@ -263,7 +263,7 @@ set(props, 53, 26, 32); // cash safe (clay pot shelf placeholder)
 set(props, 5, 24, 44);
 // Landline phone in player's kholi (for maa-on-phone)
 set(props, 25, 11, 45);
-// Bicycle stand (Lakshmi dabbawala parks here)
+// Bicycle stand (Lia parks here)
 set(props, 3, 25, 47);
 
 // Ladder up to 2nd-floor verandah (visible but locked: collision blocks it)
@@ -280,13 +280,13 @@ fill(collision, 0, 10, W - 1, 17, 1);
 
 // Carve walkable interiors of the three accessible kholis
 fill(collision, 19, 11, 24, 15, 0); // player kholi interior
-fill(collision, 28, 11, 32, 15, 0); // Aarav kholi interior
-fill(collision, 36, 11, 40, 15, 0); // Dipu kholi interior
+fill(collision, 28, 11, 32, 15, 0); // Arlo kholi interior
+fill(collision, 36, 11, 40, 15, 0); // Tobias kholi interior
 
 // Carve door tiles so player can step through wall band at y=17
 set(collision, 21, 17, 0); // player kholi door
-set(collision, 30, 17, 0); // Aarav door
-set(collision, 38, 17, 0); // Dipu door
+set(collision, 30, 17, 0); // Arlo door
+set(collision, 38, 17, 0); // Tobias door
 set(collision, 4, 17, 0); // building entrance gap
 // Also open the doorway interior tile so transition is 2-tile gap
 set(collision, 21, 16, 0);
@@ -311,11 +311,11 @@ fill(collision, 8, 24, 8, 29, 1);
 fill(collision, 16, 24, 16, 29, 1);
 fill(collision, 8, 29, 16, 29, 1);
 set(collision, 12, 23, 0); // counter approach
-// Kirana interior shelves block (with one gap at counter to let Sushila in)
+// Kirana interior shelves block (with one gap at counter to let Mara in)
 fill(collision, 9, 24, 15, 24, 1);
 fill(collision, 9, 28, 15, 28, 1);
-set(collision, 12, 24, 0); // gap behind counter so Sushila is reachable
-// Sushila stands behind counter at (12,25): walkable strip y=25..27
+set(collision, 12, 24, 0); // gap behind counter so Mara is reachable
+// Mara stands behind counter at (12,25): walkable strip y=25..27
 // Block courtyard props
 set(collision, 32, 26, 1); // hand-pump
 set(collision, 35, 27, 1); // tulsi
@@ -397,7 +397,7 @@ const prop = (name, value) => {
 };
 
 // NPC spawns at 09:00 game-start time -----------------------------------
-// Maya didi 09:00 -> mayas-room (2nd floor, visible only). She comes down for quests.
+// Wren 09:00 -> mayas-room (2nd floor, visible only). She comes down for quests.
 // Render her spawn at the courtyard since 1st-floor is the playable space and
 // her 12:30 lunch block is courtyard. For 09:00 we place a "narrative anchor"
 // at the bottom of her ladder so the engine can route her down when player
@@ -406,18 +406,18 @@ const npcSpawnsObjects = [
   newObj("maya-didi", "npc", 4 * TS, 18 * TS, TS, TS, [prop("npcId", "maya-didi")]),
   // Bhola seth 09:00 -> alley, watching for marks. Place mid-alley near his office.
   newObj("bhola-seth", "npc", 50 * TS, 20 * TS, TS, TS, [prop("npcId", "bhola-seth")]),
-  // Ravi anna 09:00 -> chai-stall (behind counter)
+  // Kai 09:00 -> chai-stall (behind counter)
   newObj("ravi-anna", "npc", 23 * TS, 25 * TS, TS, TS, [prop("npcId", "ravi-anna")]),
-  // Sushila aunty 09:00 -> kirana-shop (behind counter)
+  // Mara 09:00 -> kirana-shop (behind counter)
   newObj("sushila-aunty", "npc", 12 * TS, 25 * TS, TS, TS, [prop("npcId", "sushila-aunty")]),
-  // Aarav 09:00 -> aaravs-room
+  // Arlo 09:00 -> aaravs-room
   newObj("aarav", "npc", 30 * TS, 13 * TS, TS, TS, [prop("npcId", "aarav")]),
-  // Lakshmi dabbawala 09:00 -> dabbawala-route (off-route). Place at building
+  // Lia 09:00 -> dabbawala-route (off-route). Place at building
   // entrance (her 07:30-09:00 location) so she's reachable on map.
   newObj("lakshmi-dabbawala", "npc", 4 * TS, 20 * TS, TS, TS, [prop("npcId", "lakshmi-dabbawala")]),
-  // Dipu kaka 09:00 -> dipus-room (reading-newspaper)
+  // Tobias 09:00 -> dipus-room (reading-newspaper)
   newObj("dipu-kaka", "npc", 38 * TS, 13 * TS, TS, TS, [prop("npcId", "dipu-kaka")]),
-  // Maa on phone is non-spatial (phone-line). Spawn at a walkable tile inside
+  // Mom on phone is non-spatial (phone-line). Spawn at a walkable tile inside
   // the player's kholi adjacent to the landline so the interact-zone resolves.
   newObj("maa-on-phone", "npc", 22 * TS, 12 * TS, TS, TS, [prop("npcId", "maa-on-phone")]),
   // The Postman 09:00 -> off-route (Wed-only schedule starts 10:30). Spawn on
@@ -450,7 +450,7 @@ const interactZonesObjects = [
     prop("kind", "door"),
     prop("target", "bhola-office"),
   ]),
-  // Maya verandah ladder (visible but locked)
+  // Wren verandah ladder (visible but locked)
   newObj("maya-ladder", "door", 4 * TS, 8 * TS, TS, TS, [
     prop("kind", "door"),
     prop("target", "mayas-room"),

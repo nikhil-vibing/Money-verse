@@ -21,12 +21,12 @@ export function UtilityBar() {
       }`}
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a href="/" className="group flex items-center gap-2.5" aria-label="Ninja-Finance home">
+        <a href="/" className="group flex items-center gap-2.5" aria-label="Ninja Money-verse home">
           <span aria-hidden="true" className="relative grid h-7 w-7 place-items-center">
             <ShurikenMark />
           </span>
           <span className="font-display text-[15px] font-medium tracking-tight text-[var(--color-paper)]">
-            Ninja-Finance
+            Ninja Money-verse
           </span>
         </a>
 
@@ -38,7 +38,7 @@ export function UtilityBar() {
 
         <div className="flex items-center gap-3">
           <span className="hidden items-center gap-1.5 rounded-full border border-[var(--color-stroke)] bg-[var(--color-ink-2)]/60 px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--color-paper-dim)] sm:inline-flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-jade)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-moss)]" />
             Free forever
           </span>
           <a
@@ -87,10 +87,7 @@ function ShurikenMark() {
       fill="none"
       aria-hidden="true"
     >
-      <path
-        d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"
-        fill="var(--color-crimson)"
-      />
+      <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="var(--color-amber)" />
       <circle cx="12" cy="12" r="1.6" fill="var(--color-ink)" />
     </svg>
   );

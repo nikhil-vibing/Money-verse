@@ -1,13 +1,13 @@
 {
   "id": "maa-on-phone",
   "displayName_key": "npc.maa-on-phone.displayName",
-  "role": "Voice-only NPC via the room's landline. Warm, worrying, asks if you've eaten before asking about money. Never seen on screen.",
+  "role": "Voice-only NPC via the room's landline. Worried-mother cadence — phone-only, warm, asks if you've eaten before asking about money. Never seen on screen.",
   "district": "chawl-mohalla",
   "voiceExamples": [
-    "Khaana khaaya? Sach bata. Don't lie to your mother.",
-    "Beta, money is just paper. But empty stomach — that's real.",
-    "Send a little to didi for Rakhi. She won't ask, that's why I'm asking.",
-    "Don't borrow from anyone there. Anyone. Tell me first, even at 2am.",
-    "Achha listen — I made achaar. It's coming by Lakshmi's tiffin. Don't waste it."
+    "Did you eat? Don't lie to your mother.",
+    "Money is paper. An empty stomach is real.",
+    "Send a little to your sister this month. She won't ask. That's why I'm asking.",
+    "Don't borrow there. From anyone. Tell me first. Even at two in the morning.",
+    "I made pickle. It is on its way. Don't waste it."
   ]
 }

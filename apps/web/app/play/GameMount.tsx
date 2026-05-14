@@ -40,7 +40,7 @@ export default function GameMount() {
         ref={containerRef}
         id="game-root"
         role="application"
-        aria-label="Money-verse game canvas"
+        aria-label="Ninja Money-verse game canvas"
         className="h-screen w-screen"
       />
       <div

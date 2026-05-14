@@ -1,4 +1,4 @@
-# AGENTS.md — Multi-agent orchestration for Money-verse
+# AGENTS.md — Multi-agent orchestration for Ninja Money-verse
 
 > **Audience:** Claude Code + any agentic coding tool that respects the `AGENTS.md` convention. Each named subagent below has a corresponding markdown definition in `.claude/agents/<name>.md`. Spawn via the Agent tool with `subagent_type: <name>`.
 
@@ -51,7 +51,7 @@ Main thread (orchestrator)
   │
   ├── level-designer          (3)  Tiled map + walkability
   ├── game-dev                (4)  Phaser scene wire-up
-  ├── finance-sim             (5)  any new math needed (limit-orders, SIP rebalancing)
+  ├── finance-sim             (5)  any new math needed (limit-orders, Drip rebalancing)
   ├── ai-tutor-engineer       (6)  Maya scope changes for this district
   │
   ├── PARALLEL ────────────────────
@@ -107,7 +107,7 @@ Main thread
 - **Constraints:** All scene transitions must be event-driven; no shared mutable globals; pipeline composition through `PostFxStack`.
 
 ### 3.3 `finance-sim`
-- **Inputs:** Function signature, semantic spec (with realistic Indian inputs and edge cases), constants source.
+- **Inputs:** Function signature, semantic spec (with realistic universal-coin inputs and edge cases), constants source.
 - **Output:** Pure function + property-based Vitest test (100% branch coverage).
 - **Constraints:** Zero dependencies (besides node:assert / Vitest). Deterministic given inputs. Constants in `packages/shared/constants.ts` with `since` dates.
 

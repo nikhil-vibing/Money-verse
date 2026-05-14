@@ -5,7 +5,7 @@ import { useInView } from "../../lib/motion";
 
 const lines = [
   { prompt: "$", body: "git clone github.com/nikhil-vibing/Money-verse" },
-  { prompt: ">", body: "Cloning into 'ninja-finance'..." },
+  { prompt: ">", body: "Cloning into 'ninja-money-verse'..." },
   { prompt: ">", body: "remote: Counting objects: 4,128 ✓" },
   { prompt: "$", body: "pnpm install && pnpm dev" },
   { prompt: ">", body: "ready · http://localhost:3000" },
@@ -47,9 +47,9 @@ export function OpenSourceSection() {
               </span>
             </h2>
             <p className="mt-6 max-w-md text-[var(--color-paper-dim)]">
-              Every dependency in Ninja-Finance has a permissive licence. The math is readable. The
-              dialog is on GitHub. If something feels wrong, you can open the file and see exactly
-              why.
+              Every dependency in Ninja Money-verse has a permissive licence. The math is readable.
+              The dialog is on GitHub. If something feels wrong, you can open the file and see
+              exactly why.
             </p>
 
             <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 text-sm sm:max-w-md">
@@ -115,12 +115,12 @@ function Terminal({ typedCount }: { typedCount: number }) {
     >
       <div className="mb-5 flex items-center justify-between">
         <div className="flex items-center gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-crimson)]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-amber)]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-jade)]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-amber)]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-moss)]" />
         </div>
         <span className="text-[10px] uppercase tracking-[0.16em] text-[var(--color-paper-muted)]">
-          ~/ninja-finance · zsh
+          ~/ninja-money-verse · zsh
         </span>
       </div>
       <div className="space-y-1.5">
@@ -133,7 +133,7 @@ function Terminal({ typedCount }: { typedCount: number }) {
           >
             <span
               className={
-                l.prompt === "$" ? "text-[var(--color-crimson)]" : "text-[var(--color-paper-muted)]"
+                l.prompt === "$" ? "text-[var(--color-amber)]" : "text-[var(--color-paper-muted)]"
               }
             >
               {l.prompt}
@@ -150,7 +150,7 @@ function Terminal({ typedCount }: { typedCount: number }) {
           </div>
         ))}
         {typedCount >= lines.length && (
-          <div className="pt-2 text-[var(--color-jade)]">✓ open the browser. you're in.</div>
+          <div className="pt-2 text-[var(--color-moss)]">✓ open the browser. you're in.</div>
         )}
       </div>
     </figure>
@@ -159,8 +159,8 @@ function Terminal({ typedCount }: { typedCount: number }) {
 
 function Eyebrow({ children }: { children: string }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-crimson)]">
-      <span className="h-px w-6 bg-[var(--color-crimson)]" />
+    <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-amber)]">
+      <span className="h-px w-6 bg-[var(--color-amber)]" />
       {children}
     </span>
   );

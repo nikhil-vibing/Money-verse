@@ -231,7 +231,7 @@ export class StoryDirector {
     registry.set(REGISTRY_INR_KEY, next);
     const evt: CurrencyChangedEvent = { amount, total: next, reason };
     this.bindings.scene.game.events.emit("currency:changed", evt);
-    announce(`You received ₹${amount.toLocaleString("en-IN")}. ${reason}.`);
+    announce(`You received $${amount.toLocaleString("en-US")}. ${reason}.`);
     return Promise.resolve();
   }
 

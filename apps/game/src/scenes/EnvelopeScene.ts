@@ -4,31 +4,31 @@ import { announce } from "../lib/announce";
 import { FONT, FONT_SIZE, TINT } from "../ui/tokens";
 
 /**
- * EnvelopeScene — a modal overlay that paused over WorldScene while the
- * player allocates ₹15,000 into Rent / Save / Spend. Triggered by
+ * EnvelopeScene — a modal overlay that pauses over WorldScene while the
+ * player allocates $1,500 into Rent / Save / Spend. Triggered by
  * StoryDirector via `show-envelope-split`. Emits `envelope:done` on
  * confirmation; the director resumes the next beat on receipt.
  *
- * Design intent — this is the "first verb" in the chawl onboarding.
- * Maya's lecture is one envelope. The MoneyVerse pillar is "hide the
- * lesson in the verb" — so the player physically moves money. We use
- * three step buttons (+/-₹500) over sliders because (a) it is reachable
- * by keyboard (Tab + arrows), (b) ₹500 is a meaningful chunk that
- * doesn't feel like trivial fiddle, and (c) it's easier to thumb-tap
+ * Design intent — this is the "first verb" in the First Dojo onboarding.
+ * Sensei Wren's lesson is one envelope. The Money-verse pillar is "hide
+ * the lesson in the verb" — so the player physically moves money. We
+ * use three step buttons (+/-$50) over sliders because (a) it is
+ * reachable by keyboard (Tab + arrows), (b) $50 is a meaningful chunk
+ * that doesn't feel like trivial fiddle, and (c) it's easier to thumb-tap
  * on a phone than a slider.
  *
  * UX rules:
- *   - Total is locked to ₹15,000. The "Spend" envelope auto-balances
+ *   - Total is locked to $1,500. The "Spend" envelope auto-balances
  *     so the math never lies to the player.
- *   - Confirm is gated on Rent >= ₹4,800 (the chawl rent fact) so the
+ *   - Confirm is gated on Rent >= $480 (the First Dojo rent fact) so the
  *     player cannot be evicted by their own first lesson. This is
  *     pillar #4 (forgiveness) — we warn but don't punish.
  */
 
-const TOTAL_BUDGET = 15_000;
-const RENT_MINIMUM = 4_800;
-const SAVE_NUDGE_MINIMUM = 2_000;
-const STEP = 500;
+const TOTAL_BUDGET = 1_500;
+const RENT_MINIMUM = 480;
+const SAVE_NUDGE_MINIMUM = 200;
+const STEP = 50;
 const PANEL_FILL = 0x1a0a26;
 const PANEL_STROKE = 0xf7b733;
 const PANEL_BORDER_ALPHA = 0.9;
@@ -75,7 +75,7 @@ export class EnvelopeScene extends Phaser.Scene {
     this.bindKeys();
     this.refreshDisplay();
     announce(
-      "Allocate fifteen thousand rupees. Rent first, then save, then spend.",
+      "Allocate fifteen hundred. Rent first, then save, then spend.",
     );
   }
 
@@ -105,7 +105,7 @@ export class EnvelopeScene extends Phaser.Scene {
         0,
         -panelHeight / 2 + 24,
         FONT,
-        "Three Envelopes - Salary ₹15,000",
+        "Three Envelopes - Paycheck $1,500",
         FONT_SIZE.display,
       )
       .setTint(TINT.saffron)
@@ -194,7 +194,7 @@ export class EnvelopeScene extends Phaser.Scene {
     parent.add(labelText);
 
     const valueText = this.add
-      .bitmapText(rowWidth / 2 - 10, offsetY, FONT, "₹0", FONT_SIZE.heading)
+      .bitmapText(rowWidth / 2 - 10, offsetY, FONT, "$0", FONT_SIZE.heading)
       .setTint(TINT.saffron)
       .setOrigin(1, 0.5);
     parent.add(valueText);
@@ -203,7 +203,7 @@ export class EnvelopeScene extends Phaser.Scene {
       .rectangle(rowWidth / 2 - 140, offsetY, 36, 24, PANEL_STROKE, 0.18)
       .setStrokeStyle(1, PANEL_STROKE, 0.8);
     const minusText = this.add
-      .bitmapText(rowWidth / 2 - 140, offsetY, FONT, "-500", FONT_SIZE.body)
+      .bitmapText(rowWidth / 2 - 140, offsetY, FONT, "-50", FONT_SIZE.body)
       .setTint(TINT.saffron)
       .setOrigin(0.5, 0.5);
     parent.add(minusBg);
@@ -215,7 +215,7 @@ export class EnvelopeScene extends Phaser.Scene {
       .rectangle(rowWidth / 2 - 95, offsetY, 36, 24, PANEL_STROKE, 0.18)
       .setStrokeStyle(1, PANEL_STROKE, 0.8);
     const plusText = this.add
-      .bitmapText(rowWidth / 2 - 95, offsetY, FONT, "+500", FONT_SIZE.body)
+      .bitmapText(rowWidth / 2 - 95, offsetY, FONT, "+50", FONT_SIZE.body)
       .setTint(TINT.saffron)
       .setOrigin(0.5, 0.5);
     parent.add(plusBg);
@@ -241,7 +241,7 @@ export class EnvelopeScene extends Phaser.Scene {
     parent.add(labelText);
 
     const valueText = this.add
-      .bitmapText(rowWidth / 2 - 10, offsetY, FONT, "₹0", FONT_SIZE.heading)
+      .bitmapText(rowWidth / 2 - 10, offsetY, FONT, "$0", FONT_SIZE.heading)
       .setTint(TINT.lilac)
       .setOrigin(1, 0.5);
     parent.add(valueText);
@@ -307,14 +307,14 @@ export class EnvelopeScene extends Phaser.Scene {
   private computeStatus(): { message: string; tint: number } {
     if (this.allocation.rent < RENT_MINIMUM) {
       return {
-        message: `Rent must be at least ₹${RENT_MINIMUM.toLocaleString("en-IN")}. (Press R to add ₹500.)`,
+        message: `Rent must be at least $${RENT_MINIMUM.toLocaleString("en-US")}. (Press R to add $50.)`,
         tint: TINT.warning,
       };
     }
     if (this.allocation.save < SAVE_NUDGE_MINIMUM) {
       return {
         message:
-          "Save is low. ₹2,000 each month becomes ₹24,000 in a year - one emergency you don't borrow for.",
+          "Save is low. $200 each month becomes $2,400 in a year - one emergency you don't borrow for.",
         tint: TINT.saffron,
       };
     }
@@ -327,7 +327,7 @@ export class EnvelopeScene extends Phaser.Scene {
   private tryConfirm(): void {
     if (this.allocation.rent < RENT_MINIMUM) {
       announce(
-        `Rent envelope needs at least ₹${RENT_MINIMUM.toLocaleString("en-IN")}.`,
+        `Rent envelope needs at least $${RENT_MINIMUM.toLocaleString("en-US")}.`,
         "assertive",
       );
       return;
@@ -348,5 +348,5 @@ function clamp(value: number, lo: number, hi: number): number {
 }
 
 function formatInr(value: number): string {
-  return `₹${value.toLocaleString("en-IN")}`;
+  return `$${value.toLocaleString("en-US")}`;
 }

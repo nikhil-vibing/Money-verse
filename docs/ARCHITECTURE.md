@@ -1,4 +1,4 @@
-# Money-verse — Architecture
+# Ninja Money-verse — Architecture
 
 **Status:** Draft · **Audience:** Engineers + Claude Code agents · **Last updated:** 2026-05-14
 

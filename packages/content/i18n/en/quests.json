@@ -1,14 +1,14 @@
 {
   "quest.first-budget.title": "Your first envelope",
   "quest.first-budget.subtitle": "Three envelopes, one paycheck.",
-  "quest.needs-and-wants.title": "Two columns, every rupee",
+  "quest.needs-and-wants.title": "Two columns, every coin",
   "quest.needs-and-wants.subtitle": "Sort before you spend.",
   "quest.rent-day.title": "Rent day",
   "quest.rent-day.subtitle": "Pay before they ask.",
-  "quest.chai-receipt.title": "Ravi anna's notebook",
+  "quest.chai-receipt.title": "Ravi's notebook",
   "quest.chai-receipt.subtitle": "Small leaks, seven days.",
   "quest.emergency-seed.title": "The clay jar",
-  "quest.emergency-seed.subtitle": "Lock the first ₹500.",
+  "quest.emergency-seed.subtitle": "Lock the first $50.",
   "quest.graduation.title": "Across the road",
-  "quest.graduation.subtitle": "From envelopes to a bank."
+  "quest.graduation.subtitle": "From envelopes to a teller window."
 }

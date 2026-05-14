@@ -1,13 +1,13 @@
 /**
- * JarOfAchaar — Maa's pickle jar.
+ * JarOfAchaar — Ma's pickle jar.
  *
  * Whimsy share-move from docs/audit/whimsy-injector.md §5:
  *
- *   "Maa never appears on screen — her achaar jar does. ... Tuesday's
- *    call mentions pickle via Lakshmi. Thursday, a glass jar with hand-
- *    written marker — 'Mira ke liye — kam mirchi' — sits on the player's
- *    table. No XP, no quest. Stays the rest of the run. A mother's
- *    promise the game remembered."
+ *   Ma never appears on screen — her pickle jar does. Tuesday's call
+ *   mentions pickle via Lakshmi. Thursday, a glass jar with a hand-
+ *   written marker — "For Mira — less chilli" — sits on the player's
+ *   table. No XP, no quest. Stays the rest of the run. A mother's
+ *   promise the game remembered.
  *
  * Pillar #8 binding: there is NO popup, NO toast, NO reward. The jar
  * just appears. If the player walks up and presses E, a single faded
@@ -29,11 +29,11 @@ const READ_RADIUS_PX = 28;
 const LABEL_FADE_MS = 200;
 const LABEL_HOLD_MS = 1800;
 /** What the marker says — narrative-canonical. The player's in-fiction
- * name is "Mira" because the audit's prescribed label reads "Mira ke
- * liye — kam mirchi". The data-layer player display name (from
- * packages/shared/db/schema.ts:displayName) is free-form, but Maa's
+ * name is "Mira" because the audit's prescribed label reads "For Mira —
+ * less chilli". The data-layer player display name (from
+ * packages/shared/db/schema.ts:displayName) is free-form, but Ma's
  * handwriting always says "Mira". */
-const MARKER_TEXT = "Mira ke liye - kam mirchi";
+const MARKER_TEXT = "For Mira - less chilli";
 
 export class JarOfAchaar extends Phaser.GameObjects.Container {
   private readonly label: Phaser.GameObjects.BitmapText;
@@ -44,8 +44,8 @@ export class JarOfAchaar extends Phaser.GameObjects.Container {
     super(scene, x, y);
 
     // Body. A faded-glass oval-ish shape rendered as a thin saffron rect
-    // with a slightly darker lid. Pixel-art on purpose; the real Indian-
-    // chawl reskin can replace this with a hand-painted sprite later.
+    // with a slightly darker lid. Pixel-art on purpose; the First Dojo
+    // reskin can replace this with a hand-painted sprite later.
     const g = scene.add.graphics();
     g.fillStyle(0x6c4326, 1);
     g.fillRect(-JAR_W / 2, -JAR_H / 2 + LID_H, JAR_W, JAR_H - LID_H);
@@ -66,7 +66,7 @@ export class JarOfAchaar extends Phaser.GameObjects.Container {
 
     // The reveal label. Hidden by default; shown when `revealLabel()`
     // is called. The bitmap font tinted toward cream-on-indigo reads
-    // as "handwritten on paper" at the chawl's palette.
+    // as "handwritten on paper" at the First Dojo's palette.
     this.label = scene.add
       .bitmapText(0, -JAR_H, FONT, MARKER_TEXT, FONT_SIZE.caption)
       .setTint(TINT.cream)

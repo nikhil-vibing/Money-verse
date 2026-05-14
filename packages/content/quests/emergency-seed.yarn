@@ -2,15 +2,15 @@ title: EmergencySeed_Start
 tags:
 ---
 <<wait_for_action pick_up_clay_jar>>
-maya-didi: Yeh dekh. Clay jar. Ek hi kaam karta hai — bachata hai.
-maya-didi: This one is different from the Save envelope. This is the vault.
+maya-didi: Look at this. A clay jar. One job — to hold.
+maya-didi: Different from the Save envelope. This is the vault.
 <<player_choose>>
 -> "What's the difference?"
-    maya-didi: Save envelope is for goals. New phone. Diwali clothes.
+    maya-didi: Save is for goals. A new phone. New clothes.
     maya-didi: This jar is for emergencies. Hospital. Job gap. Roof leak.
     <<jump EmergencySeed_Why>>
 -> "Why a jar? Why not the envelope?"
-    maya-didi: Because envelopes open easy. Jars have to be broken.
+    maya-didi: Envelopes open easy. Jars have to be broken.
     maya-didi: Friction is the feature. You will thank the friction later.
     <<jump EmergencySeed_Why>>
 ===
@@ -18,21 +18,21 @@ maya-didi: This one is different from the Save envelope. This is the vault.
 title: EmergencySeed_Why
 tags:
 ---
-maya-didi: Goal is six months of expenses. For you, around ₹50,000.
-maya-didi: That is a mountain. We don't climb mountains. We climb stairs.
-maya-didi: First stair — ₹500. Today. From the Save envelope.
+maya-didi: Goal is six months of expenses. For you, about five thousand.
+maya-didi: A mountain. We don't climb mountains. We climb stairs.
+maya-didi: First stair — fifty. Today. From the Save envelope.
 <<player_choose>>
--> "Drop ₹500 into the jar."
-    <<wait_for_action drop_into_jar 500>>
+-> "Drop $50 into the jar."
+    <<wait_for_action drop_into_jar 50>>
     <<jump EmergencySeed_Locked>>
--> "Only ₹500? That's nothing."
-    maya-didi: ₹500 today is the proof that the jar exists.
+-> "Only $50? That's nothing."
+    maya-didi: Fifty today is the proof that the jar exists.
     maya-didi: Proof matters more than amount. Start small. Stay started.
-    <<wait_for_action drop_into_jar 500>>
+    <<wait_for_action drop_into_jar 50>>
     <<jump EmergencySeed_Locked>>
--> "Can I do ₹1,000?"
-    maya-didi: Achha! Yes. But only if your Spend envelope still survives.
-    <<wait_for_action drop_into_jar 1000>>
+-> "Can I do $100?"
+    maya-didi: Yes. Only if the Spend envelope still survives.
+    <<wait_for_action drop_into_jar 100>>
     <<set_flag emergency_seed_doubled>>
     <<jump EmergencySeed_Locked>>
 ===
@@ -43,16 +43,16 @@ tags:
 <<wait_for_action close_jar_lid>>
 maya-didi: Now the lock. First time, I do it. After this, it's yours.
 <<wait_for_action lock_jar>>
-maya-didi: One rule. To open this jar, you have to walk to me first.
+maya-didi: One rule. To open this jar, you walk to me first.
 maya-didi: Not because I will say no. Because the walk gives you ten minutes.
-maya-didi: Ten minutes is enough to know — is this a real emergency?
+maya-didi: Ten minutes is enough to know. Is this a real emergency?
 <<player_choose>>
 -> "What counts as a real emergency?"
     maya-didi: Hospital. Job loss. Family illness. Roof actually falling.
-    maya-didi: Not — new phone. Not — friend's wedding. Not — sale on TV.
+    maya-didi: Not a new phone. Not a friend's wedding. Not a TV sale.
 -> "What if I really need it for something else?"
     maya-didi: Then you walk to me. We talk. Maybe you do open it.
-    maya-didi: But you'll know it cost you something. Not just the rupees.
+    maya-didi: But you'll know it cost you. Not just the coins.
 <<continue>>
 <<jump EmergencySeed_Pledge>>
 ===
@@ -60,20 +60,20 @@ maya-didi: Ten minutes is enough to know — is this a real emergency?
 title: EmergencySeed_Pledge
 tags:
 ---
-maya-didi: Last thing. Make a pledge. Every salary day — ₹500 into this jar.
+maya-didi: One more thing. Make a pledge. Every paycheck — fifty into this jar.
 maya-didi: Same as rent. Non-negotiable. Boring. Automatic.
 <<player_choose>>
--> "₹500 every month. Pledged."
+-> "Fifty every month. Pledged."
     <<set_flag emergency_seed_pledged>>
-    maya-didi: In ten months — ₹5,000. In two years — ₹12,000.
+    maya-didi: Ten months — five hundred. Two years — twelve hundred.
     maya-didi: That is one job-gap month, fully covered. From a clay jar.
 -> "Let me see how the first month goes."
-    maya-didi: Theek hai. No pledge. But the jar is yours.
-    maya-didi: Come back when you're ready to commit. The jar will wait.
+    maya-didi: No pledge. The jar is still yours.
+    maya-didi: Come back when you're ready. The jar will wait.
     <<set_flag emergency_seed_tentative>>
 <<continue>>
 <<grant_mastery budgeting.emergency-seed 1>>
 <<set_flag finished_emergency_seed>>
-maya-didi: You have three envelopes and a jar. That is a budget.
+maya-didi: Three envelopes and a jar. That is a budget.
 maya-didi: Tomorrow — I have someone to introduce you to.
 ===

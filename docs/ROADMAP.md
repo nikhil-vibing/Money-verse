@@ -1,4 +1,4 @@
-# Money-verse — Roadmap
+# Ninja Money-verse — Roadmap
 
 > Phased plan. Each phase ends with a public preview build. Pillar compliance (PRD §4) is checked at every phase gate.
 

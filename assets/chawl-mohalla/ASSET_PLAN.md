@@ -61,7 +61,7 @@ These are honest gaps. Where the chawl needs Indian-specific imagery, the open-s
 | **Postman bag + letters** | LOW | Kenney UI / RPG icon packs include bag-shape generic icons → recolour to khaki postman bag. Letter envelope can be hand-pixelled at 16x16 in <1h. |
 | **₹ rupee icon as pixel-glyph** | LOW | AntumDeluge currency pack has only generic coin/cash — no ₹. → Hand-pixel a 12x12 ₹ glyph in our font's style. <1h. |
 | **Terracotta-roof tile pattern** | LOW | Kenney Urban Kit has flat roof tiles; we'll palette-swap to terracotta orange. <1h. |
-| **Chai vendor (Ravi anna)** | MED | Antifarea merchant sprite reskinned — works as a base. Combine with hand-pixelled chai stall. |
+| **Chai vendor (Kai)** | MED | Antifarea merchant sprite reskinned — works as a base. Combine with hand-pixelled chai stall. |
 | **Bhola seth (suspicious-friendly older man)** | MED | Sean Noonan "Top Down Smart Old Man" reskin → adds safari shirt, ledger in hand, slight slouch. |
 | **Drumming Kid** | MED | Re-shrink anon-16x16-base male sprite to ~24px tall, add drum prop. ~2h. |
 
@@ -92,8 +92,8 @@ Ramps (planned):
 | Surt — Town Tiles | Wall tone shift to terracotta+saffron mix | 2h |
 | anon 16x16 base sprites | Skin tones expanded to South-Asian range (5 tones); kurta / saree / lungi overlays painted | 8h |
 | Sean Noonan Old Man | Bhola seth — safari shirt + dhoti, ledger prop | 3h |
-| Antifarea merchant | Ravi anna — chai-vendor apron + cap | 3h |
-| Antifarea nun → kirana aunty (Sushila) | Saree + bindi + glasses | 3h |
+| Antifarea merchant | Kai — chai-vendor apron + cap | 3h |
+| Antifarea nun → kirana aunty (Mara) | Saree + bindi + glasses | 3h |
 | Jason of GDN dog | Use brown spritesheet; minor scale-down 32→16 | 1h |
 | Kenney UI Pack | Re-skin 9-slice frames into "torn passbook paper" diegetic style | 4h |
 | Kenney Game Icons | Restyle as pixel-glyphs at 16x16; recolour saffron / indigo accents | 2h |
@@ -189,7 +189,7 @@ Drops in on top of Phase A's recolour table (§3 above).
 | Asset | Modification | Effort |
 |---|---|---|
 | Ninja Adventure tileset | Mass palette swap (warm-Indian-evening from §3); cull all temple/forest/dungeon tiles; keep urban-adjacent floor, wall, prop, sign, fence tiles | 8h |
-| Ninja Adventure characters | Pick 6 body silhouettes; reskin into the named chawl NPCs (Maya didi, Aarav, Bhola seth, Sushila aunty, Drumming Kid, Lakshmi dabbawala); add saree/kurta/lungi overlays | 24h |
+| Ninja Adventure characters | Pick 6 body silhouettes; reskin into the named chawl NPCs (Wren, Arlo, Bhola seth, Mara, Drumming Kid, Lia); add saree/kurta/lungi overlays | 24h |
 | Sharm Adobe Building Set | Recolour clay-walls to terracotta + faded saffron; replace stone trim with iron-grille trim (hand-pixel); add chawl-specific window grilles | 6h |
 | Sharm Town Remix | Palette swap; pick alley + ground + railing subset | 3h |
 | GrafxKid City Mega Pack citizens | Reskin 4 citizen body types as background NPCs (queue at chai stall, kids playing, women hanging laundry, men reading paper) | 12h |

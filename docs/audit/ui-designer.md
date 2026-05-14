@@ -1,4 +1,4 @@
-# UI Designer Audit — Money-verse text legibility & immersion
+# UI Designer Audit — Ninja Money-verse text legibility & immersion
 
 **User complaint (verbatim):** *"names look pixelated too, not immersive"*
 
@@ -60,4 +60,4 @@ A **two-font, four-step scale**, all bitmap, snapped to integer pixels.
 
 ## TL;DR for the user
 
-The names look pixelated because **they aren't pixel art** — they're 6px Menlo (system monospace) rasterised through WebGL bilinear sampling at 3× zoom. Three fixes, in order: **(1) load Monogram.fnt as a bitmap font and swap every `add.text` to `add.bitmapText`** (this alone fixes 80% of the complaint and is the one move you'll notice in 4 seconds); **(2)** bump NPC labels 6→8px and wrap them in a saffron-stroked rounded tag so they read as in-world UI, not debug rects; **(3)** add LanaPixel 10px for dialog body so paragraphs stop looking like terminal output. Expected perceived-quality lift: from "Phaser demo with overlay text" to "shipped indie pixel-art RPG" — roughly the same delta the screenshot shows between Money-verse and any Octopath-tier reference. **Single biggest move: replace `fontFamily: "monospace"` everywhere with `bitmapText('monogram-8')` from a pre-loaded `.fnt` atlas.**
+The names look pixelated because **they aren't pixel art** — they're 6px Menlo (system monospace) rasterised through WebGL bilinear sampling at 3× zoom. Three fixes, in order: **(1) load Monogram.fnt as a bitmap font and swap every `add.text` to `add.bitmapText`** (this alone fixes 80% of the complaint and is the one move you'll notice in 4 seconds); **(2)** bump NPC labels 6→8px and wrap them in a saffron-stroked rounded tag so they read as in-world UI, not debug rects; **(3)** add LanaPixel 10px for dialog body so paragraphs stop looking like terminal output. Expected perceived-quality lift: from "Phaser demo with overlay text" to "shipped indie pixel-art RPG" — roughly the same delta the screenshot shows between Ninja Money-verse and any Octopath-tier reference. **Single biggest move: replace `fontFamily: "monospace"` everywhere with `bitmapText('monogram-8')` from a pre-loaded `.fnt` atlas.**

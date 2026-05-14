@@ -15,11 +15,11 @@ export function SiteFooter() {
               >
                 <path
                   d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"
-                  fill="var(--color-crimson)"
+                  fill="var(--color-amber)"
                 />
                 <circle cx="12" cy="12" r="1.6" fill="var(--color-ink)" />
               </svg>
-              <span className="font-display text-lg font-medium">Ninja-Finance</span>
+              <span className="font-display text-lg font-medium">Ninja Money-verse</span>
             </div>
             <p className="mt-5 max-w-xs text-sm text-[var(--color-paper-dim)]">
               An open-source RPG that teaches money skills. For the dollar that comes in, the dollar
@@ -60,7 +60,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col items-start justify-between gap-3 border-t border-[var(--color-stroke)] pt-6 text-[11px] text-[var(--color-paper-muted)] sm:flex-row sm:items-center">
-          <span>© Ninja-Finance contributors · AGPL-3.0 · CC-BY 4.0 (art)</span>
+          <span>© Ninja Money-verse contributors · AGPL-3.0 · CC-BY 4.0 (art)</span>
           <span>Made with open source, in the open.</span>
         </div>
       </div>
@@ -89,7 +89,7 @@ function FooterCol({
                 href={l.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className="text-[var(--color-paper)] transition-colors hover:text-[var(--color-crimson)]"
+                className="text-[var(--color-paper)] transition-colors hover:text-[var(--color-amber)]"
               >
                 {l.label}
               </a>

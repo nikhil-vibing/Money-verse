@@ -1,5 +1,5 @@
 /**
- * Money-verse design tokens — colours and typography.
+ * Ninja Money-verse design tokens — colours and typography.
  *
  * Single source of truth so future scenes never inline a `fontFamily`
  * string again. Adopted from the four-step typography spec in

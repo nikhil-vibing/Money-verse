@@ -1,6 +1,6 @@
-# OSS-First Discipline — Anti-NIH Audit for Money-verse
+# OSS-First Discipline — Anti-NIH Audit for Ninja Money-verse
 
-> Output of the `master` skill on the topic of *open-source-first / not-invented-here avoidance*. Applied as a concrete audit of the Money-verse repo, ~2 months into the build.
+> Output of the `master` skill on the topic of *open-source-first / not-invented-here avoidance*. Applied as a concrete audit of the Ninja Money-verse repo, ~2 months into the build.
 
 **Verdict in one line.** We've quietly drifted into NIH on the *art*, the *atmosphere shaders*, the *in-game UI primitives*, and the *capability-detection layer*. Three swaps, done in sequence, delete ~1,400 LoC of code-we-have-to-maintain and visibly raise the production value of the landing page and the first district.
 

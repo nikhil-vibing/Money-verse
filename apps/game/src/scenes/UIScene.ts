@@ -37,8 +37,8 @@ const MINIMAP_SCALE = 1 / 16;
 const PANEL_FILL = 0x1a0a26;
 const PANEL_STROKE = 0xf7b733;
 const DISTRICT_LABELS: Readonly<Record<string, string>> = {
-  "chawl-mohalla": "Chawl Mohalla",
-  "bank-bazaar": "Bank Bazaar",
+  "chawl-mohalla": "The First Dojo",
+  "bank-bazaar": "The Still Pool",
 };
 
 /**

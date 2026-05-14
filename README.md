@@ -1,10 +1,10 @@
-# Money-verse
+# Ninja Money-verse
 
-**A 2D HD-pixel RPG that teaches Indians to manage money — calmly, in your own time, in your own context.**
+**A 2D HD-pixel RPG that teaches anyone to manage money — train your money like a ninja trains the body. One stance, one breath, one chamber at a time.**
 
 Open-source. Free forever. No dark patterns.
 
-> A better-than-v1 re-imagining of [dhaniverse.in](https://www.dhaniverse.in) — superior UI, graphics, learning, and gameplay. Every design decision is grounded in proven patterns from documented masters; see [docs/MASTERS_RESEARCH.md](./docs/MASTERS_RESEARCH.md).
+> A ninja-school-for-finance re-imagining of [dhaniverse.in](https://www.dhaniverse.in) — superior UI, graphics, learning, and gameplay. Every design decision is grounded in proven patterns from documented masters; see [docs/MASTERS_RESEARCH.md](./docs/MASTERS_RESEARCH.md) and [docs/research/ninja-finance.md](./docs/research/ninja-finance.md).
 
 ---
 
@@ -32,8 +32,9 @@ apps/
   server/    Colyseus realtime + Hono HTTP (deploys to Fly.io)
 packages/
   shared/         Zod schemas, finance constants, Drizzle DB schema
-  finance-sim/    Pure-TS Indian financial math (compounding, FD/RD, SIP,
-                  EMI, tax old/new regimes, market sim). Zero deps. 100% tested.
+  finance-sim/    Pure-TS personal-finance math (compounding, Term Vault,
+                  Drip Investing, repayments, two tax paths, market sim).
+                  Zero deps. 100% tested.
   game-protocol/  Colyseus state schemas + typed client SDK
   content/        Quest JSON, NPC schedules, Yarn dialog, i18n bundles
   ui/             Shared shadcn primitives + design tokens
@@ -72,7 +73,7 @@ Full details + rejected alternatives: [docs/TECH_STACK.md](./docs/TECH_STACK.md)
 6. Authored, never procedural, world
 7. The system responds
 8. Free forever; no dark patterns
-9. Indian context first
+9. Universal context, distinctive voice
 10. Assist Mode for finance
 
 Full justification: [docs/PRD.md §4](./docs/PRD.md).
@@ -81,7 +82,7 @@ Full justification: [docs/PRD.md §4](./docs/PRD.md).
 
 ## Anti-patterns we reject
 
-❌ Confetti on speculative wins · ❌ "biggest mover" notifications · ❌ lottery/spin rewards · ❌ paywalled lessons · ❌ "Easy Mode"/"Cheat Mode" framing · ❌ random encounters / grinding · ❌ US-centric examples · ❌ silent failures · ❌ PvP combat · ❌ speculative-gain leaderboards · ❌ ads / dark patterns
+❌ Confetti on speculative wins · ❌ "biggest mover" notifications · ❌ lottery/spin rewards · ❌ paywalled lessons · ❌ "Easy Mode"/"Cheat Mode" framing · ❌ random encounters / grinding · ❌ silent failures · ❌ PvP combat · ❌ speculative-gain leaderboards · ❌ ads / dark patterns
 
 ---
 

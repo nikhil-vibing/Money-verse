@@ -28,19 +28,19 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ninja-finance.app"),
-  title: "Ninja-Finance — The RPG that teaches real money skills.",
+  metadataBase: new URL("https://ninja-money-verse.app"),
+  title: "Ninja Money-verse — The RPG that teaches real money skills.",
   description:
     "A free, open-source pixel-art RPG that teaches money skills. No paywalls. No dark patterns. No casino tricks. Play in a browser — no account needed.",
   openGraph: {
-    title: "Ninja-Finance",
+    title: "Ninja Money-verse",
     description: "The RPG that teaches real money skills. Free forever. Open source. No tricks.",
     type: "website",
-    siteName: "Ninja-Finance",
+    siteName: "Ninja Money-verse",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ninja-Finance",
+    title: "Ninja Money-verse",
     description: "The RPG that teaches real money skills. Free. Open. No tricks.",
   },
 };

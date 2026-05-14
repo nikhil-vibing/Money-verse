@@ -2,17 +2,17 @@ title: FirstBudget_Start
 tags:
 ---
 <<wait_for_action grab_envelope>>
-maya-didi: Khol le, na. Don't be shy. Count it.
+maya-didi: Open it. Don't be shy. Count it.
 <<wait_for_action count_cash>>
-maya-didi: ₹15,000. That is everything you'll get this month.
-maya-didi: First salary. Same as my first. Mine lasted nine days.
+maya-didi: Fifteen hundred. That is everything you'll get this month.
+maya-didi: First paycheck. Same as mine, long ago. Mine lasted nine days.
 <<player_choose>>
 -> Why only nine days?
-    maya-didi: Because I had no plan. Money without a plan is rent
-    maya-didi: for the next person's pocket. Today you make a plan.
+    maya-didi: No plan. Money without a plan is rent
+    maya-didi: for the next person's pocket. Today, you make a plan.
     <<jump FirstBudget_ThreeEnvelopes>>
 -> Just tell me what to do.
-    maya-didi: Theek hai. No lecture. Three envelopes. Three buckets.
+    maya-didi: Fine. No lecture. Three envelopes. Three buckets.
     <<jump FirstBudget_ThreeEnvelopes>>
 ===
 
@@ -20,36 +20,36 @@ title: FirstBudget_ThreeEnvelopes
 tags:
 ---
 <<wait_for_action open_drawer>>
-maya-didi: See these three envelopes. Rent. Save. Spend.
-maya-didi: Rent ka envelope sabse pehle. Always first.
-maya-didi: Put ₹4,800 in Rent. That is what you owe Bhola Seth.
-<<wait_for_action fill_envelope rent 4800>>
-maya-didi: Good. Now Save. Put at least ₹2,000.
+maya-didi: Three envelopes. Rent. Save. Spend.
+maya-didi: Rent is first. Always first.
+maya-didi: Put $480 in Rent. That is what you owe the chair at the alley.
+<<wait_for_action fill_envelope rent 480>>
+maya-didi: Good. Now Save. Put at least $200.
 maya-didi: Not later. Now. Before you decide what to spend.
 <<player_choose>>
--> Put ₹2,000 into Save.
-    <<wait_for_action fill_envelope save 2000>>
-    maya-didi: Achha. You paid yourself before you paid the world.
+-> Put $200 into Save.
+    <<wait_for_action fill_envelope save 200>>
+    maya-didi: You paid yourself before you paid the world. That is the form.
     <<set_flag paid_self_first>>
     <<jump FirstBudget_SpendRemainder>>
--> Put only ₹500 into Save.
-    <<wait_for_action fill_envelope save 500>>
-    maya-didi: Hmm. ₹500 is something. But ₹2,000 is a plan.
-    maya-didi: Tell you what — try again. The envelope is paper, not stone.
+-> Put only $50 into Save.
+    <<wait_for_action fill_envelope save 50>>
+    maya-didi: Fifty is something. Two hundred is a plan.
+    maya-didi: Try once more. The envelope is paper, not stone.
     <<jump FirstBudget_RetrySave>>
 -> Skip Save for now.
-    maya-didi: Arre, no. That's the whole point of this drawer.
-    maya-didi: Let's try once more. I'll wait.
+    maya-didi: No. The drawer's whole point is in that second envelope.
+    maya-didi: One more try. I'll wait.
     <<jump FirstBudget_RetrySave>>
 ===
 
 title: FirstBudget_RetrySave
 tags:
 ---
-maya-didi: Look at it like this. ₹2,000 each month is ₹24,000 in a year.
-maya-didi: That is one emergency you can swallow instead of borrow for.
-<<wait_for_action fill_envelope save 2000>>
-maya-didi: Better. Pay yourself first, every single time.
+maya-didi: Look at it this way. Two hundred a month is twenty-four hundred a year.
+maya-didi: One emergency you swallow instead of borrow for.
+<<wait_for_action fill_envelope save 200>>
+maya-didi: Better. Pay yourself first. Every single time.
 <<set_flag paid_self_first>>
 <<jump FirstBudget_SpendRemainder>>
 ===
@@ -57,22 +57,22 @@ maya-didi: Better. Pay yourself first, every single time.
 title: FirstBudget_SpendRemainder
 tags:
 ---
-maya-didi: Whatever is left — ₹8,200 — goes to Spend.
-maya-didi: Chai, sabzi, bus pass, dabba. All of it from this envelope.
-<<wait_for_action fill_envelope spend 8200>>
-maya-didi: Now do the maths out loud. Income minus expenses equals…?
+maya-didi: Whatever is left — $820 — goes to Spend.
+maya-didi: Tea, food, bus, soap. All of it. From this envelope.
+<<wait_for_action fill_envelope spend 820>>
+maya-didi: Now say the math out loud. Income minus expenses equals…?
 <<player_choose>>
 -> Savings.
-    maya-didi: Bilkul. Income minus expenses equals savings.
+    maya-didi: Correct. Income minus expenses equals savings.
     maya-didi: That is the whole budget. The rest is decoration.
     <<set_flag understands_income_minus_expenses>>
 -> Whatever is left.
-    maya-didi: Close. We call "whatever is left" by a proper name —
+    maya-didi: Close. "Whatever is left" has a name —
     maya-didi: savings. Income minus expenses equals savings.
     <<set_flag understands_income_minus_expenses>>
 <<continue>>
 <<grant_mastery budgeting.income-expense 1>>
 <<set_flag finished_first_budget>>
-maya-didi: Tomorrow Aarav will try to sell you something stupid.
-maya-didi: Now you have an envelope that can say no for you.
+maya-didi: Tomorrow Arlo will try to sell you something foolish.
+maya-didi: Now the envelope can say no for you.
 ===

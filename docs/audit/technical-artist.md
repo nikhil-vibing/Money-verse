@@ -1,4 +1,4 @@
-# Technical Artist Audit — Money-verse
+# Technical Artist Audit — Ninja Money-verse
 
 **Stack:** Phaser 3.90 / WebGL, pixelArt on, antialias off, roundPixels on, zoom 3x.
 **Current postFX (`WorldScene.ts:463-478`):** `addBloom(0xffe9a3, 0.6, 0.6, 1.0, 0.35, 4)` + `addVignette(0.5, 0.5, 0.75, 0.3)` + `addColorMatrix().saturate(0.1, true)`.
@@ -60,4 +60,4 @@
 
 ---
 
-**Ranked summary:** Ship (1) a player-tracked radial light mask replacing the static vignette, (2) a day/night `ColorMatrix` tween anchoring the world to a clock, and (3) an additive emissive layer for shop windows and lamp posts — bundled as one "dusk pass" PR, the single biggest move lifting Money-verse from flat 80s tilemap to lit Stardew/Eastward-grade world in one change.
+**Ranked summary:** Ship (1) a player-tracked radial light mask replacing the static vignette, (2) a day/night `ColorMatrix` tween anchoring the world to a clock, and (3) an additive emissive layer for shop windows and lamp posts — bundled as one "dusk pass" PR, the single biggest move lifting Ninja Money-verse from flat 80s tilemap to lit Stardew/Eastward-grade world in one change.

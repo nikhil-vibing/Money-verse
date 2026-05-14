@@ -14,11 +14,11 @@ const CHARACTER_FRAME_SIZE = 16;
 export const FONT_PIXEL = "chawl-pixel-8";
 
 const TIPS: ReadonlyArray<string> = [
-  "Keep the chai receipt. It tells the story your bank statement hides.",
-  "Three envelopes: Fixed, Save, Khushi. Pay them before you pay the world.",
-  "Compound interest is how money quietly grows while you sleep.",
-  "A SIP of ₹500 is a habit. ₹5000 once is a souvenir.",
-  "Aaj se hisaab rakhna seekho — the rest will follow.",
+  "Keep the tea receipt. It tells the story your statement hides.",
+  "Three envelopes: Rent, Save, Spend. Pay them before you pay the world.",
+  "Patient growth is how money quietly compounds while you sleep.",
+  "Fifty a month is a habit. Five hundred once is a souvenir.",
+  "Master the stance before the strike. The rest follows.",
 ];
 
 export class PreloadScene extends Phaser.Scene {

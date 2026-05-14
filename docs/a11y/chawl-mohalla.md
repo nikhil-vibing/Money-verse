@@ -2,7 +2,7 @@
 
 **Audit date:** 2026-05-14
 **Auditor:** a11y-reviewer
-**Standard:** WCAG 2.2 AA + Money-verse pillars (esp. #10 Assist Mode for finance)
+**Standard:** WCAG 2.2 AA + Ninja Money-verse pillars (esp. #10 Assist Mode for finance)
 **Scope:** `apps/game/src/scenes/{WorldScene,UIScene,PreloadScene}.ts`, `apps/game/src/entities/{Player,Npc,InteractZone}.ts`, 6 `.yarn` quest files, 10 NPC `.json` files, `packages/content/i18n/{en,hi}/{npcs,quests}.json`.
 
 ---
@@ -27,12 +27,12 @@
 
 ### C1 · [WCAG 4.1.3 Status Messages, 1.3.1 Info & Relationships] No ARIA-live region anywhere in the React overlay
 - **Surface:** `apps/web/app/play/GameMount.tsx` (lines 39–46); `apps/game/src/scenes/UIScene.ts` (full file); `apps/game/src/scenes/WorldScene.ts:298–302, 347–355`.
-- **Description:** `ARCHITECTURE.md §12` mandates: *"Phaser scenes mirror critical state to an off-screen ARIA-live region (in the React overlay) so screen readers can follow."* The overlay contains only `role="application" aria-label="Money-verse game"` on a `<div>` — no live region exists, and no scene emits to one. The interact bar (`UIScene.showInteract`), the district pill text ("Chawl Mohalla"), the minimap player position, and the load-error text in `WorldScene.showLoadError` are all rendered into the Phaser WebGL canvas and therefore opaque to AT.
+- **Description:** `ARCHITECTURE.md §12` mandates: *"Phaser scenes mirror critical state to an off-screen ARIA-live region (in the React overlay) so screen readers can follow."* The overlay contains only `role="application" aria-label="Ninja Money-verse game"` on a `<div>` — no live region exists, and no scene emits to one. The interact bar (`UIScene.showInteract`), the district pill text ("Chawl Mohalla"), the minimap player position, and the load-error text in `WorldScene.showLoadError` are all rendered into the Phaser WebGL canvas and therefore opaque to AT.
 - **Severity:** CRITICAL — a blind user cannot perceive *any* game state change.
 - **Remediation:**
   ```tsx
   // GameMount.tsx
-  <div role="application" aria-label="Money-verse game" className="h-screen w-screen relative">
+  <div role="application" aria-label="Ninja Money-verse game" className="h-screen w-screen relative">
     <div ref={ref} className="absolute inset-0" />
     <div
       id="a11y-live-polite"

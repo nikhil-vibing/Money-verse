@@ -12,7 +12,7 @@ const audiences = [
       "No spreadsheet skills required.",
       "Save your run, come back tomorrow.",
     ],
-    accent: "var(--color-crimson)",
+    accent: "var(--color-amber)",
   },
   {
     tag: "For the educators",
@@ -23,7 +23,7 @@ const audiences = [
       "AGPL source — fork it for your classroom.",
       "Zero ads. Zero tracking. Zero upsells.",
     ],
-    accent: "var(--color-amber)",
+    accent: "var(--color-moss)",
   },
 ];
 
@@ -108,8 +108,8 @@ export function PersonaSection() {
 
 function Eyebrow({ children }: { children: string }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-crimson)]">
-      <span className="h-px w-6 bg-[var(--color-crimson)]" />
+    <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-amber)]">
+      <span className="h-px w-6 bg-[var(--color-amber)]" />
       {children}
     </span>
   );

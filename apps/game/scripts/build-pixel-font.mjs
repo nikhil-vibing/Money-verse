@@ -2,8 +2,8 @@
 /**
  * build-pixel-font.mjs — emit a CC0 pixel BMFont (.fnt + .png) at predev/prebuild.
  *
- * Money-verse ships its OWN pixel font ("Chawl Pixel 8") so we can guarantee:
- *   1. CC0 provenance — every glyph below is hand-authored by Money-verse
+ * Ninja Money-verse ships its OWN pixel font ("Chawl Pixel 8") so we can guarantee:
+ *   1. CC0 provenance — every glyph below is hand-authored by Ninja Money-verse
  *      and dedicated to the public domain. No external licence to track.
  *   2. Pixel-perfect alignment at 3x camera zoom — the audit's root-cause
  *      complaint ("names look pixelated too, not immersive") is bilinear
@@ -53,7 +53,7 @@ const PAD = 1;
  *
  * Coverage: 32-126 (95 printable ASCII chars), plus a placeholder
  * (codepoint 0) used as a fallback. The set is intentionally compact —
- * Money-verse UI text is all ASCII (Hinglish transliterated). For
+ * Ninja Money-verse UI text is all ASCII (Hinglish transliterated). For
  * Devanagari we use an HTML aria-live layer (see lib/announce.ts).
  */
 const GLYPHS = {

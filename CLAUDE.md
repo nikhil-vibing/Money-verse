@@ -1,6 +1,6 @@
 # CLAUDE.md — Project guide for Claude Code
 
-> **You are working on Money-verse** — a 2D HD-pixel RPG that teaches financial literacy to Indian users. Open-source-only stack. Better-than-v1 in UI, graphics, experience, and learning.
+> **You are working on Ninja Money-verse** — a 2D HD-pixel RPG that teaches financial literacy as a martial-arts apprenticeship. Open-source-only stack. Better-than-v1 in UI, graphics, experience, and learning.
 >
 > **Before you do anything new, read [docs/PRD.md](./docs/PRD.md), then check the relevant pillar in §4 of that doc.** Pillar violations are blocking.
 
@@ -121,7 +121,7 @@ These come from [docs/PRD.md §4](./docs/PRD.md). They are blocking for PR appro
 6. **Authored, never procedural, world.** Every named NPC has a schedule + memory file in `packages/content/npcs/`.
 7. **The system responds.** Major financial decisions change ≥3 NPC dialog branches.
 8. **Free forever; no dark patterns.** No confetti on speculative wins. No notifications hyping volatility. No surprise-stock rewards. No paywalls on foundational lessons.
-9. **Indian context first.** All examples ₹, SIP/PPF/NPS/FD, bilingual EN+HI.
+9. **Universal context, distinctive voice.** All examples in `$` whole-number coin; instruments named via the reframe table (Drip Investing, Long Vault, Pension Path, Term Vault, Long Index, Six-Month Vault, Term Cover, Two Tax Paths, Tap-Pay, etc. — see `docs/research/ninja-finance.md` §6). English-only baseline with sensei cadence: short sentences, present tense, observation-then-pause. Each NPC keeps a distinctive register; never flatten them into calm-corporate.
 10. **Assist Mode for finance.** Every concept must have a slowed-tick / exposed-math / hint-NPC variant. Never call it "Easy" or "Cheat."
 
 If you write code that violates a pillar, **stop and ask the user** before continuing.
@@ -137,7 +137,6 @@ If you write code that violates a pillar, **stop and ask the user** before conti
 - ❌ "Easy Mode" or "Cheat Mode" framing → call it Assist
 - ❌ Long sessions required for progress
 - ❌ Random encounters / grinding
-- ❌ US-centric financial examples
 - ❌ Silent failures
 - ❌ PvP combat
 - ❌ Leaderboards by speculative gains
@@ -155,7 +154,7 @@ Before writing new code that solves a generic problem, do this (don't skip):
 3. If you propose a new dependency, justify it in your PR description with: licence, maintenance signal (last release, stars, issues), and an alternative you rejected.
 
 We *will* hand-build:
-- `packages/finance-sim` (no OSS handles Indian tax + EPF/PPF/NPS/SIP with our hooks).
+- `packages/finance-sim` (no OSS handles our reframed instruments — Term Vault, Pension Path, Drip Investing, Two Tax Paths — with our hooks).
 - HD-2D-lite Phaser post-FX pipelines (no OSS bundle exists at our target quality).
 - The quest engine on top of Yarn Spinner.
 - The AI tutor scope-and-safety layer.

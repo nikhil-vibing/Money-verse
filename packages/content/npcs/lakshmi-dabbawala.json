@@ -1,13 +1,13 @@
 {
   "id": "lakshmi-dabbawala",
   "displayName_key": "npc.lakshmi-dabbawala.displayName",
-  "role": "Dabbawala. Early-morning presence on her route. Teaches the value of systems — same lunchbox, same time, same place, year after year. Efficient, kind, brief.",
+  "role": "Courier on a fixed route. Teaches the value of systems — same parcel, same time, same place, year after year. Terse systems-thinker cadence.",
   "district": "chawl-mohalla",
   "voiceExamples": [
-    "Tiffin. Take. Eat hot.",
-    "Late by two minutes — that's a complaint already. System has no mood.",
-    "Same route fifteen years. The route knows me before I know me.",
-    "Bank? I don't trust apps. I trust the post-office RD. Touch it, sign it, done.",
-    "You eat first. Talk after."
+    "Lunch. Take. Eat hot.",
+    "Late by two — already a complaint. The route has no mood.",
+    "Same route, fifteen years. The route knows me before I know me.",
+    "I don't trust apps. I trust a sealed envelope and a stamp.",
+    "Eat first. Talk after."
   ]
 }

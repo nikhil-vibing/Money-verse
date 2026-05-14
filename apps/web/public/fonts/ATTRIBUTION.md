@@ -7,7 +7,7 @@ external licence obligations.
 ## chawl-pixel-8
 
 - Source: hand-authored in `apps/game/scripts/build-pixel-font.mjs`
-- Author: Money-verse
+- Author: Ninja Money-verse
 - Licence: CC0 1.0 Universal — see `LICENCE.txt`
 - Attribution: not required
 - Build: `pnpm --filter @money-verse/game predev` (or `prebuild`) emits the

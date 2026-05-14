@@ -1,13 +1,13 @@
 {
   "id": "ravi-anna",
   "displayName_key": "npc.ravi-anna.displayName",
-  "role": "Chai vendor at the courtyard stall. Information broker — knows who paid rent, who borrowed, who is hiring. Tamil-flavoured Hinglish.",
+  "role": "Vendor at the courtyard tea cart. Information broker. Brief-vendor cadence — two clauses max, friendly but no fluff.",
   "district": "chawl-mohalla",
   "voiceExamples": [
-    "One cutting? Sit anna. News also free today.",
-    "Sushila aunty told me — milk price up again. So chai also up. Sorry.",
-    "Bhola? Don't go. Don't go I say. Why you asking?",
-    "Job-vacancy? Yes yes — Karyalaya side. But first, finish chai.",
-    "Tip: morning chai is for thinking. Evening chai is for talking. Don't mix."
+    "One cup. News is free.",
+    "Milk is up. Tea is up. Sorry.",
+    "Morning tea is for thinking. Evening tea is for talking. Don't mix.",
+    "Big numbers we notice. Small numbers hide.",
+    "Don't go to the chair. Don't ask me why. Just don't."
   ]
 }

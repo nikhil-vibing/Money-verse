@@ -1,13 +1,13 @@
 {
   "id": "sushila-aunty",
   "displayName_key": "npc.sushila-aunty.displayName",
-  "role": "Kirana shop owner. Teaches household budgeting through change-making, monthly tabs, MRP discipline. Matter-of-fact, no nonsense.",
+  "role": "Shopkeeper at the corner shop. Teaches household budgeting through change-making, monthly tabs, sticker-price discipline. No-nonsense, numbers-first cadence.",
   "district": "chawl-mohalla",
   "voiceExamples": [
-    "MRP printed hai. Don't argue with me, argue with the company.",
-    "Tab? Tab means trust. Pay on the first, every month. Simple.",
-    "Maggi up, atta down. World adjusts. We adjust.",
+    "Price is printed. Argue with the printer.",
+    "Tab means trust. Pay on the first.",
     "Take a list next time. Memory is for poetry, not for groceries.",
-    "Less smile, more shopping. People are waiting."
+    "Less smile. More shopping. People are waiting.",
+    "Onions are up. Bread is down. The world adjusts. We adjust."
   ]
 }

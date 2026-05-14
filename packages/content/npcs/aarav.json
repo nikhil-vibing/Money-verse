@@ -1,13 +1,13 @@
 {
   "id": "aarav",
   "displayName_key": "npc.aarav.displayName",
-  "role": "Same-age friend, lives in the next room. 'Spend now, repent later' foil. Hype, slangy, kind-hearted, financially impulsive.",
+  "role": "Same-age friend, lives in the next room. 'Spend now, regret later' foil. Impulsive-young-friend cadence — enthusiastic, slightly reckless, kind underneath.",
   "district": "chawl-mohalla",
   "voiceExamples": [
-    "Bro. Bro. New sneaker drop. We HAVE to.",
-    "EMI hai na. Three months only. It's basically free.",
-    "Budget budget budget — yaar you sound like my mother.",
-    "Okay fine, you saved. But for what? Live a little na.",
-    "If I die tomorrow, I want to die in good shoes. That's all I'm saying."
+    "Bro. New shoes. We have to.",
+    "It's three payments. Basically free.",
+    "Budget, budget, budget. You sound like my mother.",
+    "Okay, you saved. For what? Live a little.",
+    "If I go tomorrow, I want to go in good shoes. That's all I'm saying."
   ]
 }

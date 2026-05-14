@@ -28,8 +28,8 @@ export function HeroSection() {
             className="anim-fade-down mb-7 inline-flex w-fit items-center gap-2.5 rounded-full border border-[var(--color-stroke)] bg-[var(--color-ink-2)]/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[var(--color-paper-dim)] backdrop-blur"
             style={{ animationDelay: "40ms" }}
           >
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-crimson)]" />
-            Pixel-art RPG · Open source · Plays in a browser
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-amber)]" />
+            A ninja school for your money · Open source · Plays in a browser
           </div>
 
           <h1
@@ -37,10 +37,10 @@ export function HeroSection() {
             className="font-display font-medium tracking-tight text-balance"
             style={{ fontSize: "clamp(2.6rem, 7vw + 1rem, 7rem)", lineHeight: 0.94 }}
           >
-            <Line delay="120ms">The RPG that teaches</Line>
+            <Line delay="120ms">Train your money</Line>
             <Line delay="260ms">
-              <span className="italic font-normal text-[var(--color-crimson)]">real</span> money
-              skills.
+              like a <span className="italic font-normal text-[var(--color-amber)]">ninja</span>{" "}
+              trains the body.
             </Line>
           </h1>
 
@@ -48,8 +48,9 @@ export function HeroSection() {
             className="anim-fade-up mt-7 max-w-xl text-base text-[var(--color-paper-dim)] sm:text-lg"
             style={{ animationDelay: "440ms" }}
           >
-            Live a life inside a pixel-art city. Take quests, pay rent, dodge scams, build wealth —
-            and pick up the lessons school skipped.
+            Seven chambers. One sensei who never lectures. You walk into the old quarter with a
+            paycheck and an envelope, and you walk out knowing how money behaves — because your
+            hands now do.
           </p>
 
           <div
@@ -59,7 +60,7 @@ export function HeroSection() {
             <a
               ref={ctaRef}
               href="/play"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[var(--color-paper)] px-7 py-3.5 text-[15px] font-medium text-[var(--color-ink)] transition-[box-shadow] duration-300 hover:shadow-[0_30px_80px_-20px_rgba(255,59,59,0.6)]"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[var(--color-paper)] px-7 py-3.5 text-[15px] font-medium text-[var(--color-ink)] transition-[box-shadow] duration-300 hover:shadow-[0_30px_80px_-20px_rgba(244,185,66,0.5)]"
               data-magnetic
             >
               <span className="relative z-10">Play free</span>
@@ -71,7 +72,7 @@ export function HeroSection() {
               </span>
               <span
                 aria-hidden="true"
-                className="absolute inset-0 z-0 translate-y-full bg-[var(--color-crimson)] transition-transform duration-500 ease-out group-hover:translate-y-0"
+                className="absolute inset-0 z-0 translate-y-full bg-[var(--color-amber)] transition-transform duration-500 ease-out group-hover:translate-y-0"
               />
               <span
                 aria-hidden="true"
@@ -106,7 +107,7 @@ export function HeroSection() {
         >
           <span className="relative block h-9 w-px overflow-hidden bg-[var(--color-stroke)]">
             <span
-              className="absolute inset-x-0 top-0 h-2 bg-[var(--color-crimson)]"
+              className="absolute inset-x-0 top-0 h-2 bg-[var(--color-amber)]"
               style={{ animation: "scroll-cue 2.4s ease-in-out infinite" }}
             />
           </span>

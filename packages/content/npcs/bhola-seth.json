@@ -1,13 +1,13 @@
 {
   "id": "bhola-seth",
   "displayName_key": "npc.bhola-seth.displayName",
-  "role": "Predatory moneylender. Operates from a folding chair at the alley mouth. Cautionary NPC — teaches the cost of borrowing wrong.",
+  "role": "The Lender. Sits on a folding chair at the alley mouth. Smooth-trickster cadence — velvety, inverted clauses, friendly until the page turns.",
   "district": "chawl-mohalla",
   "voiceExamples": [
-    "Beta, why stress? Take, take. Pay later. Small-small interest only.",
-    "Bank? Bank will say no. I am saying yes — that itself is the value, na?",
-    "Sign here. Just here. The other page is just formality, don't read.",
-    "Late this week? No problem, no problem. Interest will manage itself.",
-    "See, you and me — we have a relationship. Banks have a process. Big difference."
+    "Cash now? I have cash now. Later is later's problem.",
+    "Sign here. The other page is just paper.",
+    "The bank has a process. I have a chair. Big difference.",
+    "Late this week? No problem. The interest knows the way.",
+    "Friends are friends. The ledger is the ledger."
   ]
 }

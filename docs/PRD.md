@@ -1,4 +1,4 @@
-# Money-verse — Product Requirements Document
+# Ninja Money-verse — Product Requirements Document
 
 **Version:** 1.0 · **Status:** Draft for build · **Owner:** @admin · **Last updated:** 2026-05-14
 
@@ -8,41 +8,41 @@
 
 ## 1. Vision
 
-**One sentence:** *Money-verse is a 2D HD-pixel RPG that teaches Indians to manage money by making financial life feel like an adventure — without ever pretending speculation is a game.*
+**One sentence:** *Ninja Money-verse is a 2D HD-pixel RPG that teaches anyone to manage money by training financial discipline the way a martial art is trained — one stance, one breath, one chamber at a time.*
 
-**Pitch:** A hand-authored open-world city set in a near-future India, where you live a financial life. You wake in a chawl, get a first job, learn to budget, open a bank account, file your first taxes, navigate scams, build a portfolio, start a side hustle, and eventually buy a home — all by playing through quests with NPCs modelled on the people you'd actually meet (a chartered accountant aunty, a Zerodha-clone broker, a fixer landlord, an EPF-confused colleague). Multiplayer is async-first: visit friends' apartments, leave gifts, cooperate on weekend market events.
+**Pitch:** A hand-authored open-world city, painted in pixel and lit by lanterns, where you live a financial life. You wake in the old quarter — the First Dojo — receive a single envelope and a single rule, then walk seven chambers in order. Income minus expenses is a stance. Compounding is a still pool. Risk and return are caution and strike. A sensei who never lectures lives upstairs; a smooth-talking lender waits at the mouth of the alley. You will pay rent, refuse a knockoff, log a week of small leaks, lock a clay jar, open a teller window, file your first pay slip, drip-invest into a long index, hold a shield against bad cover, run a tea cart, and one day stand at the riverbank teaching the next apprentice. Multiplayer is async-first: visit friends' rooms, leave gifts, train together on weekend events.
 
 **Better than v1 in four ways:**
 1. **UI/UX** — HD-2D-lite rendering (Octopath-style post-fx), authored NPCs with schedules, no Robinhood-style dark patterns.
 2. **Graphics** — Hand-painted 32×32 sprites + WebGL tilt-shift, dynamic point lights, depth fog, parallax cities; full HiDPI; mobile-touch-first responsive.
 3. **Experience** — Mastery-gated progression (Khan-style), daily 5-min ritual (Duolingo-style), forgiveness mechanics (Celeste-style), Assist Mode for finance concepts.
-4. **Learning** — Curriculum aligned to NCFE / SEBI financial literacy framework + Zerodha Varsity. Every concept introduced through verb-first action (DragonBox model), formal terminology revealed only after mastery.
+4. **Learning** — Curriculum aligned to international personal-finance frameworks (budgeting → banking → income → investing → protection → entrepreneurship → retirement). Every concept introduced through verb-first action (DragonBox model), formal terminology revealed only after the body owns it.
 
 ---
 
 ## 2. Target users
 
-### Primary persona — *"Ananya, 21, Bengaluru"*
-- 2nd-year CS student, ₹0 personal income, parents pay fees.
-- Knows what UPI is, doesn't know what an ELSS is.
-- 6-hour daily phone screen-time, half on Instagram + Spotify.
-- Has tried Duolingo, dropped after 11 days.
-- Wants to "be the cousin who knows about money."
+### Primary persona — *"Ana, 21, on campus"*
+- 2nd-year CS student, $0 personal income, parents cover tuition.
+- Knows how to tap-pay; has never opened a savings account on her own.
+- 6-hour daily phone screen-time, half on social + music.
+- Tried a habit app, dropped after 11 days.
+- Wants to be "the friend who actually understands money."
 
-### Secondary persona — *"Rohit, 27, Pune"*
-- Software engineer, ₹14L CTC, first job 2 years in.
-- Has a mutual fund SIP someone set up for him, doesn't know how to evaluate it.
-- Got burned ₹40k on F&O in 2024.
-- Plays Stardew, OW2, occasionally indie games on Steam.
-- Wants control without spending evenings on Excel.
+### Secondary persona — *"Kai, 27, in tech"*
+- Software engineer, ~$50k/yr, first job 2 years in.
+- Has a drip-investing plan a colleague set up for him; can't evaluate it.
+- Lost about $500 chasing options last year.
+- Plays Stardew, online shooters, occasional indie games.
+- Wants control without spending evenings on a spreadsheet.
 
-### Tertiary persona — *"Saanvi, 16, Delhi"*
-- Class 11; school doesn't teach personal finance.
-- Has a UPI account on her dad's number.
+### Tertiary persona — *"Sana, 16, in high school"*
+- Eleventh grade; school doesn't teach personal finance.
+- Uses a parent-linked tap-pay app.
 - Parents are open to financial-literacy media.
-- Plays mostly mobile.
+- Plays mostly on mobile.
 
-**Out of scope for v1:** retired investors, NRIs (different tax stack), professional traders, US-centric users.
+**Out of scope for v1:** retired investors, professional traders, anyone seeking real-money trading advice.
 
 ---
 
@@ -81,8 +81,8 @@ Reflection screen → 1 min         ("today you learned X,
 | 5 | **Daily ritual stays short** | `[M:vonAhn]` | Daily loop ≤10 min wall-clock, measured in playtests |
 | 6 | **Authored, never procedural, world** | `[M:Barone, M:Sabotage]` | Every named NPC has a schedule + memory file |
 | 7 | **The system responds** | `[M:Fox, M:Barone]` | Major financial decisions change ≥3 NPC dialog branches |
-| 8 | **Free forever; no dark patterns** | `[M:Khan, M:Rangappa]` | No confetti on speculative wins; no notifications hyping volatility |
-| 9 | **Indian context first** | `[M:Rangappa]` | All examples ₹, SIP/PPF/NPS/FD/Sensex/Nifty; bilingual EN+HI |
+| 8 | **Free forever; no dark patterns** | `[M:Khan, M:Holiday]` | No confetti on speculative wins; no notifications hyping volatility |
+| 9 | **Universal context, distinctive voice** | `[M:Miyagi, M:Holiday, M:Lau]` | All examples `$` whole-number coin; instruments reframed (Steady Contributions, Long Vault, Pension Path, Term Vault, etc. — see research §6). English-only baseline with sensei cadence: short sentences, present tense, observation-then-pause |
 | 10 | **Assist Mode for finance** | `[M:Thorson]` | Every concept has slowed-tick, exposed-math, hint-NPC variant |
 
 ---
@@ -90,32 +90,34 @@ Reflection screen → 1 min         ("today you learned X,
 ## 5. World structure
 
 ### Setting
-*Money-verse* — a hand-painted near-future Indian metropolis amalgamating Mumbai's chawls, Bengaluru's tech parks, Delhi's markets, and Kolkata's older banking houses.
+*Ninja Money-verse* — a hand-painted, implicitly South-Asian-coded city in an unspecified near-future. Lanterns, tile roofs, alley shrines, a river at the south edge. The art carries the world's flavour; the writing speaks an international English with a sensei cadence.
 
-### Districts (= skill-tree branches `[M:Khan]`)
+### Districts (= chambers, the 7-chamber arc `[M:Lau, M:Khan]`)
 
-| # | District | Theme | Skill domain | Unlocks via |
-|---|---|---|---|---|
-| 1 | **Chawl Mohalla** | Starting home | Budgeting, expenses | (start) |
-| 2 | **Bank Bazaar** | Old banking houses | Banking, savings, FDs | Budget Mastery I |
-| 3 | **Karyalaya Park** | Tech-park offices | Income, EPF, taxes | Banking Mastery I |
-| 4 | **Niveshak Chowk** | Stock exchange | Investing (equity, MF, SIP) | Income Mastery I |
-| 5 | **Rakshak Lane** | Insurance & protection | Insurance, emergency fund | Investing Mastery I |
-| 6 | **Vyapaar Mandi** | SME bazaar | Entrepreneurship, side hustle | Income Mastery II |
-| 7 | **Bhavishya Ghat** | Riverside retirees | Retirement, NPS, estate | Investing Mastery II + Insurance I |
+District IDs are stable identifiers; only the *display label* is the chamber name.
 
-Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge event," and is laid out on a Tiled map.
+| # | ID | Chamber name | Virtue | Skill domain | Unlocks via |
+|---|---|---|---|---|---|
+| 1 | `chawl-mohalla` | **The First Dojo** | First stance — attention before action | Budgeting, expenses | (start) |
+| 2 | `bank-bazaar` | **The Still Pool** | Patience as foundation | Banking, savings, term vaults | First Dojo graduation |
+| 3 | `karyalaya-park` | **The Daimyo's Office** | Duty to the system | Income, pay slip, tax paths | Still Pool Mastery I |
+| 4 | `niveshak-chowk` | **The Crossroads of Coin** | The patient strike, never the panicked one | Drip Investing, Pooled Funds, Long Index | Income Mastery I |
+| 5 | `rakshak-lane` | **The Shield Form** | Defense before offense | Emergency vault, term cover | Investing Mastery I |
+| 6 | `vyapaar-mandi` | **The Merchant Path** | Make your own coin | Side hustle, unit economics | Income Mastery II |
+| 7 | `bhavishya-ghat` | **The Path of the Elders** | The long path — and the duty to teach | Pension Path, the long telescope, the last will | Investing Mastery II + Shield Form I |
+
+Each chamber has 8–12 authored NPCs, 5–8 quests, 1 "challenge form," and is laid out on a Tiled map.
 
 ### Key NPCs (illustrative — full cast in `docs/CAST.md` later)
 
-| NPC | Role | Inspiration | Function |
-|---|---|---|---|
-| **Maya didi** | Mentor | original Money-verse Maya | First-quest guide; replaces "tutorial" |
-| **CA Lakshmi aunty** | Tax mentor | Real CA archetype | Filing season quests |
-| **Bhola seth** | Predatory lender | Cautionary | Teaches the cost of borrowing |
-| **Karthik bhai** | Broker | Karthik Rangappa nod | Stock-market mentor; never pushes trades |
-| **Ramit-sir** | Career coach | Ramit Sethi nod | Negotiation rhythm-game quests |
-| **Grandma at Ghat** | Wisdom NPC | — | Retirement / estate planning arcs |
+| NPC | Role | Function |
+|---|---|---|
+| **Sensei Wren** | Mentor | First-quest guide; replaces "tutorial" |
+| **Master Lia the Auditor** | Pay-slip mentor | Filing-season quests |
+| **The Lender** | Predatory loanseat | Teaches the cost of borrowing |
+| **Karthik of the Crossroads** | Drip-investing mentor | Patient-strike teaching; never pushes trades |
+| **Master Ramit** | Career coach | Negotiation rhythm-game quests |
+| **The Elder at the Riverbank** | Wisdom NPC | Pension-path / last-will arcs |
 
 ---
 
@@ -124,21 +126,21 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 ### 6.1 Must-have (v1 launch)
 - [ ] **Onboarding (90-sec to first action)** — buy first item / make first deposit before any tutorial. `[M:Huynh, M:Acorns]`
 - [ ] **Open-world 2D exploration** — 7 districts, Tiled maps, Phaser 3 + WebGL post-fx pipeline.
-- [ ] **Day/night + seasonal cycle** — real-world-clock-linked (Indian financial calendar). `[M:Barone]`
+- [ ] **Day/night + seasonal cycle** — real-world-clock-linked (in-game financial calendar). `[M:Barone]`
 - [ ] **Quest system** — 40+ quests at launch, JSON-authored, mastery-gated.
-- [ ] **Skill tree** — 7 branches, ~80 nodes; mastery unlocks. `[M:Khan]`
-- [ ] **Banking system** — SB account, FD, RD, debit/credit, statement view, EMIs.
-- [ ] **Investment system** — Sensex/Nifty index sim (historical playback + simulated future), Mutual Fund SIP, ELSS, PPF, NPS.
-- [ ] **Tax system** — Old vs new regime quest; 80C, 80D, HRA explained via quests.
-- [ ] **Insurance system** — Term, health, motor; "emergency fund" mechanic.
-- [ ] **Side-hustle / business sim** — chai stall, freelance gigs, scaling decisions.
-- [ ] **Inventory & apartment decoration** — cosmetic, not gameplay; visit-friendly.
+- [ ] **Skill tree** — 7 chambers, ~80 nodes; mastery unlocks. `[M:Khan]`
+- [ ] **Banking system** — Checking-style account, Term Vault (FD-equivalent), recurring savings, debit/credit, statement view, repayments.
+- [ ] **Investment system** — Long Index sim (historical playback + simulated future), Pooled Funds, Drip Investing, Long Vault, Pension Path.
+- [ ] **Tax system** — Two Tax Paths quest; deductions explained through forms (Path of the Receipt).
+- [ ] **Insurance system** — Term Cover, health cover; "Six-Month Vault" mechanic.
+- [ ] **Side-hustle / business sim** — Tea-cart sim, freelance gigs, scaling decisions.
+- [ ] **Inventory & room decoration** — cosmetic, not gameplay; visit-friendly.
 - [ ] **NPC schedules + dialog system** — `Inkjs` or custom Yarn-flavoured DSL. `[M:Barone]`
 - [ ] **Smart minimap** — Phaser camera + pathfinding (EasyStar.js).
-- [ ] **Async multiplayer** — visit friends' apartments, leave gifts, see public profile. `[M:Nintendo-AC]`
-- [ ] **Optional sync rooms** — Colyseus-powered "Trading Floor" weekly events.
-- [ ] **AI tutor NPC ("Maya AI")** — Vercel AI Gateway, streaming responses, context-aware (player state). `[M:Brilliant]`
-- [ ] **Bilingual dialog** — EN + HI from launch; framework supports more.
+- [ ] **Async multiplayer** — visit friends' rooms, leave gifts, see public profile. `[M:Nintendo-AC]`
+- [ ] **Optional sync rooms** — Colyseus-powered "Crossroads of Coin" weekly events.
+- [ ] **AI tutor NPC ("Sensei Wren AI")** — Vercel AI Gateway, streaming responses, context-aware (player state). `[M:Brilliant]`
+- [ ] **English-first dialog with i18n-ready Yarn keys** — Latin-script baseline at launch; framework supports more.
 - [ ] **Daily streak + forgiveness ("vacation days")** `[M:vonAhn]`
 - [ ] **Assist Mode** — slow market ticks, exposed math, hint NPCs, replay tutorials. `[M:Thorson]`
 - [ ] **Accessibility** — keyboard nav, screen reader for menus, colorblind palettes, dyslexia-friendly font option, scalable UI.
@@ -148,16 +150,16 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 - [ ] **Glossary (player-opened only)** — formal terms revealed after mastery. `[M:Huynh]`
 
 ### 6.2 Should-have (post-launch within 90 days)
-- [ ] Cooperative weekly challenge (e.g., budget a wedding within a team)
-- [ ] Festival seasonal events (Diwali, Sankranti, FY-end, monsoon insurance month)
+- [ ] Cooperative weekly challenge (e.g., budget a courtyard celebration as a team)
+- [ ] Chamber-graduation seasonal events (lantern festivals, year-end retrospectives, rain-season cover month)
 - [ ] Player-authored quest editor (sandbox; can't unlock skills)
-- [ ] Stock-market historical-backtest mode
+- [ ] Long-Index historical-backtest mode
 - [ ] Achievement codex with art unlocks (cosmetic only — no monetisation)
-- [ ] Newsletter integration: weekly real-Indian-market summary tied to in-game NPC
+- [ ] Newsletter integration: weekly market-reading summary tied to in-game NPC
 
 ### 6.3 Could-have (v2+)
-- [ ] More cities (Hyderabad, Kolkata, Chennai)
-- [ ] Tamil, Bengali, Marathi, Telugu localisation
+- [ ] More cities (alternative skylines, alternative chambers)
+- [ ] Additional locale packs (community-contributed)
 - [ ] Mod support (community quests)
 - [ ] Cross-progression with a future companion mobile app
 
@@ -169,7 +171,6 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 - ❌ "Easy Mode" or "Cheat Mode" framing (call it Assist) `[M:Thorson]`
 - ❌ Long sessions required for progression
 - ❌ Random encounters or grinding `[M:Sabotage]`
-- ❌ US-centric examples
 - ❌ Silent failures
 - ❌ PvP combat
 - ❌ Leaderboards by speculative gains
@@ -177,28 +178,28 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 
 ---
 
-## 7. Learning curriculum (mapped to NCFE + Zerodha Varsity)
+## 7. Learning curriculum (international personal-finance baseline)
 
 | Level | Domain | Concept | In-game vehicle |
 |---|---|---|---|
-| 1 | Budgeting | Income / Expense / Savings | First-week-at-job quest chain |
-| 1 | Budgeting | 50-30-20 rule | Conscious-spending NPC quest `[M:Sethi]` |
-| 1 | Banking | Savings vs current | Open-first-account quest |
-| 2 | Banking | Compound interest | "Growth Sapling" mini-game `[M:Huynh]` |
-| 2 | Banking | FD / RD ladders | Bank Bazaar bonsai-ladder mini-game |
-| 2 | Credit | Credit score, EMI math | Bhola-seth predatory-lender quest |
-| 3 | Income | EPF, gratuity, ESOP | First-payslip puzzle |
-| 3 | Income | Old vs new tax regime | CA Lakshmi quest with branching outcomes |
-| 4 | Investing | Risk vs return | "Weather forecast" market metaphor `[M:Huynh]` |
-| 4 | Investing | Diversification | Coloured-token sorting mini-game |
-| 4 | Investing | SIP and DCA | Karthik-bhai monthly-temple ritual |
-| 5 | Investing | Index funds / active vs passive | Two-broker storefront contrast |
-| 5 | Insurance | Term vs ULIP (anti-mis-selling) | Predatory-agent NPC quest |
-| 5 | Insurance | Emergency fund | "Six-month vault" mechanic |
-| 6 | Entrepreneurship | Cash flow vs profit | Chai-stall sim |
-| 6 | Entrepreneurship | Unit economics | Stall-expansion decision tree |
-| 7 | Retirement | NPS, compounding over 40y | Bhavishya Ghat time-fast-forward telescope |
-| 7 | Estate | Will, nominee, joint accounts | Grandma quest |
+| 1 | Budgeting | Income / Expense / Savings | First-week quest chain in the First Dojo |
+| 1 | Budgeting | Conscious-spending allocation | Two-column needs-vs-wants NPC quest `[M:Sethi]` |
+| 1 | Banking | Wallet vs account | Open-first-account quest in the Still Pool |
+| 2 | Banking | Patient Growth (compounding) | "Growth Sapling" mini-game `[M:Huynh]` |
+| 2 | Banking | Term Vault ladders | Still Pool bonsai-ladder mini-game |
+| 2 | Credit | Cost of borrowing | The Lender's predatory-loan quest |
+| 3 | Income | Pay-slip anatomy, Worker's Vault | First-pay-slip puzzle |
+| 3 | Income | The Two Tax Paths | Master Lia quest with branching outcomes |
+| 4 | Investing | Caution vs Strike (risk / return) | "Reading the Sky" market metaphor `[M:Huynh]` |
+| 4 | Investing | Many Stances (diversification) | Coloured-token sorting mini-game |
+| 4 | Investing | Drip Investing | Karthik's monthly-bell ritual |
+| 5 | Investing | The Long Index — active vs passive | Two-storefront contrast |
+| 5 | Insurance | Term Cover vs the Faulty Promise | Predatory-agent NPC quest |
+| 5 | Insurance | Six-Month Vault | "Jar that doesn't open" mechanic |
+| 6 | Entrepreneurship | Cash flow vs profit | Tea-cart sim |
+| 6 | Entrepreneurship | Unit economics | Cart-expansion decision tree |
+| 7 | Retirement | Pension Path, Forty-Year Telescope | Path of the Elders fast-forward telescope |
+| 7 | Estate | The Last Will, nominees, joint accounts | The Elder at the Riverbank quest |
 
 ---
 
@@ -213,13 +214,13 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
   - Depth fog on far parallax layers
   - Subtle CRT scanline option (off by default)
   - Bloom on light sources
-- **Colour palette:** Warm Indian-evening base (terracotta, saffron, indigo); cool night palette swap; festival re-skins.
+- **Colour palette:** Warm-evening base (terracotta, saffron, indigo); cool night palette swap; chamber-graduation re-skins.
 - **UI chrome:** Frosted-glass over pixel — modern reverse-skeuomorphic; Tailwind + shadcn for menus, Phaser for diegetic UI inside the world.
 
 ### Audio identity
-- **Soundtrack:** Original chiptune layered with sitar / tabla / harmonium / bansuri. Toby Fox-style NPC leitmotifs.
-- **Dynamic by district** — Chawl is acoustic-warm, Niveshak Chowk is digital-percussive, Bhavishya Ghat is ambient-strings.
-- **SFX:** UPI-success chime homage, rotary-phone dials, paper rustles — culturally specific.
+- **Soundtrack:** Original chiptune layered with shakuhachi-adjacent flute, taiko-adjacent percussion, and bowed strings. Toby Fox-style NPC leitmotifs.
+- **Dynamic by chamber** — First Dojo is acoustic-warm, Crossroads of Coin is digital-percussive, Path of the Elders is ambient-strings.
+- **SFX:** Tap-pay chime, paper rustles, wooden gong, lantern hiss — atmospheric, not pastiche.
 
 ### Interactions
 - **Single-button core verb:** *interact* (E / Space / tap). `[M:Thorson]`
@@ -253,11 +254,11 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 
 ## 10. AI / personalisation
 
-**Maya AI** — the in-game tutor — uses Vercel AI Gateway with provider failover (open weights default: Llama / Mistral / Qwen; closed for premium quality where free quota allows).
+**Sensei Wren AI** — the in-game tutor — uses Vercel AI Gateway with provider failover (open weights default: Llama / Mistral / Qwen; closed for premium quality where free quota allows).
 
 - **Context-aware:** the model sees the player's anonymised in-game financial state and current quest; nothing identifying.
 - **Streaming responses** in the speech-bubble UI.
-- **Bounded prompt:** Maya can only answer finance-education questions tied to current quest scope; refuses to give real-money advice.
+- **Bounded prompt:** Sensei Wren can only answer finance-education questions tied to current quest scope; refuses to give real-money advice.
 - **Cost cap per player per day** — hard limit; falls back to authored dialog when exceeded.
 - **Cached responses** for common questions (Runtime Cache).
 - **No personal data leaves the server-side** — player_id hashed before any model call.
@@ -295,8 +296,8 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 
 | Risk | Likelihood | Impact | Mitigation |
 |---|---|---|---|
-| AI tutor hallucinates wrong tax advice | M | H | Bounded scope, citations required, disclaimer NPC, fallback to authored dialog |
-| Content perceived as "actual financial advice" (SEBI risk) | M | H | Explicit disclaimer screen, no real-money links, no real broker integrations in v1 |
+| AI tutor hallucinates wrong tax or investing advice | M | H | Bounded scope, citations required, disclaimer NPC, fallback to authored dialog |
+| Content perceived as "actual financial advice" | M | H | Explicit disclaimer screen, no real-money links, no real broker integrations in v1 |
 | Mobile WebGL perf | M | M | Resolution-tier auto-detect; "low" tier disables post-fx |
 | Multiplayer abuse | M | M | Friend-codes only, server moderation queue, no public chat |
 | Players churn before mastery unlock | H | M | Day-3 streak start, generous forgiveness, shorter day-1 quest |
@@ -306,8 +307,8 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 
 ## 13. Open questions (tracked, not blockers)
 
-1. Real broker integration (Zerodha Kite open API) post-v1? — *legal review needed*
-2. Real bank UPI sandbox integration? — *out of scope for v1*
+1. Real broker integration (any open broker API) post-v1? — *legal review needed*
+2. Real bank tap-pay sandbox integration? — *out of scope for v1*
 3. Mobile-native wrappers (Capacitor / Tauri)? — *web-first, evaluate quarterly*
 4. Pay-once cosmetic pack as a possible future monetisation? — *post-v1, never gameplay*
 
@@ -336,12 +337,12 @@ This PRD blends:
 - **Stardew-author** (hand-painted world with memory) +
 - **Sabotage-anti-grind** (no encounter padding) +
 - **Sethi-automation** (in-world automation as the killer mechanic) +
-- **Varsity-context** (INR + Indian instruments + free forever) —
+- **Miyagi / 36-Chambers / Holiday** (chamber-per-virtue, hide-the-lesson-in-the-chore, present-tense sensei voice) —
 explicitly *rejects* Robinhood's dark-pattern playbook.
 
-Deviations from the original Money-verse:
+Deviations from the original Ninja Money-verse:
 - We move *away* from the "Get rich or die trying" framing (speculative tone) toward "Master your money calmly."
-- We expand to 7 districts with mastery gates vs the original's flatter exploration.
+- We expand to 7 chambers with mastery gates vs the original's flatter exploration.
 - We commit to async-first multiplayer (less infra-heavy than persistent sync world).
 
-**Suggested deep-dives before build kickoff:** Celeste GDC accessibility talk; Sea of Stars combat designer breakdown; Zerodha Varsity Module 1; *I Will Teach You To Be Rich* chapters 1-3.
+**Suggested deep-dives before build kickoff:** Celeste GDC accessibility talk; Sea of Stars combat designer breakdown; Lau Kar-leung's *36th Chamber of Shaolin*; Ryan Holiday's *The Daily Stoic*; Robert Greene's *Mastery*.

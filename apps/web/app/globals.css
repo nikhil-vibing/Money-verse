@@ -1,21 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0a0a0f;
-  --color-ink-2: #11111a;
-  --color-ink-3: #1a1924;
-  --color-paper: #f6f3eb;
-  --color-paper-dim: #cbc6bb;
-  --color-paper-muted: #8a857c;
-  --color-crimson: #ff3b3b;
+  --color-ink: #110d08;
+  --color-ink-2: #1c1610;
+  --color-ink-3: #2a2118;
+  --color-paper: #f4ecd0;
+  --color-paper-dim: #d6c89e;
+  --color-paper-muted: #968867;
+  --color-amber: #f4b942;
+  --color-amber-bright: #ffd166;
+  --color-moss: #6a9c43;
+  --color-moss-bright: #8bb85a;
+  --color-wood: #8b4a2f;
+  --color-wood-bright: #b56a3e;
+  --color-lilac: #b39ec7;
+  --color-crimson: #e64a3c;
   --color-crimson-bright: #ff6b5b;
-  --color-amber: #f5b43a;
-  --color-amber-bright: #ffcc4d;
-  --color-jade: #6dd3a0;
-  --color-violet: #8b5cf6;
-  --color-grid: rgba(246, 243, 235, 0.06);
-  --color-stroke: rgba(246, 243, 235, 0.1);
-  --color-stroke-strong: rgba(246, 243, 235, 0.18);
+  --color-grid: rgba(244, 236, 208, 0.06);
+  --color-stroke: rgba(244, 236, 208, 0.1);
+  --color-stroke-strong: rgba(244, 236, 208, 0.18);
 
   --font-display: "Fraunces", "Times New Roman", serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -42,7 +45,7 @@ body {
 }
 
 ::selection {
-  background: var(--color-crimson);
+  background: var(--color-amber);
   color: var(--color-ink);
 }
 
@@ -57,19 +60,19 @@ body {
 }
 
 .grain {
-  background-image: radial-gradient(rgba(246, 243, 235, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(244, 236, 208, 0.04) 1px, transparent 1px);
   background-size: 3px 3px;
 }
 
 .noise-bg {
   background-color: var(--color-ink);
-  background-image: radial-gradient(at 18% 12%, rgba(255, 59, 59, 0.08) 0%, transparent 45%),
-    radial-gradient(at 84% 88%, rgba(245, 180, 58, 0.06) 0%, transparent 45%),
-    radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 60%);
+  background-image: radial-gradient(at 18% 12%, rgba(244, 185, 66, 0.1) 0%, transparent 45%),
+    radial-gradient(at 84% 88%, rgba(106, 156, 67, 0.08) 0%, transparent 45%),
+    radial-gradient(at 50% 50%, rgba(139, 74, 47, 0.05) 0%, transparent 60%);
 }
 
 .brush-underline {
-  background-image: linear-gradient(to right, var(--color-crimson), var(--color-crimson-bright));
+  background-image: linear-gradient(to right, var(--color-amber), var(--color-amber-bright));
   background-repeat: no-repeat;
   background-size: 100% 0.12em;
   background-position: 0 92%;
@@ -77,8 +80,19 @@ body {
 }
 
 .shuriken-stroke {
-  filter: drop-shadow(0 0 16px rgba(255, 59, 59, 0.35))
-    drop-shadow(0 0 48px rgba(245, 180, 58, 0.18));
+  filter: drop-shadow(0 0 16px rgba(244, 185, 66, 0.45))
+    drop-shadow(0 0 48px rgba(139, 74, 47, 0.25));
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(244, 236, 208, 0.08) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
 }
 
 .text-gradient-warm {
@@ -152,17 +166,6 @@ body {
 
 .anim-fade-down {
   animation: hero-fade-down 700ms var(--ease-out-quart) both;
-}
-
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(246, 243, 235, 0.08) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2.4s linear infinite;
 }
 
 @keyframes cursor-blink {

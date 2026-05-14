@@ -10,7 +10,7 @@
 
 The original Dhaniverse is shipping a *finished-looking* HD-pixel RPG; we are shipping a procedurally-coloured greybox. The gap is roughly equal parts **engineering** (scenes, UI components, scaffolding) and **art** (tilesets, sprites). Engineering is wholly within our control today. Art is partly OSS-feasible, partly commission-only.
 
-| System | Original Dhaniverse (observed) | Money-verse today | Gap type |
+| System | Original Dhaniverse (observed) | Ninja Money-verse today | Gap type |
 |---|---|---|---|
 | **Welcome splash** | Galaxy bg + glow title + tagline + "Press to Start" | None | Engineering only |
 | **Loading scene** | Branded pixel font, percentage, animated tip ticker | None | Engineering only |
@@ -77,7 +77,7 @@ The original Dhaniverse is shipping a *finished-looking* HD-pixel RPG; we are sh
 2. **Single light direction, drop-shadow under everything.** Coral Island, CrossCode, Stardew. The illusion of 3D inside 2D is sold by consistent shadows more than by lighting itself.
 3. **"Everything moves a little."** Sun Haven, Coral Island, Coromon. Idle blink, hair sway, chimney smoke, foliage breath. Static = lifeless.
 4. **HUD elements stay diegetic-adjacent but never inside the world.** All seven masters keep HUD in screen-space; minimaps and currency don't float in 3D.
-5. **First NPC visible within 5 seconds of spawn.** Stardew (Lewis), Dhaniverse (Maya), Eastward (Sam) — all stage the first social anchor on entry.
+5. **First NPC visible within 5 seconds of spawn.** Stardew (Lewis), Dhaniverse (Wren), Eastward (Sam) — all stage the first social anchor on entry.
 
 ### Divergence + our pick
 
@@ -107,10 +107,10 @@ This is the single biggest perceived-quality win available. None of it needs a t
 | A6 | **CurrencyHud** | `apps/web/src/components/game/CurrencyHud.tsx` | Top-right ₹ pixel-glyph + amount + small +/- delta tween on change. Subscribes to `wallet:change` |
 | A7 | **AvatarSlot** | `apps/web/src/components/game/AvatarSlot.tsx` | Bottom-right 48×48 portrait + name + "Day 1, Chawl Mohalla" + four-pot mini-readout (Fixed/Save/Invest/Khushi) — diegetic from chawl §4.4 |
 | A8 | **Minimap (real)** | `apps/web/src/components/game/Minimap.tsx` | Reads `minimap:tick` and `world:ready`. Draws bordered pixel canvas: roads light-tan, walls dark-indigo, player saffron dot, NPCs muted dots, exits as small ▴ marks. ~100 LoC with `OffscreenCanvas` |
-| A9 | **InteractPrompt** (upgrade) | already exists conceptually; promote to bordered pixel pill | Replaces today's hidden behaviour with a bordered "[E] Talk to Maya" pixel pill 36px above the player |
+| A9 | **InteractPrompt** (upgrade) | already exists conceptually; promote to bordered pixel pill | Replaces today's hidden behaviour with a bordered "[E] Talk to Wren" pixel pill 36px above the player |
 | A10 | **TipsTicker** | `apps/game/src/lib/tipsTicker.ts` + JSON | Shared between LoadingScene and an optional in-world bottom-bar |
 | A11 | **DayClockHud** (small) | `apps/web/src/components/game/DayClockHud.tsx` | "Day 1 · 9:14 AM" — top-left. Cheap, hugely grounding |
-| A12 | **ToastQueue** | `apps/web/src/components/game/ToastQueue.tsx` | Quest-step-complete, glossary-unlocked, "Maya didi will see you on the verandah at 6pm" — non-intrusive, bottom-left |
+| A12 | **ToastQueue** | `apps/web/src/components/game/ToastQueue.tsx` | Quest-step-complete, glossary-unlocked, "Wren will see you on the verandah at 6pm" — non-intrusive, bottom-left |
 
 **Phase A line-of-code budget:** ~1100-1500 LoC across 12 files. **Component count:** 12. **No new asset required** — A1/A2 can use procedurally-drawn glow + gradient; A3-A12 use Tailwind + Inter/JetBrains Mono pixel-styled fonts (already in the project) with a `border-image` 9-slice using a 16×16 PNG we hand-paint in <30 minutes.
 
@@ -125,7 +125,7 @@ This is the single biggest perceived-quality win available. None of it needs a t
 - Procedural greybox stays — we put it behind a feature flag (`render.greybox = true|false`) so we can A/B against the real tileset.
 
 **Anti-recommendation (despite the temptation):**
-- **Mana Seed** — *do not adopt*. Beautiful, but the [user licence](https://selieltheshaper.weebly.com/user-license.html) prohibits redistribution and requires per-product purchase. Worse, the licence is hostile to AI-generated content in the same project (we plan a Maya-AI tutor, this could be read as touching that clause). Not OSS by our standard.
+- **Mana Seed** — *do not adopt*. Beautiful, but the [user licence](https://selieltheshaper.weebly.com/user-license.html) prohibits redistribution and requires per-product purchase. Worse, the licence is hostile to AI-generated content in the same project (we plan a Wren-AI tutor, this could be read as touching that clause). Not OSS by our standard.
 - **LPC** — CC-BY-SA contaminates our codebase under share-alike. Already rejected in round 1.
 - **Whispers of Avalon / Time Fantasy** — share-alike or paid-no-redistribute. Rejected.
 
@@ -137,7 +137,7 @@ This is the single biggest perceived-quality win available. None of it needs a t
 
 **Player:** Adopt the **anon 16×16 base** from ASSET_PLAN.md (CC0) at 24px tall scale, recolour to two South-Asian skin tones and a saffron kurta + indigo jeans. Add a 2-frame breath idle + 4-frame 4-direction walk + 1-frame blink overlay every 3-4 seconds (Coromon trick).
 
-**Three NPC variants for the chawl opening:** Maya didi (sari overlay on anon base), Pintu chai-wala (apron + cap), Sushila aunty (older posture + sari + glasses). Three sprites is enough for the first 90 seconds [district-chawl-mohalla §4.1].
+**Three NPC variants for the chawl opening:** Wren (sari overlay on anon base), Pintu chai-wala (apron + cap), Mara (older posture + sari + glasses). Three sprites is enough for the first 90 seconds [district-chawl-mohalla §4.1].
 
 **Engineering:** add a tiny `SpriteAnimator` helper that picks the right walk-cycle direction from velocity sign and falls back to direction-of-last-press during idle.
 
@@ -179,7 +179,7 @@ Observed in the competitor's shipped product — deliberately rejected by us per
 
 1. **Casino card on the landing page.** A "Casino" tile prominently featured alongside Bank, Stock Market, Real Estate. This is speculative-gain framing — exactly what pillar #8 rejects. We have no casino.
 2. **"Get rich or die trying" tagline framing.** The original positions financial life as a high-stakes individual quest. We position it as calm mastery + community ritual (chawl) + Indian-context grounding (Pillar 9). Our tone is *aaj se hisaab rakhna seekho*, not "moon mode".
-3. **Achievement names like "Paper Hands" / "Bean Lord".** Imported r/wallstreetbets vocabulary. Our achievements should be in our Maya-and-aunty vernacular: *"Pehli SIP"*, *"Hisaab Pakka"*, *"Sushila aunty ki shabaashi"*.
+3. **Achievement names like "Paper Hands" / "Bean Lord".** Imported r/wallstreetbets vocabulary. Our achievements should be in our Wren-and-aunty vernacular: *"Pehli SIP"*, *"Hisaab Pakka"*, *"Mara ki shabaashi"*.
 4. **"Connection failed. Please refresh." full-overlay.** Brittle networking pattern. Our offline-first architecture (IndexedDB fallback per PRD §6.1) and Colyseus optional-sync rooms mean we never block the player on a network blip.
 5. **Visible typos / copy quality.** "Hello their we have it all" is a polish failure. Our copy goes through a bilingual EN+HI review per PRD §6.1.
 6. **Trading-history vanity stats as a primary achievement category.** This celebrates *transactions*; we celebrate *consistency* (Pillar §11 anti-metrics).

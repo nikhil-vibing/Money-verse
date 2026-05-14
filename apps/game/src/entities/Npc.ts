@@ -10,7 +10,7 @@ const SHADOW_FILL = 0x000000;
 const SHADOW_ALPHA = 0.28;
 // Named NPCs we always show the label above. Per UI audit Fix #2 the
 // label flips from hover-only to always-visible for these — so the
-// chawl reads as a place where the people have names, not a debug
+// First Dojo reads as a place where the people have names, not a debug
 // scene of unlabelled silhouettes. Biscuit is excluded (it's a dog,
 // it has no "name tag" hovering over it).
 const ALWAYS_LABELLED_NPCS: ReadonlyArray<string> = [
@@ -31,9 +31,9 @@ const CHARACTER_FRAME_POOL: ReadonlyArray<number> = [
   84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95,
 ];
 
-// β-5: deliberately map each NPC id to a specific frame so a chawl resident
-// always looks like the same person across reloads, and so archetype
-// (young/old/woman/man/boy) matches the dialog persona.
+// β-5: deliberately map each NPC id to a specific frame so a First Dojo
+// resident always looks like the same person across reloads, and so the
+// archetype (young/old/woman/man/boy) matches the dialog persona.
 const NPC_FRAME_OVERRIDE: Readonly<Record<string, number>> = {
   "maya-didi": 84, // char 3 — young mentor in warm jacket
   "bhola-seth": 86, // char 12 — red-robed older merchant
@@ -53,53 +53,53 @@ const NPC_COLOR_PALETTE: ReadonlyArray<number> = [
 ];
 
 const NPC_LABELS: Readonly<Record<string, string>> = {
-  "maya-didi": "Maya didi",
-  "bhola-seth": "Bhola seth",
-  "ravi-anna": "Ravi anna",
-  "sushila-aunty": "Sushila aunty",
-  aarav: "Aarav",
-  "lakshmi-dabbawala": "Lakshmi",
-  "dipu-kaka": "Dipu kaka",
-  "maa-on-phone": "Maa",
-  "the-postman": "Postman",
+  "maya-didi": "Sensei Wren",
+  "bhola-seth": "The Lender",
+  "ravi-anna": "Kai at the Cart",
+  "sushila-aunty": "Mara",
+  aarav: "Arlo",
+  "lakshmi-dabbawala": "Lia",
+  "dipu-kaka": "Master Tobias",
+  "maa-on-phone": "Ma",
+  "the-postman": "The Postman",
   biscuit: "Biscuit",
 };
 
 const NPC_GREETINGS: Readonly<Record<string, ReadonlyArray<string>>> = {
   "maya-didi": [
-    "Arre, you came. Tea first, lecture later.",
-    "Three envelopes: rent, save, spend. Pick one to start.",
+    "You came. Sit. Tea first.",
+    "Three envelopes. Pick one to start.",
   ],
   "bhola-seth": [
-    "Need cash now? I have cash now. We can talk about later, later.",
-    "Just sign here. The numbers are small. Trust me.",
+    "Cash now? I have cash now. Later is later's problem.",
+    "Sign here. The other page is just paper.",
   ],
   "ravi-anna": [
-    "One cutting chai, na?",
-    "Seventy rupees a day. Times three sixty-five. You do the math.",
+    "One cup. News is free.",
+    "Seven a day. Times three sixty-five. You do the math.",
   ],
   "sushila-aunty": [
-    "Tab is open. Pay on the first. Not the second.",
-    "Onion is fifty. Tomato is forty. Inflation is real.",
+    "Tab is open. Pay on the first.",
+    "Onions are up. Bread is down. We adjust.",
   ],
   aarav: [
-    "Bhai. New AirPods. Three thousand only. Original copy.",
-    "Listen — life is short, EMIs are long.",
+    "Bro. New shoes. Three payments. Basically free.",
+    "Life is short. Repayments are long.",
   ],
   "lakshmi-dabbawala": [
-    "Tiffin by twelve. Always.",
-    "System. That is everything. The post office RD also same.",
+    "Lunch by twelve. Always.",
+    "Same route, fifteen years. The route knows me.",
   ],
   "dipu-kaka": [
-    "When I was your age, EPF was the whole plan.",
-    "Compound interest is patience, dressed up as math.",
+    "Sit. The chair is older than you. It will hold.",
+    "Compounding is patience with a calculator.",
   ],
   "maa-on-phone": [
-    "Beta, khaana khaaya?",
-    "Save first. Then spend. Not the other way.",
+    "Did you eat? Don't lie to your mother.",
+    "Save first. Spend after. Not the other way.",
   ],
   "the-postman": [
-    "Letter for you. Sign here.",
+    "Letter. Sign here.",
   ],
   biscuit: ["*wags tail*"],
 };

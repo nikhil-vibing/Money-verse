@@ -8,12 +8,12 @@
 
 | Quest ID | Dialog lines | Words | Notes |
 |---|---|---|---|
-| `first-budget` | 24 | 391 | Maya didi voice. Lots of Hinglish already (`Khol le na`, `Theek hai`). Translator should preserve, not Devanagari-ise the loanwords (`envelope`, `Rent`, `Save`, `Spend` should likely stay roman or be transliterated as चयन terms). |
-| `needs-and-wants` | 20 | 312 | Two-column sorting. Aarav voice is hype-slangy; preserve. |
-| `rent-day` | 21 | 333 | Maya + Bhola seth. Bhola's voice is the predatory-lender register — keep menacing-warm. |
-| `chai-receipt` | 21 | 367 | Ravi anna Tamil-flavoured Hinglish. Hard to localise — flag for native Tamil-Hindi speaker. |
+| `first-budget` | 24 | 391 | Wren voice. Lots of Hinglish already (`Khol le na`, `Theek hai`). Translator should preserve, not Devanagari-ise the loanwords (`envelope`, `Rent`, `Save`, `Spend` should likely stay roman or be transliterated as चयन terms). |
+| `needs-and-wants` | 20 | 312 | Two-column sorting. Arlo voice is hype-slangy; preserve. |
+| `rent-day` | 21 | 333 | Wren + Bhola seth. Bhola's voice is the predatory-lender register — keep menacing-warm. |
+| `chai-receipt` | 21 | 367 | Kai Tamil-flavoured Hinglish. Hard to localise — flag for native Tamil-Hindi speaker. |
 | `emergency-seed` | 21 | 445 | Clay jar metaphor. Currency: ₹500 must stay as ₹500. |
-| `graduation` | 13 | 273 | Maya hands player off to Bank Bazaar. Shorter quest. |
+| `graduation` | 13 | 273 | Wren hands player off to Bank Bazaar. Shorter quest. |
 
 **Totals:** 6 quests · 120 dialog lines · ~2,121 words.
 
@@ -22,8 +22,8 @@
 1. Use `₹` for currency (not `Rs.` or `रुपये` unless a character literally says the word).
 2. Preserve Persianized vocab where realistic: `तनख्वाह`, `लिफ़ाफ़ा`, `दफ़्तर`, `दरवाज़ा` — use the nuqta (़) accurately.
 3. Mumbai chawl register: `खोली`, not `कमरा`, when characters refer to their own room.
-4. Keep Hinglish code-switching — do not over-translate. If Maya says "Three envelopes. That's it.", the Hindi pass can keep "Three envelopes" in roman or use "तीन लिफ़ाफ़े", but should NOT flatten to "तीन डाक-आवरण".
-5. Never use `रोबिनहुड`, `Zerodha`, or any real brand — Maya's deny-phrase list applies in HI too.
+4. Keep Hinglish code-switching — do not over-translate. If Wren says "Three envelopes. That's it.", the Hindi pass can keep "Three envelopes" in roman or use "तीन लिफ़ाफ़े", but should NOT flatten to "तीन डाक-आवरण".
+5. Never use `रोबिनहुड`, `Zerodha`, or any real brand — Wren's deny-phrase list applies in HI too.
 6. Yarn `<<commands>>` (e.g., `<<wait_for_action>>`, `<<jump>>`, `<<grant_mastery>>`) MUST NOT be translated. Only the spoken lines after `npcId:`.
 
 ## Pipeline (when activated)

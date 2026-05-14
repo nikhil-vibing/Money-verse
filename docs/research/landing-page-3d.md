@@ -1,8 +1,8 @@
-# Money-verse — Immersive 3D Landing Page Research Brief
+# Ninja Money-verse — Immersive 3D Landing Page Research Brief
 
 > Sequel to `landing-page.md`. The 2D-SVG-diorama blueprint stands; this brief asks: *where would 3D / WebGL deepen the promise without breaking our Moto-G4 + reduce-motion floor?* Open-source only.
 
-The product: a free, hand-painted 2D HD-pixel RPG teaching Indian financial literacy. Re-branded **Money-verse**. The landing page must feel like *a place*, not a pitch. The first four seconds are the entire fight.
+The product: a free, hand-painted 2D HD-pixel RPG teaching Indian financial literacy. Re-branded **Ninja Money-verse**. The landing page must feel like *a place*, not a pitch. The first four seconds are the entire fight.
 
 ---
 
@@ -42,7 +42,7 @@ Across recent Site-of-the-Day wins (Deliciously Dark Escape, The Crumbskees, Max
 4. **Restraint scales with depth.** The richer the hero, the simpler the chapter pages (Mobius / Kojima).
 5. **Audio is always opt-in.** Muted by default; one ambient toggle near the logo. ([howler.js + autoplay policy](https://github.com/goldfire/howler.js/issues/939))
 
-## Section 3 — Divergences / choices for Money-verse
+## Section 3 — Divergences / choices for Ninja Money-verse
 
 | Choice | Why |
 |---|---|
@@ -77,7 +77,7 @@ Across recent Site-of-the-Day wins (Deliciously Dark Escape, The Crumbskees, Max
 ### 5.1 Section list (11 sections)
 
 1. **Sticky utility bar** — EN/HI · GitHub stars · *Free forever, open-source* pill · ambient-audio toggle (off by default).
-2. **Hero — Chawl Mohalla diorama** (R3F, 2.5D pixel-on-plane). Three-line headline, one primary CTA *Step into Money-verse →*, secondary text link *Watch the 60s trailer*.
+2. **Hero — Chawl Mohalla diorama** (R3F, 2.5D pixel-on-plane). Three-line headline, one primary CTA *Step into Ninja Money-verse →*, secondary text link *Watch the 60s trailer*.
 3. **Scroll set-piece — "First payday"** — camera dollies from rooftop into Maya's room; the envelope of cash zooms forward; ₹15,000 splits into Rent / Save / Spend as drag-targets.
 4. **Bridge across to Bank Bazaar** — camera pans; static 2D resumes; CA Lakshmi aunty introduces herself in a card.
 5. **Seven districts** — illustrated map (SVG, not WebGL); each district hover-lifts a portrait card.
@@ -200,7 +200,7 @@ app/(landing)/
 
 ## Section 6 — The single biggest steal (revised)
 
-If we steal only one thing from this round: **Lusion's "one timeline" discipline** — every scrubbed scroll event drives a single GSAP master timeline that updates the camera, the shader uniforms, *and* the HTML overlays in lockstep. Without that discipline, a 2.5D hero turns into three uncoordinated animations fighting each other. With it, Money-verse's first 150 vh of scroll feels like a *cutscene the player is performing* — which is exactly the metaphor of the game itself.
+If we steal only one thing from this round: **Lusion's "one timeline" discipline** — every scrubbed scroll event drives a single GSAP master timeline that updates the camera, the shader uniforms, *and* the HTML overlays in lockstep. Without that discipline, a 2.5D hero turns into three uncoordinated animations fighting each other. With it, Ninja Money-verse's first 150 vh of scroll feels like a *cutscene the player is performing* — which is exactly the metaphor of the game itself.
 
 ---
 
