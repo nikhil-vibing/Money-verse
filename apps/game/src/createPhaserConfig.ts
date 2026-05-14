@@ -6,6 +6,7 @@ import { PreloadScene } from "./scenes/PreloadScene";
 import { WorldScene } from "./scenes/WorldScene";
 import { UIScene } from "./scenes/UIScene";
 import { DialogScene } from "./scenes/DialogScene";
+import { EnvelopeScene } from "./scenes/EnvelopeScene";
 import { detectPerfTier } from "./pipelines/PostFxStack";
 
 export interface CreatePhaserConfigOptions {
@@ -62,6 +63,7 @@ export function createPhaserConfig(
       WorldScene,
       UIScene,
       DialogScene,
+      EnvelopeScene,
     ],
   };
 }

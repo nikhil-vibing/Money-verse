@@ -17,6 +17,8 @@ import { announce } from "../lib/announce";
 import { getAssistMode, subscribeAssistMode } from "../lib/assist";
 import { detectPerfTier } from "../pipelines/PostFxStack";
 import { attachAmbientParticles } from "../lib/ambientParticles";
+import { StoryDirector } from "../lib/storyDirector";
+import { CHAWL_ONBOARDING_SEQUENCE } from "../content/chawlOnboarding";
 
 interface WorldSceneData {
   readonly districtId: string;
@@ -48,7 +50,6 @@ const ASSIST_PROMPT_COOLDOWN_MS = 800;
 const BANK_BAZAAR_TARGET = "bank-bazaar";
 const NPC_INTERACT_RADIUS_PX = 36;
 const QUEST_GIVER_NPC_ID = "maya-didi";
-const OPENING_OBJECTIVE = "Find Maya didi — she has the ! above her head.";
 
 export class WorldScene extends Phaser.Scene {
   private districtId = "chawl-mohalla";
@@ -64,6 +65,8 @@ export class WorldScene extends Phaser.Scene {
   private assistMode = false;
   private unsubscribeAssist: (() => void) | undefined;
   private detachAmbient: (() => void) | undefined;
+  private storyDirector: StoryDirector | undefined;
+  private storyActive = false;
 
   constructor() {
     super({ key: "World" });
@@ -150,12 +153,12 @@ export class WorldScene extends Phaser.Scene {
     }
     this.bindInteractKey();
     this.bindWindowEvents();
-    this.startOpeningStory();
     this.game.events.emit("world:ready", {
       districtId: this.districtId,
       mapWidthPx: map.widthInPixels,
       mapHeightPx: map.heightInPixels,
     });
+    this.startOnboardingStory();
     void renderedLayers;
   }
 
@@ -166,14 +169,41 @@ export class WorldScene extends Phaser.Scene {
     this.emitMinimapTick();
   }
 
-  private startOpeningStory(): void {
-    const ui = this.scene.get("UI");
-    ui.events.emit("objective:set", { text: OPENING_OBJECTIVE });
-    const maya = this.npcs.find((n) => n.npcId === QUEST_GIVER_NPC_ID);
-    if (maya !== undefined) {
-      maya.setQuestIndicator(true);
-    }
-    announce(OPENING_OBJECTIVE);
+  /**
+   * Start the data-driven onboarding sequence. The director owns the
+   * objective banner, quest indicator, dialog flow, currency grant and
+   * EnvelopeScene hand-off — WorldScene only contributes the NPC
+   * registry lookup so beats can target NPCs by id.
+   */
+  private startOnboardingStory(): void {
+    // β-bootstrap guard — don't replay onboarding for returning players.
+    const alreadyOnboarded = this.registry.get("chawlOnboardingDone") === true;
+    if (alreadyOnboarded) return;
+
+    this.storyActive = true;
+    // Pause player + NPC tracking while director dialog is open so the
+    // player can't wander out of the conversation. Director emits these
+    // events around every `say`/`narrate` beat.
+    this.events.on("story:dialog-open", () => {
+      this.inDialog = true;
+    });
+    this.events.on("story:dialog-close", () => {
+      this.inDialog = false;
+    });
+    const director = new StoryDirector({
+      scene: this,
+      lookupNpc: (npcId) => this.npcs.find((n) => n.npcId === npcId),
+    });
+    this.storyDirector = director;
+    director
+      .run(CHAWL_ONBOARDING_SEQUENCE)
+      .then(() => {
+        this.storyActive = false;
+        this.registry.set("chawlOnboardingDone", true);
+      })
+      .catch(() => {
+        this.storyActive = false;
+      });
   }
 
   private refreshActiveNpc(): void {
@@ -488,6 +518,14 @@ export class WorldScene extends Phaser.Scene {
   }
 
   private openDialogFor(npc: Npc): void {
+    // When the director is active, redirect the talk into the story
+    // pipeline so the next `wait-for-interact` beat resolves. The
+    // director itself controls what dialog appears next.
+    if (this.storyActive) {
+      this.game.events.emit("story:npc-interacted", npc.npcId);
+      return;
+    }
+
     this.inDialog = true;
     this.scene.get("UI").events.emit("interact:hide");
     const dialog = this.scene.get("Dialog");
@@ -498,9 +536,6 @@ export class WorldScene extends Phaser.Scene {
         this.inDialog = false;
         if (npc.npcId === QUEST_GIVER_NPC_ID) {
           npc.setQuestIndicator(false);
-          this.scene.get("UI").events.emit("objective:set", {
-            text: "Walk around. Press E near anyone with a name above them.",
-          });
         }
       },
     });

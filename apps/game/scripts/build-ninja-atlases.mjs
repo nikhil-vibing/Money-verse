@@ -154,6 +154,49 @@ const TILESET_MAP = {
   52: [2, 2],   // door variant
   53: [13, 3],  // lamp interactive
   54: [14, 3],  // lit lamp interactive
+
+  // 100-130 chawl detail props (γ-1: lived-in pass). Picked manually from
+  // the NA tileset.png so the Tiled `props` layer has real graphics to
+  // paint, not blank tiles. Order roughly: street furniture → flora →
+  // shop signage → ornamental.
+  //
+  // All of these MUST be non-colliding tiles — the chawl `collision`
+  // layer is the source of truth for walkability, so a tree gid here
+  // does not block the player. Place them only on tiles that read as
+  // "walkable but decorated" — alley edges, courtyard borders, near
+  // doorways. If a future pass wants a tree to block, paint a matching
+  // tile into the `collision` layer too.
+  100: [2, 3],    // pillar / lamp post column
+  101: [3, 11],   // small green bush
+  102: [6, 10],   // pine tree
+  103: [10, 5],   // hanging laundry — blue
+  104: [11, 5],   // hanging laundry — red
+  105: [1, 5],    // wooden barrel
+  106: [12, 4],   // wooden crate
+  107: [10, 28],  // small hanging sign
+  108: [12, 28],  // red flowers
+  109: [13, 28],  // yellow flowers
+  110: [17, 28],  // plant pot — small
+  111: [18, 28],  // plant pot — green leaves
+  112: [12, 11],  // well stone / round boulder
+  113: [0, 28],   // dead/winter tree
+  114: [13, 3],   // basket
+  115: [14, 3],   // jar / pot
+  116: [7, 3],    // wooden fence post
+  117: [8, 3],    // wooden fence horizontal
+  118: [9, 3],    // wooden fence corner
+  119: [16, 4],   // DOJO-style sign block (used as kirana sign stand-in)
+  120: [9, 5],    // hanging cloth banner (used as chai shop banner)
+  121: [16, 11],  // small rock
+  122: [17, 11],  // big rock
+  123: [8, 13],   // fallen leaves
+  124: [4, 11],   // bigger green bush
+  125: [5, 28],   // green fence vertical
+  126: [6, 28],   // green fence horizontal
+  127: [7, 28],   // green fence gate
+  128: [14, 28],  // single red rose
+  129: [17, 4],   // wooden ladder
+  130: [1, 9],    // gourd / orange pumpkin
 };
 
 /* -------------------------------------------------------------------------- */
