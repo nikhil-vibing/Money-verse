@@ -1,0 +1,13 @@
+{
+  "id": "ravi-anna",
+  "hooks": [
+    { "on": "first_interaction", "unlock_dialog_branch": "ravi-intro-cutting-chai" },
+    { "on": "wallets_inr_lte:50", "unlock_dialog_branch": "ravi-chai-on-tab" },
+    { "on": "tab_balance_gte:200", "unlock_dialog_branch": "ravi-gentle-reminder" },
+    { "on": "completed_quest:first-budget", "unlock_dialog_branch": "ravi-impressed-rumour-mill" },
+    { "on": "spoke_to_npc:bhola-seth", "unlock_dialog_branch": "ravi-warns-about-bhola" },
+    { "on": "missed_repayment:bhola-seth:1x", "unlock_dialog_branch": "ravi-told-you-so" },
+    { "on": "streak_current_gte:14", "unlock_dialog_branch": "ravi-respects-discipline" },
+    { "on": "<<requires_district_unlock:karyalaya-park>>", "unlock_dialog_branch": "ravi-shares-job-tip" }
+  ]
+}

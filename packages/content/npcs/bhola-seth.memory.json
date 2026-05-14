@@ -1,0 +1,12 @@
+{
+  "id": "bhola-seth",
+  "hooks": [
+    { "on": "wallets_inr_lte:200", "unlock_dialog_branch": "bhola-offers-first-loan" },
+    { "on": "completed_quest:first-budget", "unlock_dialog_branch": "bhola-pitches-harder" },
+    { "on": "active_quest:bhola-debt-trap", "unlock_dialog_branch": "bhola-friendly-collector" },
+    { "on": "missed_repayment:1x", "unlock_dialog_branch": "bhola-no-problem-no-problem" },
+    { "on": "missed_repayment:3x", "unlock_dialog_branch": "bhola-mask-slips" },
+    { "on": "completed_quest:bhola-debt-trap", "unlock_dialog_branch": "bhola-pretends-not-to-know-you" },
+    { "on": "<<requires_district_unlock:bank-bazaar>>", "unlock_dialog_branch": "bhola-mutters-about-banks" }
+  ]
+}

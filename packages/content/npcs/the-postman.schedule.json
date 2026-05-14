@@ -1,0 +1,7 @@
+{
+  "id": "the-postman",
+  "blocks": [
+    { "start": "10:30", "end": "11:30", "location": "building-entrance", "mood": "delivery-round", "weekday": ["wed"] },
+    { "start": "11:30", "end": "12:00", "location": "courtyard", "mood": "tea-break", "weekday": ["wed"] }
+  ]
+}

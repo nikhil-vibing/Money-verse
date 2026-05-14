@@ -1,0 +1,13 @@
+{
+  "id": "maya-didi",
+  "blocks": [
+    { "start": "06:00", "end": "07:30", "location": "rooftop", "mood": "tending tulsi plants" },
+    { "start": "07:30", "end": "09:00", "location": "mayas-room", "mood": "available-for-talk" },
+    { "start": "09:00", "end": "12:30", "location": "mayas-room", "mood": "working-from-home" },
+    { "start": "12:30", "end": "13:30", "location": "courtyard", "mood": "lunch-with-neighbours" },
+    { "start": "13:30", "end": "17:00", "location": "mayas-room", "mood": "available-for-talk" },
+    { "start": "17:00", "end": "18:30", "location": "rooftop", "mood": "watering-plants" },
+    { "start": "18:30", "end": "21:00", "location": "mayas-room", "mood": "available-for-talk" },
+    { "start": "21:00", "end": "22:00", "location": "building-entrance", "mood": "evening-walk" }
+  ]
+}

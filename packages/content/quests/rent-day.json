@@ -1,0 +1,17 @@
+{
+  "id": "rent-day",
+  "title_key": "quest.rent-day.title",
+  "district": "chawl-mohalla",
+  "concept": "Pay fixed bills before they are due, not after.",
+  "domain": "budgeting",
+  "preconditions": {
+    "mastery": [{ "nodeId": "budgeting.needs-wants", "minLevel": 1 }],
+    "completedQuests": ["needs-and-wants"]
+  },
+  "rewards": {
+    "masteryNodeId": "budgeting.rent-timing",
+    "masteryDelta": 1,
+    "inrReward": 0
+  },
+  "estMinutes": 6
+}

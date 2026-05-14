@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0612;
+  --color-bg-2: #14092a;
+  --color-ink: #f5f1ea;
+  --color-ink-muted: #cbb89c;
+  --color-saffron: #f7b733;
+  --color-saffron-bright: #ffcc4d;
+  --color-terracotta: #c87156;
+  --color-indigo-night: #1a0e2e;
+  --color-rose-dust: #c97874;
+  --color-mint: #6dd3a0;
+  --color-grid: rgba(245, 241, 234, 0.06);
+
+  --font-display: "Atkinson Hyperlegible", "IBM Plex Sans Devanagari", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", "IBM Plex Sans Devanagari", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-pixel: "PixelifySans", "Atkinson Hyperlegible", monospace;
+}
+
+html {
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-saffron);
+  color: var(--color-indigo-night);
+}
+
+.crt-overlay {
+  background-image:
+    radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.35) 100%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  pointer-events: none;
+}
+
+.grain-overlay {
+  background-image: radial-gradient(rgba(245, 241, 234, 0.08) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.pixel-edge {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@dhaniverse/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3000 --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "biome check app components lib",
+    "lint:fix": "biome check --write app components lib",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next .turbo node_modules"
+  },
+  "dependencies": {
+    "@dhaniverse/finance-sim": "workspace:*",
+    "@dhaniverse/shared": "workspace:*",
+    "@dhaniverse/ui": "workspace:*",
+    "@tanstack/react-query": "^5.100.0",
+    "ai": "^6.0.0",
+    "better-auth": "^1.6.0",
+    "drizzle-orm": "^0.36.0",
+    "i18next": "^23.15.0",
+    "motion": "^11.15.0",
+    "next": "^16.0.0",
+    "phaser": "^3.90.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.75.0",
+    "react-i18next": "^15.0.0",
+    "tailwind-merge": "^2.5.0",
+    "zod": "^3.23.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/node": "^22.5.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

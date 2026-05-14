@@ -1,0 +1,11 @@
+{
+  "id": "biscuit",
+  "hooks": [
+    { "on": "first_pet", "unlock_dialog_branch": "biscuit-affection-1" },
+    { "on": "pet_count_gte:5", "unlock_dialog_branch": "biscuit-affection-2-recognises-you" },
+    { "on": "pet_count_gte:20", "unlock_dialog_branch": "biscuit-affection-3-follows-you" },
+    { "on": "fed_biscuit:1x", "unlock_dialog_branch": "biscuit-fed-once-loyal-day" },
+    { "on": "fed_biscuit_streak_gte:7", "unlock_dialog_branch": "biscuit-fed-streak-naps-outside-your-door" },
+    { "on": "ignored_for_days:14", "unlock_dialog_branch": "biscuit-shy-returns" }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalDependencies": [".env", ".env.local", "tsconfig.json"],
+  "globalEnv": [
+    "NODE_ENV",
+    "VERCEL_ENV",
+    "DATABASE_URL",
+    "REDIS_URL",
+    "AI_GATEWAY_API_KEY",
+    "BETTER_AUTH_SECRET",
+    "COLYSEUS_URL"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "inputs": ["src/**", "public/**", "tsconfig.json", "package.json"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:coverage": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build"],
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "lint:fix": {
+      "cache": false
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false,
+      "persistent": false
+    },
+    "db:studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:migrate": {
+      "cache": false
+    },
+    "content:compile": {
+      "outputs": ["dist/**", "*.compiled.json"],
+      "inputs": ["quests/**", "npcs/**", "i18n/**"]
+    },
+    "assets:atlas": {
+      "outputs": ["public/atlases/**"]
+    },
+    "i18n:check": {
+      "outputs": []
+    }
+  }
+}

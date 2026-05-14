@@ -1,0 +1,13 @@
+{
+  "id": "maa-on-phone",
+  "hooks": [
+    { "on": "first_landline_pickup", "unlock_dialog_branch": "maa-first-call-of-the-game" },
+    { "on": "skipped_call_for_days:3", "unlock_dialog_branch": "maa-mildly-hurt" },
+    { "on": "skipped_call_for_days:7", "unlock_dialog_branch": "maa-asks-aarav-to-check-on-you" },
+    { "on": "completed_quest:first-budget", "unlock_dialog_branch": "maa-proud-but-still-worried" },
+    { "on": "wallets_inr_lte:100", "unlock_dialog_branch": "maa-offers-to-send-money" },
+    { "on": "spoke_to_npc:bhola-seth", "unlock_dialog_branch": "maa-senses-something-wrong" },
+    { "on": "saved_inr_gte:10000", "unlock_dialog_branch": "maa-asks-you-to-buy-yourself-something-warm" },
+    { "on": "streak_current_gte:30", "unlock_dialog_branch": "maa-shares-her-own-rd-secret" }
+  ]
+}

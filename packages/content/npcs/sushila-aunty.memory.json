@@ -1,0 +1,12 @@
+{
+  "id": "sushila-aunty",
+  "hooks": [
+    { "on": "first_purchase", "unlock_dialog_branch": "sushila-explains-tab-system" },
+    { "on": "paid_tab_on_time:1x", "unlock_dialog_branch": "sushila-gives-tiny-nod" },
+    { "on": "paid_tab_on_time:3x", "unlock_dialog_branch": "sushila-raises-tab-limit" },
+    { "on": "tab_overdue:1x", "unlock_dialog_branch": "sushila-cold-but-fair" },
+    { "on": "tab_overdue:2x", "unlock_dialog_branch": "sushila-suspends-tab" },
+    { "on": "completed_quest:monthly-grocery-budget", "unlock_dialog_branch": "sushila-shows-bulk-discount-trick" },
+    { "on": "mastery_node_gte:budgeting-envelopes:2", "unlock_dialog_branch": "sushila-mentions-her-own-rd" }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@dhaniverse/game",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5173",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "biome check src",
+    "lint:fix": "biome check --write src",
+    "typecheck": "tsc --noEmit",
+    "assets:atlas": "node scripts/build-atlases.mjs",
+    "clean": "rm -rf dist .turbo node_modules"
+  },
+  "dependencies": {
+    "@dhaniverse/content": "workspace:*",
+    "@dhaniverse/finance-sim": "workspace:*",
+    "@dhaniverse/game-protocol": "workspace:*",
+    "@dhaniverse/shared": "workspace:*",
+    "colyseus.js": "^0.16.22",
+    "easystarjs": "^0.4.4",
+    "howler": "^2.2.4",
+    "i18next": "^23.15.0",
+    "phaser": "^3.90.0",
+    "yarn-bound": "^0.5.5"
+  },
+  "devDependencies": {
+    "@types/howler": "^2.2.11",
+    "@types/node": "^22.5.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0",
+    "vitest": "^2.1.0"
+  }
+}

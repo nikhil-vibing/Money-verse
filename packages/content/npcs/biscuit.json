@@ -1,0 +1,12 @@
+{
+  "id": "biscuit",
+  "displayName_key": "npc.biscuit.displayName",
+  "role": "Stray dog who lives in the courtyard. Non-speaking. Tracks affection state. Cosmetic, never blocks gameplay.",
+  "district": "chawl-mohalla",
+  "voiceExamples": [
+    "*tail-wag*",
+    "*soft woof*",
+    "*tilts head*",
+    "*flops over for belly rub*"
+  ]
+}

@@ -1,0 +1,74 @@
+title: NeedsAndWants_Start
+tags:
+---
+<<wait_for_action open_aarav_stall>>
+aarav: Bhai! Bhai! Look at this. AirPods. Original-original.
+aarav: For you only — ₹3,000. Ekdum copy nahi hai, full original.
+<<player_choose>>
+-> Show me.
+    aarav: See the box. See the "Apple" written. Pure.
+    <<jump NeedsAndWants_Inspect>>
+-> ₹3,000? Out of my Spend envelope?
+    aarav: Arre, ₹3,000 is nothing for music quality like this.
+    <<jump NeedsAndWants_Inspect>>
+===
+
+title: NeedsAndWants_Inspect
+tags:
+---
+<<wait_for_action inspect_airpod_box>>
+aarav: Don't look so close. Just buy, na.
+maya-didi: (whispers) Before you spend three thousand, do one thing.
+maya-didi: Open your notebook. Two columns. Needs. Wants.
+<<wait_for_action open_notebook>>
+maya-didi: Drag every line from today into the correct column.
+maya-didi: Rule of thumb — if you skip it, do you still survive the week?
+<<jump NeedsAndWants_Sort>>
+===
+
+title: NeedsAndWants_Sort
+tags:
+---
+<<wait_for_action drag_item rent needs>>
+<<wait_for_action drag_item dabba_lunch needs>>
+<<wait_for_action drag_item bus_pass needs>>
+<<wait_for_action drag_item chai needs>>
+<<wait_for_action drag_item airpod_copy wants>>
+<<wait_for_action drag_item movie_ticket wants>>
+maya-didi: Now look at the Wants column. Add it up.
+maya-didi: ₹3,200 in one day of wants. Your whole Spend envelope is ₹8,200.
+<<player_choose>>
+-> Buy the AirPods anyway.
+    aarav: Yes! Bhai is a king!
+    <<wait_for_action hand_over_cash 3000>>
+    maya-didi: Theek hai. Your choice. But watch the envelope.
+    <<set_flag bought_fake_airpods>>
+    <<jump NeedsAndWants_Aftermath>>
+-> Walk away from the stall.
+    aarav: Arre boss, kal phir milte hain. Kal discount!
+    maya-didi: Achha. You looked at the column and decided. That is the skill.
+    <<set_flag refused_fake_airpods>>
+    <<jump NeedsAndWants_Aftermath>>
+-> Negotiate to ₹500.
+    aarav: ₹500?! Bhai, even the box costs ₹500.
+    aarav: Okay, okay. Final ₹1,500. Last price. Pakka.
+    <<player_choose>>
+    -> Still no.
+        <<set_flag refused_fake_airpods>>
+        <<jump NeedsAndWants_Aftermath>>
+    -> Done, ₹1,500.
+        <<wait_for_action hand_over_cash 1500>>
+        <<set_flag bought_fake_airpods>>
+        <<jump NeedsAndWants_Aftermath>>
+===
+
+title: NeedsAndWants_Aftermath
+tags:
+---
+maya-didi: Two columns. Every rupee. Every day.
+maya-didi: Wants are not bad. Wants without a column are.
+<<continue>>
+<<grant_mastery budgeting.needs-wants 1>>
+<<set_flag finished_needs_and_wants>>
+maya-didi: Tomorrow the landlord knocks. Bhola Seth doesn't joke about rent.
+===

@@ -1,0 +1,11 @@
+{
+  "id": "lakshmi-dabbawala",
+  "hooks": [
+    { "on": "first_interaction_window:06:00-08:00", "unlock_dialog_branch": "lakshmi-respects-early-rising" },
+    { "on": "streak_current_gte:7", "unlock_dialog_branch": "lakshmi-acknowledges-routine" },
+    { "on": "streak_current_gte:30", "unlock_dialog_branch": "lakshmi-shares-rd-philosophy" },
+    { "on": "streak_broken_after_gte:14", "unlock_dialog_branch": "lakshmi-gentle-not-disappointed" },
+    { "on": "completed_quest:first-budget", "unlock_dialog_branch": "lakshmi-mentions-her-own-budget-diary" },
+    { "on": "<<requires_district_unlock:bank-bazaar>>", "unlock_dialog_branch": "lakshmi-recommends-post-office-rd" }
+  ]
+}

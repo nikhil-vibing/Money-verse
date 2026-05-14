@@ -1,0 +1,10 @@
+{
+  "id": "the-postman",
+  "hooks": [
+    { "on": "weekly_visit:wed", "unlock_dialog_branch": "postman-default-delivery" },
+    { "on": "completed_quest:first-budget", "unlock_dialog_branch": "postman-delivers-bank-bazaar-flyer" },
+    { "on": "active_quest:bhola-debt-trap", "unlock_dialog_branch": "postman-delivers-collection-notice" },
+    { "on": "<<requires_district_unlock:karyalaya-park>>", "unlock_dialog_branch": "postman-delivers-offer-letter" },
+    { "on": "streak_current_gte:30", "unlock_dialog_branch": "postman-delivers-letter-from-maa" }
+  ]
+}

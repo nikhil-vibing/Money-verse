@@ -1,0 +1,13 @@
+{
+  "id": "bhola-seth",
+  "displayName_key": "npc.bhola-seth.displayName",
+  "role": "Predatory moneylender. Operates from a folding chair at the alley mouth. Cautionary NPC — teaches the cost of borrowing wrong.",
+  "district": "chawl-mohalla",
+  "voiceExamples": [
+    "Beta, why stress? Take, take. Pay later. Small-small interest only.",
+    "Bank? Bank will say no. I am saying yes — that itself is the value, na?",
+    "Sign here. Just here. The other page is just formality, don't read.",
+    "Late this week? No problem, no problem. Interest will manage itself.",
+    "See, you and me — we have a relationship. Banks have a process. Big difference."
+  ]
+}

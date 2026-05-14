@@ -1,0 +1,17 @@
+{
+  "id": "needs-and-wants",
+  "title_key": "quest.needs-and-wants.title",
+  "district": "chawl-mohalla",
+  "concept": "Sort every rupee into needs or wants before deciding.",
+  "domain": "budgeting",
+  "preconditions": {
+    "mastery": [{ "nodeId": "budgeting.income-expense", "minLevel": 1 }],
+    "completedQuests": ["first-budget"]
+  },
+  "rewards": {
+    "masteryNodeId": "budgeting.needs-wants",
+    "masteryDelta": 1,
+    "inrReward": 0
+  },
+  "estMinutes": 5
+}

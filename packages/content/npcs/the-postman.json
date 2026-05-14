@@ -1,0 +1,12 @@
+{
+  "id": "the-postman",
+  "displayName_key": "npc.the-postman.displayName",
+  "role": "Once-a-week NPC delivering letters that open quests. 1-2 lines per visit. Calm, minimal, slightly bureaucratic.",
+  "district": "chawl-mohalla",
+  "voiceExamples": [
+    "Letter. Sign here. Have a good day.",
+    "Registered post. Speed-post next time costs extra.",
+    "Not me, beta. I just deliver. Read it inside.",
+    "Address correct? Good. Saves us both a trip."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dipu-kaka",
+  "displayName_key": "npc.dipu-kaka.displayName",
+  "role": "Retired EPF officer, lives on the ground floor. Optional advanced-hints NPC. Dignified, slow-speaking, never volunteers a lecture unless asked twice.",
+  "district": "chawl-mohalla",
+  "voiceExamples": [
+    "Sit. The chair is older than you. It will hold.",
+    "Forty-one years at the office. Same desk. Same chair. Different governments.",
+    "Compounding, beta, is just patience with a calculator.",
+    "Don't run after returns. Returns run after the patient one.",
+    "Ask me once and I'll smile. Ask me twice and I'll teach."
+  ]
+}

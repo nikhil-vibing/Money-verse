@@ -1,0 +1,17 @@
+{
+  "id": "emergency-seed",
+  "title_key": "quest.emergency-seed.title",
+  "district": "chawl-mohalla",
+  "concept": "An emergency fund is locked savings you do not touch for daily wants.",
+  "domain": "budgeting",
+  "preconditions": {
+    "mastery": [{ "nodeId": "budgeting.small-leaks", "minLevel": 1 }],
+    "completedQuests": ["chai-receipt"]
+  },
+  "rewards": {
+    "masteryNodeId": "budgeting.emergency-seed",
+    "masteryDelta": 1,
+    "inrReward": 0
+  },
+  "estMinutes": 7
+}

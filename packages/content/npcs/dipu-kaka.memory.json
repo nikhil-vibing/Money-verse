@@ -1,0 +1,12 @@
+{
+  "id": "dipu-kaka",
+  "hooks": [
+    { "on": "asked_same_question:2x", "unlock_dialog_branch": "dipu-now-teaches-properly" },
+    { "on": "mastery_node_gte:budgeting-envelopes:2", "unlock_dialog_branch": "dipu-shares-epf-anecdote" },
+    { "on": "saved_inr_gte:25000", "unlock_dialog_branch": "dipu-explains-compounding" },
+    { "on": "completed_quest:first-budget", "unlock_dialog_branch": "dipu-nods-approvingly" },
+    { "on": "spoke_to_npc:bhola-seth", "unlock_dialog_branch": "dipu-warns-quietly-about-bhola" },
+    { "on": "<<requires_district_unlock:bank-bazaar>>", "unlock_dialog_branch": "dipu-introduces-bank-manager-friend" },
+    { "on": "<<requires_district_unlock:bhavishya-ghat>>", "unlock_dialog_branch": "dipu-recommends-nps-tier-1" }
+  ]
+}

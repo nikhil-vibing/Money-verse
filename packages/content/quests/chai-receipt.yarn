@@ -1,0 +1,73 @@
+title: ChaiReceipt_Start
+tags:
+---
+<<wait_for_action approach_chai_tapri>>
+ravi-anna: Aiyo, regular customer! Ek cutting?
+<<wait_for_action order_chai>>
+ravi-anna: ₹10. Same as yesterday. Same as kal also probably.
+ravi-anna: Beta, ek favour. Take this notebook.
+<<wait_for_action receive_notebook>>
+ravi-anna: For seven days. Every chai you drink — anywhere, not just here —
+ravi-anna: write the cost. End of week, we'll see something.
+<<player_choose>>
+-> "Sure, anna. Seven days."
+    <<set_flag accepted_chai_log>>
+    <<jump ChaiReceipt_Logging>>
+-> "Why? It's only ten rupees."
+    ravi-anna: Haan. ₹10. That is exactly why.
+    ravi-anna: Big numbers we notice. Small numbers — they hide.
+    <<set_flag accepted_chai_log>>
+    <<jump ChaiReceipt_Logging>>
+===
+
+title: ChaiReceipt_Logging
+tags:
+---
+<<wait_for_action log_chai day1 10>>
+<<wait_for_action log_chai day2 10>>
+<<wait_for_action log_chai day3 20>>
+ravi-anna: Twenty? Two chai in one day?
+<<player_choose>>
+-> "Office was long."
+    ravi-anna: Theek hai. I am not judging. Just writing.
+-> "Friend was visiting."
+    ravi-anna: Friends are good. Notebook is also good.
+<<continue>>
+<<wait_for_action log_chai day4 10>>
+<<wait_for_action log_chai day5 10>>
+<<wait_for_action log_chai day6 10>>
+<<wait_for_action log_chai day7 10>>
+ravi-anna: Saat din. Total kitna?
+<<wait_for_action add_total>>
+ravi-anna: ₹80. For one week. Just chai. Nothing else counted.
+<<jump ChaiReceipt_Reveal>>
+===
+
+title: ChaiReceipt_Reveal
+tags:
+---
+ravi-anna: Now multiply by 52 weeks. Phone se kar.
+<<wait_for_action multiply 80 52>>
+ravi-anna: ₹4,160. In one year. Just on chai from one stall.
+ravi-anna: Average banda spends ₹70 a day on small things. Chai. Gutka.
+ravi-anna: ₹70 times 365. Almost ₹25,550 a year. Gone. Sip by sip.
+<<player_choose>>
+-> "I should stop drinking chai."
+    ravi-anna: Arre nahi! Don't stop. I'll be sad.
+    ravi-anna: Just know the number. Knowing is the whole game.
+    <<set_flag chai_awareness>>
+-> "₹4,160 isn't that bad."
+    ravi-anna: Maybe not. But now you can decide.
+    ravi-anna: Before — it was a habit. Now — it is a choice.
+    <<set_flag chai_awareness>>
+-> "What if I drank one a day instead of two on some days?"
+    ravi-anna: Smart question. Cut one chai a week — ₹520 a year.
+    ravi-anna: Put that in the Save envelope. Same chai, plus a budget.
+    <<set_flag chai_optimised>>
+<<continue>>
+maya-didi: Small leaks sink ships. Big leaks are easy to see.
+maya-didi: The dangerous ones are the ones you don't count.
+<<grant_mastery budgeting.small-leaks 1>>
+<<set_flag finished_chai_receipt>>
+ravi-anna: Notebook keep karo. Use it for sabzi, rickshaw, sab kuch.
+===

@@ -1,0 +1,13 @@
+{
+  "name": "Dhaniverse 2.0",
+  "version": "0.1.0",
+  "districts": [
+    "chawl-mohalla",
+    "bank-bazaar",
+    "karyalaya-park",
+    "niveshak-chowk",
+    "rakshak-lane",
+    "vyapaar-mandi",
+    "bhavishya-ghat"
+  ]
+}

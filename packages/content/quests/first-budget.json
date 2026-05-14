@@ -1,0 +1,17 @@
+{
+  "id": "first-budget",
+  "title_key": "quest.first-budget.title",
+  "district": "chawl-mohalla",
+  "concept": "Income minus expenses equals savings.",
+  "domain": "budgeting",
+  "preconditions": {
+    "mastery": [],
+    "completedQuests": []
+  },
+  "rewards": {
+    "masteryNodeId": "budgeting.income-expense",
+    "masteryDelta": 1,
+    "inrReward": 0
+  },
+  "estMinutes": 7
+}

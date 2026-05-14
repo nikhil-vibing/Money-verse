@@ -1,0 +1,13 @@
+{
+  "id": "sushila-aunty",
+  "displayName_key": "npc.sushila-aunty.displayName",
+  "role": "Kirana shop owner. Teaches household budgeting through change-making, monthly tabs, MRP discipline. Matter-of-fact, no nonsense.",
+  "district": "chawl-mohalla",
+  "voiceExamples": [
+    "MRP printed hai. Don't argue with me, argue with the company.",
+    "Tab? Tab means trust. Pay on the first, every month. Simple.",
+    "Maggi up, atta down. World adjusts. We adjust.",
+    "Take a list next time. Memory is for poetry, not for groceries.",
+    "Less smile, more shopping. People are waiting."
+  ]
+}

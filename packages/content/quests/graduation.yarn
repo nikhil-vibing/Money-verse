@@ -1,0 +1,47 @@
+title: Graduation_Start
+tags:
+---
+<<wait_for_action meet_maya_at_gate>>
+maya-didi: Idhar aa. Stand at the gate of the chawl. Look outside.
+<<wait_for_action look_at_bank_bazaar>>
+maya-didi: That building with the blue board — Bank Bazaar.
+maya-didi: For one month you've been a chawl student. Envelopes. Jars. Lists.
+maya-didi: Now you are ready for a teller window.
+<<player_choose>>
+-> "I'm not sure I'm ready."
+    maya-didi: You paid rent on time. You said no to fake AirPods.
+    maya-didi: You counted seven days of chai. You locked a jar.
+    maya-didi: You are exactly ready. Trust the work you already did.
+    <<jump Graduation_Handoff>>
+-> "Why do I need a bank? Envelopes work."
+    maya-didi: Envelopes don't earn interest. Envelopes can be stolen.
+    maya-didi: Bank Bazaar will teach you a savings account, FD, UPI.
+    maya-didi: Same idea — envelopes — but with locks made of law.
+    <<jump Graduation_Handoff>>
+-> "Take me there, didi."
+    maya-didi: I'll walk you to the door. Inside, you're on your own.
+    <<jump Graduation_Handoff>>
+===
+
+title: Graduation_Handoff
+tags:
+---
+maya-didi: One last thing. Take this notebook. Everything we did is in it.
+<<wait_for_action receive_chawl_notebook>>
+maya-didi: Income minus expenses. Needs vs wants. Rent first. Small leaks.
+maya-didi: Emergency jar. Five lessons. Carry them across the road.
+<<player_choose>>
+-> "Thank you, didi."
+    maya-didi: Bas. Don't be filmy. Go.
+    <<set_flag thanked_maya>>
+-> "Will I see you again?"
+    maya-didi: Of course. The chawl is your home. I am at envelope number one.
+    <<set_flag will_visit_maya>>
+<<continue>>
+<<grant_inr 500>>
+maya-didi: ₹500. Opening balance gift. Don't put it in a jar. Put it in a bank.
+<<grant_mastery budgeting.graduation 1>>
+<<unlock_district bank-bazaar>>
+<<set_flag finished_chawl_mohalla>>
+maya-didi: Jaa. Bank Bazaar is waiting. And so is the rest of the city.
+===

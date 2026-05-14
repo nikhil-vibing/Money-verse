@@ -1,0 +1,28 @@
+{
+  "name": "@dhaniverse/finance-sim",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "biome check src",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo node_modules"
+  },
+  "dependencies": {
+    "@dhaniverse/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.0",
+    "fast-check": "^3.23.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

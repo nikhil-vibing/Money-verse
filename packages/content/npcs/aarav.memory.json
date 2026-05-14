@@ -1,0 +1,13 @@
+{
+  "id": "aarav",
+  "hooks": [
+    { "on": "first_interaction", "unlock_dialog_branch": "aarav-intro-best-friend" },
+    { "on": "completed_quest:first-budget", "unlock_dialog_branch": "aarav-teases-then-asks-how" },
+    { "on": "player_bought_cosmetic:luxury", "unlock_dialog_branch": "aarav-celebrates" },
+    { "on": "saved_inr_gte:10000", "unlock_dialog_branch": "aarav-impressed-quietly" },
+    { "on": "aarav_emi_default", "unlock_dialog_branch": "aarav-asks-for-help" },
+    { "on": "completed_quest:help-aarav-budget", "unlock_dialog_branch": "aarav-grateful-and-changed" },
+    { "on": "streak_current_gte:21", "unlock_dialog_branch": "aarav-tries-to-copy-you" },
+    { "on": "mastery_node_gte:budgeting-envelopes:3", "unlock_dialog_branch": "aarav-asks-to-be-taught" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "chai-receipt",
+  "title_key": "quest.chai-receipt.title",
+  "district": "chawl-mohalla",
+  "concept": "Tiny daily spends compound into large yearly leaks.",
+  "domain": "budgeting",
+  "preconditions": {
+    "mastery": [{ "nodeId": "budgeting.rent-timing", "minLevel": 1 }],
+    "completedQuests": ["rent-day"]
+  },
+  "rewards": {
+    "masteryNodeId": "budgeting.small-leaks",
+    "masteryDelta": 1,
+    "inrReward": 0
+  },
+  "estMinutes": 8
+}

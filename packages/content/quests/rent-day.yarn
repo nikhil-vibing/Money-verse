@@ -1,0 +1,65 @@
+title: RentDay_Start
+tags:
+---
+<<wait_for_action pick_up_rent_envelope>>
+landlord: (knocks) Seven taarikh hai. You know why I am here.
+landlord: ₹4,800. No "kal de dunga". Aaj.
+<<player_choose>>
+-> Pay now from the Rent envelope.
+    <<jump RentDay_PayOnTime>>
+-> "Bhola Seth, abhi nahi hai. Kal?"
+    <<jump RentDay_PayLate>>
+-> "I forgot which envelope had it."
+    landlord: Beta, I am old. My patience is older. Find it.
+    <<wait_for_action open_drawer>>
+    <<jump RentDay_PayOnTime>>
+===
+
+title: RentDay_PayOnTime
+tags:
+---
+<<wait_for_action hand_over_cash 4800>>
+landlord: Ek minute. (counts) ₹4,800. Theek hai.
+landlord: Beta, you know why I come on the 7th and not the 10th?
+landlord: Because by the 10th, the money has small legs. It walks.
+<<player_choose>>
+-> "I paid before I spent. That's why it was still here."
+    landlord: Haan. That is the only secret. Rent first, always.
+    <<set_flag paid_rent_on_time>>
+-> "Maya didi told me to keep it separate."
+    landlord: Maya is a smart girl. Listen to her.
+    <<set_flag paid_rent_on_time>>
+<<continue>>
+landlord: Receipt. Keep it. Always take a receipt.
+<<wait_for_action receive_receipt>>
+<<grant_mastery budgeting.rent-timing 1>>
+<<set_flag finished_rent_day>>
+maya-didi: Dekha? Boring. Boring is the best feeling on rent day.
+===
+
+title: RentDay_PayLate
+tags:
+---
+landlord: Hmph. One day. Tomorrow morning. With ₹4,800.
+landlord: No interest. This time. Because you are new.
+landlord: But beta — I will remember. Memory is a landlord's job.
+<<set_flag rent_paid_late_once>>
+<<wait_for_action sleep_one_night>>
+maya-didi: Subah hai. Bhola Seth is on the staircase already.
+maya-didi: Here is the trick I learned. Pay rent on day one of salary.
+maya-didi: Not day seven. Not day six. Day one.
+<<wait_for_action hand_over_cash 4800>>
+landlord: (sighs) Theek hai. Done. But fix this pattern.
+<<player_choose>>
+-> "I'll pay on day one next month."
+    maya-didi: Good. Move the Rent envelope to the top of the drawer.
+    <<set_flag will_pay_rent_first>>
+-> "It was the same money. Just one day later."
+    maya-didi: Same money, different feeling. Late starts a habit.
+    maya-didi: Habits are heavier than the money inside them.
+    <<set_flag will_pay_rent_first>>
+<<continue>>
+<<grant_mastery budgeting.rent-timing 1>>
+<<set_flag finished_rent_day>>
+maya-didi: You didn't lose money. You learned the lesson cheap. Use it.
+===

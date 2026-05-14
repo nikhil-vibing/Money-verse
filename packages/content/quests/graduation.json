@@ -1,0 +1,17 @@
+{
+  "id": "graduation",
+  "title_key": "quest.graduation.title",
+  "district": "chawl-mohalla",
+  "concept": "Cash envelopes are a starting school. A bank account is the next room.",
+  "domain": "budgeting",
+  "preconditions": {
+    "mastery": [{ "nodeId": "budgeting.emergency-seed", "minLevel": 1 }],
+    "completedQuests": ["emergency-seed"]
+  },
+  "rewards": {
+    "masteryNodeId": "budgeting.graduation",
+    "masteryDelta": 1,
+    "inrReward": 0
+  },
+  "estMinutes": 4
+}

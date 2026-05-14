@@ -1,0 +1,12 @@
+{
+  "id": "biscuit",
+  "blocks": [
+    { "start": "06:00", "end": "09:00", "location": "courtyard", "mood": "sunbathing" },
+    { "start": "09:00", "end": "11:30", "location": "chai-stall-exterior", "mood": "begging-near-ravi" },
+    { "start": "11:30", "end": "13:00", "location": "kirana-shop-exterior", "mood": "near-sushilas-doorstep" },
+    { "start": "13:00", "end": "15:30", "location": "courtyard", "mood": "napping-in-shade" },
+    { "start": "15:30", "end": "18:00", "location": "alley", "mood": "patrolling" },
+    { "start": "18:00", "end": "21:00", "location": "courtyard", "mood": "evening-zoomies" },
+    { "start": "21:00", "end": "06:00", "location": "building-entrance", "mood": "curled-up-asleep" }
+  ]
+}
