@@ -1,0 +1,188 @@
+{
+  "id": "chawl-mohalla",
+  "displayName_key": "district.chawl-mohalla.displayName",
+  "tileSize": 16,
+  "widthTiles": 60,
+  "heightTiles": 40,
+  "spawnPoint": { "x": 480, "y": 320 },
+  "exits": [
+    {
+      "id": "to-bank-bazaar",
+      "x": 944,
+      "y": 512,
+      "target": "bank-bazaar",
+      "requires_unlock": true,
+      "unlock_quest": "graduation",
+      "note": "Archway gate. Two-tile wide (58,32)-(59,32) at pixel y=512. Stays collision-blocked until graduation quest completes."
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "mayas-room",
+      "x": 320,
+      "y": 144,
+      "displayName_key": "landmark.mayas-room",
+      "note": "Visible-only 2nd-floor room. NPC routed via ladder at (4,8). Maya descends to courtyard for 12:30 lunch and to building-entrance at 21:00."
+    },
+    {
+      "id": "bhola-office",
+      "x": 800,
+      "y": 416,
+      "displayName_key": "landmark.bhola-office"
+    },
+    {
+      "id": "chai-stall",
+      "x": 368,
+      "y": 384,
+      "displayName_key": "landmark.chai-stall",
+      "vendor": "ravi-anna"
+    },
+    {
+      "id": "kirana-shop",
+      "x": 192,
+      "y": 400,
+      "displayName_key": "landmark.kirana-shop",
+      "vendor": "sushila-aunty"
+    },
+    {
+      "id": "aaravs-room",
+      "x": 480,
+      "y": 208,
+      "displayName_key": "landmark.aaravs-room",
+      "resident": "aarav"
+    },
+    {
+      "id": "dipus-room",
+      "x": 608,
+      "y": 208,
+      "displayName_key": "landmark.dipus-room",
+      "resident": "dipu-kaka"
+    },
+    {
+      "id": "player-kholi",
+      "x": 352,
+      "y": 208,
+      "displayName_key": "landmark.player-kholi"
+    },
+    {
+      "id": "courtyard",
+      "x": 512,
+      "y": 432,
+      "displayName_key": "landmark.courtyard"
+    },
+    {
+      "id": "rooftop",
+      "x": 480,
+      "y": 96,
+      "displayName_key": "landmark.rooftop",
+      "note": "Schedule location for Maya tulsi tending and Aarav venting. Visible from playable area; entered via Maya ladder during late-game arcs."
+    },
+    {
+      "id": "building-entrance",
+      "x": 64,
+      "y": 272,
+      "displayName_key": "landmark.building-entrance",
+      "note": "Postbox + bicycle stand. Dabbawala loading point. Dipu's bench."
+    },
+    {
+      "id": "street",
+      "x": 768,
+      "y": 528,
+      "displayName_key": "landmark.street",
+      "note": "Bhola seth exits here at 20:00. Out-of-district routing happens via the archway exit."
+    },
+    {
+      "id": "dabbawala-route",
+      "x": 16,
+      "y": 528,
+      "displayName_key": "landmark.dabbawala-route",
+      "note": "Off-map abstract route. NPC despawns to this anchor during route blocks; respawns at building-entrance on return."
+    },
+    {
+      "id": "phone-line",
+      "x": 400,
+      "y": 192,
+      "displayName_key": "landmark.phone-line",
+      "note": "Non-spatial channel. Resolved at the landline-phone interact-zone inside player kholi."
+    },
+    {
+      "id": "alley",
+      "x": 480,
+      "y": 320,
+      "displayName_key": "landmark.alley"
+    }
+  ],
+  "npcSpawnPoints": [
+    { "npcId": "maya-didi", "x": 64, "y": 288, "scheduleLocationAt09": "mayas-room", "renderedAt": "ladder-base" },
+    { "npcId": "bhola-seth", "x": 800, "y": 320, "scheduleLocationAt09": "alley" },
+    { "npcId": "ravi-anna", "x": 368, "y": 400, "scheduleLocationAt09": "chai-stall" },
+    { "npcId": "sushila-aunty", "x": 192, "y": 400, "scheduleLocationAt09": "kirana-shop" },
+    { "npcId": "aarav", "x": 480, "y": 208, "scheduleLocationAt09": "aaravs-room" },
+    { "npcId": "lakshmi-dabbawala", "x": 64, "y": 320, "scheduleLocationAt09": "dabbawala-route", "renderedAt": "building-entrance-fallback" },
+    { "npcId": "dipu-kaka", "x": 608, "y": 208, "scheduleLocationAt09": "dipus-room" },
+    { "npcId": "maa-on-phone", "x": 352, "y": 192, "scheduleLocationAt09": "phone-line", "renderedAt": "player-kholi-landline" },
+    { "npcId": "the-postman", "x": 80, "y": 400, "scheduleLocationAt09": "off-route", "renderedAt": "postbox-fallback" },
+    { "npcId": "biscuit", "x": 384, "y": 352, "scheduleLocationAt09": "chai-stall-exterior" }
+  ],
+  "ambientNpcWaypoints": [
+    {
+      "id": "alley-east-west",
+      "points": [[80, 320], [880, 320]],
+      "note": "Bhola seth patrol; biscuit patrolling. Free overlap."
+    },
+    {
+      "id": "lakshmi-route-out",
+      "points": [[64, 320], [16, 528]],
+      "note": "Lakshmi exits via west-street and returns; off-map portion abstracted."
+    },
+    {
+      "id": "biscuit-circuit",
+      "points": [[512, 432], [384, 352], [192, 400], [880, 320], [512, 432]],
+      "note": "courtyard → chai-stall-exterior → kirana-exterior → alley → courtyard."
+    },
+    {
+      "id": "maya-descent",
+      "points": [[320, 144], [64, 128], [64, 288], [512, 432]],
+      "note": "From mayas-room down the ladder to courtyard for 12:30 lunch and quest cutscenes."
+    },
+    {
+      "id": "dipu-bench-route",
+      "points": [[608, 208], [64, 272]],
+      "note": "Dipu kaka from his room to the building-entrance bench at 10:00 and 16:00."
+    },
+    {
+      "id": "aarav-drift",
+      "points": [[480, 208], [368, 384], [512, 432], [480, 96]],
+      "note": "aaravs-room → chai-stall-exterior → courtyard → rooftop venting."
+    }
+  ],
+  "interactZones": {
+    "doors": [
+      "player-kholi-door",
+      "aarav-kholi-door",
+      "dipu-kholi-door",
+      "building-entrance",
+      "bhola-office-door",
+      "maya-ladder"
+    ],
+    "shops": ["kirana-counter", "chai-stall-counter"],
+    "props": ["postbox", "landline-phone", "biscuit-mat", "courtyard-tulsi", "hand-pump"],
+    "questTriggers": [
+      { "questId": "first-budget", "anchor": "kholi-table" },
+      { "questId": "needs-and-wants", "anchor": "aaravs-room" },
+      { "questId": "rent-day", "anchor": "rent-notice-on-door" },
+      { "questId": "chai-receipt", "anchor": "chai-stall-counter" },
+      { "questId": "emergency-seed", "anchor": "kholi-shelf" },
+      { "questId": "graduation", "anchor": "archway-to-bank-bazaar" }
+    ]
+  },
+  "collisionToggles": [
+    {
+      "id": "archway-unlock",
+      "tiles": [[58, 32], [59, 32]],
+      "fromBlockedTo": "open",
+      "triggerEvent": "quest.graduation.completed",
+      "note": "Two collision-1 tiles flip to 0 when the graduation quest fires its completion event."
+    }
+  ]
+}

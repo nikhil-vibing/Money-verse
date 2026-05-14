@@ -1,5 +1,5 @@
 {
-  "name": "@dhaniverse/content",
+  "name": "@money-verse/content",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -15,12 +15,13 @@
     "test": "vitest run",
     "lint": "biome check src",
     "typecheck": "tsc --noEmit",
+    "typecheck:test": "tsc --noEmit -p tsconfig.test.json",
     "content:compile": "node scripts/compile.mjs",
     "i18n:check": "node scripts/i18n-check.mjs",
     "clean": "rm -rf dist .turbo node_modules"
   },
   "dependencies": {
-    "@dhaniverse/shared": "workspace:*",
+    "@money-verse/shared": "workspace:*",
     "zod": "^3.23.0"
   },
   "files": [

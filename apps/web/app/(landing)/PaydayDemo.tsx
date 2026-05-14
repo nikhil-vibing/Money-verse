@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useReducer } from "react";
+import { PixelGlyph } from "./PixelGlyph";
 
 const SALARY = 15_000;
 
@@ -71,7 +72,7 @@ export function PaydayDemo() {
             <span className="text-[var(--color-ink-muted)]">Split ₹15,000 three ways.</span>
           </h2>
           <p className="mt-4 text-[var(--color-ink-muted)]">
-            No signup. No score. This is how a Dhaniverse quest feels — you
+            No signup. No score. This is how a Money-verse quest feels — you
             *do* the concept; the dialog comes after.
           </p>
         </div>
@@ -151,11 +152,8 @@ export function PaydayDemo() {
 
           <div className="rounded-2xl border border-white/10 bg-[var(--color-indigo-night)] p-6">
             <div className="mb-3 flex items-center gap-3">
-              <div
-                aria-hidden
-                className="pixel-edge grid h-10 w-10 place-items-center rounded bg-[var(--color-rose-dust)] text-lg"
-              >
-                👩🏽‍💼
+              <div className="pixel-edge grid h-12 w-12 place-items-center rounded bg-[var(--color-rose-dust)]">
+                <PixelGlyph name="mentor" size={40} />
               </div>
               <div>
                 <div className="font-display text-sm">CA Lakshmi aunty</div>

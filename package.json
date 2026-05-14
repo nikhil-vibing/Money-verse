@@ -1,8 +1,8 @@
 {
-  "name": "dhaniverse",
+  "name": "money-verse",
   "version": "0.1.0",
   "private": true,
-  "description": "Dhaniverse 2.0 — 2D HD-pixel RPG that teaches Indians to manage money.",
+  "description": "Money-verse — 2D HD-pixel RPG that teaches Indians to manage money.",
   "license": "AGPL-3.0-only",
   "packageManager": "pnpm@9.12.0",
   "engines": {
@@ -15,9 +15,9 @@
   ],
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "dev:web": "turbo run dev --filter=@dhaniverse/web",
-    "dev:game": "turbo run dev --filter=@dhaniverse/game",
-    "dev:server": "turbo run dev --filter=@dhaniverse/server",
+    "dev:web": "turbo run dev --filter=@money-verse/web",
+    "dev:game": "turbo run dev --filter=@money-verse/game",
+    "dev:server": "turbo run dev --filter=@money-verse/server",
     "build": "turbo run build",
     "test": "turbo run test",
     "test:coverage": "turbo run test:coverage",
@@ -26,12 +26,12 @@
     "lint:fix": "biome check --write . && turbo run lint:fix",
     "format": "biome format --write .",
     "typecheck": "turbo run typecheck",
-    "db:push": "turbo run db:push --filter=@dhaniverse/shared",
-    "db:studio": "turbo run db:studio --filter=@dhaniverse/shared",
-    "db:migrate": "turbo run db:migrate --filter=@dhaniverse/shared",
-    "content:compile": "turbo run content:compile --filter=@dhaniverse/content",
-    "assets:atlas": "turbo run assets:atlas --filter=@dhaniverse/game",
-    "i18n:check": "turbo run i18n:check --filter=@dhaniverse/content",
+    "db:push": "turbo run db:push --filter=@money-verse/shared",
+    "db:studio": "turbo run db:studio --filter=@money-verse/shared",
+    "db:migrate": "turbo run db:migrate --filter=@money-verse/shared",
+    "content:compile": "turbo run content:compile --filter=@money-verse/content",
+    "assets:atlas": "turbo run assets:atlas --filter=@money-verse/game",
+    "i18n:check": "turbo run i18n:check --filter=@money-verse/content",
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {

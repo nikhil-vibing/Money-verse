@@ -24,11 +24,11 @@ const hind = Hind({
 });
 
 export const metadata: Metadata = {
-  title: "Dhaniverse 2.0 — Money, as an adventure",
+  title: "Money-verse — Money, as an adventure",
   description:
     "A free, hand-painted 2D RPG that teaches Indian financial literacy — without ever pretending speculation is a game.",
   openGraph: {
-    title: "Dhaniverse 2.0",
+    title: "Money-verse",
     description:
       "Money, as an adventure. Set in an India you'll recognise. Free forever, open-source.",
     type: "website",

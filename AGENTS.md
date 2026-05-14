@@ -1,4 +1,4 @@
-# AGENTS.md — Multi-agent orchestration for Dhaniverse 2.0
+# AGENTS.md — Multi-agent orchestration for Money-verse
 
 > **Audience:** Claude Code + any agentic coding tool that respects the `AGENTS.md` convention. Each named subagent below has a corresponding markdown definition in `.claude/agents/<name>.md`. Spawn via the Agent tool with `subagent_type: <name>`.
 

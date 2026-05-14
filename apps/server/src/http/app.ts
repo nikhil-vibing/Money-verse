@@ -6,7 +6,7 @@ export function createHttpApp(): Hono {
   app.get("/health", (c) => c.json({ ok: true }));
 
   app.get("/version", (c) =>
-    c.json({ name: "dhaniverse-server", version: "0.1.0" }),
+    c.json({ name: "money-verse-server", version: "0.1.0" }),
   );
 
   return app;

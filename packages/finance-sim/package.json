@@ -1,5 +1,5 @@
 {
-  "name": "@dhaniverse/finance-sim",
+  "name": "@money-verse/finance-sim",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
     "clean": "rm -rf dist .turbo node_modules"
   },
   "dependencies": {
-    "@dhaniverse/shared": "workspace:*"
+    "@money-verse/shared": "workspace:*"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^2.1.0",

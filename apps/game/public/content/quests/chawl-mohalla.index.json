@@ -1,0 +1,40 @@
+{
+  "district": "chawl-mohalla",
+  "domain": "budgeting",
+  "quests": [
+    "first-budget",
+    "needs-and-wants",
+    "rent-day",
+    "chai-receipt",
+    "emergency-seed",
+    "graduation"
+  ],
+  "unlock_chain": {
+    "first-budget": {
+      "requires": [],
+      "unlocks": ["needs-and-wants"]
+    },
+    "needs-and-wants": {
+      "requires": ["first-budget"],
+      "unlocks": ["rent-day"]
+    },
+    "rent-day": {
+      "requires": ["needs-and-wants"],
+      "unlocks": ["chai-receipt"]
+    },
+    "chai-receipt": {
+      "requires": ["rent-day"],
+      "unlocks": ["emergency-seed"]
+    },
+    "emergency-seed": {
+      "requires": ["chai-receipt"],
+      "unlocks": ["graduation"]
+    },
+    "graduation": {
+      "requires": ["emergency-seed"],
+      "unlocks": [],
+      "unlocksDistrict": "bank-bazaar"
+    }
+  },
+  "totalEstMinutes": 37
+}

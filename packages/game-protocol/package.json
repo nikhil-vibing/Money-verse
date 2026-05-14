@@ -1,5 +1,5 @@
 {
-  "name": "@dhaniverse/game-protocol",
+  "name": "@money-verse/game-protocol",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@colyseus/schema": "^5.0.3",
-    "@dhaniverse/shared": "workspace:*"
+    "@money-verse/shared": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.6.0",

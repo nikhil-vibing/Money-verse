@@ -1,4 +1,4 @@
-# Dhaniverse 2.0 — Tech Stack
+# Money-verse — Tech Stack
 
 **Principle:** *Only open-source dependencies.* We compose battle-tested libraries; we only build what doesn't exist in the open-source world.
 

@@ -1,3 +1,5 @@
+import { PixelGlyph } from "./PixelGlyph";
+
 const districts = [
   {
     id: "chawl-mohalla",
@@ -5,7 +7,6 @@ const districts = [
     domain: "Where you wake up. Budgeting.",
     npc: "Maya didi · neighbour",
     color: "var(--color-terracotta)",
-    glyph: "🏘️",
   },
   {
     id: "bank-bazaar",
@@ -13,7 +14,6 @@ const districts = [
     domain: "Old banks, FD ladders, savings.",
     npc: "CA Lakshmi aunty",
     color: "var(--color-saffron)",
-    glyph: "🏦",
   },
   {
     id: "karyalaya-park",
@@ -21,7 +21,6 @@ const districts = [
     domain: "Office work, EPF, your first tax.",
     npc: "HR Sunita · onboarding",
     color: "var(--color-mint)",
-    glyph: "🏢",
   },
   {
     id: "niveshak-chowk",
@@ -29,7 +28,6 @@ const districts = [
     domain: "The exchange. Equity, MF, SIP.",
     npc: "Karthik bhai · broker",
     color: "var(--color-rose-dust)",
-    glyph: "📈",
   },
   {
     id: "rakshak-lane",
@@ -37,7 +35,6 @@ const districts = [
     domain: "Insurance, emergencies, protection.",
     npc: "Asha aunty · agent (the good kind)",
     color: "var(--color-saffron-bright)",
-    glyph: "🛡️",
   },
   {
     id: "vyapaar-mandi",
@@ -45,7 +42,6 @@ const districts = [
     domain: "Side hustles. Chai stalls. Unit economics.",
     npc: "Bansal seth · landlord-friend",
     color: "var(--color-terracotta)",
-    glyph: "🏪",
   },
   {
     id: "bhavishya-ghat",
@@ -53,9 +49,8 @@ const districts = [
     domain: "The riverbank. NPS, retirement, estate.",
     npc: "Grandma · keeper of stories",
     color: "var(--color-ink-muted)",
-    glyph: "🛶",
   },
-];
+] as const;
 
 export function DistrictMap() {
   return (
@@ -93,22 +88,17 @@ export function DistrictMap() {
             >
               <div className="flex items-start justify-between">
                 <div
-                  aria-hidden
-                  className="pixel-edge grid h-10 w-10 place-items-center rounded text-xl"
-                  style={{ background: d.color, color: "var(--color-indigo-night)" }}
+                  className="pixel-edge grid h-12 w-12 place-items-center rounded"
+                  style={{ background: d.color }}
                 >
-                  {d.glyph}
+                  <PixelGlyph name={d.id} size={36} />
                 </div>
                 <span className="font-mono text-[10px] text-[var(--color-ink-muted)]/60">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <h3 className="mt-4 font-display text-xl font-medium">
-                {d.name}
-              </h3>
-              <p className="mt-1 text-sm text-[var(--color-ink-muted)]">
-                {d.domain}
-              </p>
+              <h3 className="mt-4 font-display text-xl font-medium">{d.name}</h3>
+              <p className="mt-1 text-sm text-[var(--color-ink-muted)]">{d.domain}</p>
               <div className="mt-4 flex items-center gap-2 text-[12px] text-[var(--color-ink-muted)]/80">
                 <span aria-hidden>—</span>
                 <span>{d.npc}</span>

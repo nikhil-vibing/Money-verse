@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { District, SkillDomain } from "@dhaniverse/shared";
+import { District, SkillDomain } from "@money-verse/shared";
 
 export const QuestSchema = z.object({
   id: z.string().min(1),
@@ -30,3 +30,5 @@ export const NpcSchema = z.object({
 });
 
 export type Npc = z.infer<typeof NpcSchema>;
+
+export * from "./maya";

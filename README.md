@@ -1,4 +1,4 @@
-# Dhaniverse 2.0
+# Money-verse
 
 **A 2D HD-pixel RPG that teaches Indians to manage money — calmly, in your own time, in your own context.**
 

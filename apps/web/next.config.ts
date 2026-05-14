@@ -3,9 +3,9 @@ import type { NextConfig } from "next";
 const config: NextConfig = {
   reactStrictMode: true,
   transpilePackages: [
-    "@dhaniverse/finance-sim",
-    "@dhaniverse/shared",
-    "@dhaniverse/ui",
+    "@money-verse/finance-sim",
+    "@money-verse/shared",
+    "@money-verse/ui",
   ],
   typedRoutes: true,
   cacheComponents: true,

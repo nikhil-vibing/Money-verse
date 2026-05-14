@@ -2,46 +2,66 @@
 
 import { useEffect, useRef } from "react";
 
+const FOCUS_DELAY_MS = 100;
+
 export default function GameMount() {
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let game: { destroy: (a: boolean) => void } | undefined;
+    let focusTimer: ReturnType<typeof setTimeout> | undefined;
+    let cancelled = false;
+
     void (async () => {
       const Phaser = await import("phaser");
-      const { BootScene } = await import("../../../game/src/scenes/BootScene");
-      const { PreloadScene } = await import(
-        "../../../game/src/scenes/PreloadScene"
+      const { createPhaserConfig } = await import(
+        "../../../game/src/createPhaserConfig"
       );
-      const { WorldScene } = await import(
-        "../../../game/src/scenes/WorldScene"
-      );
-      const { UIScene } = await import("../../../game/src/scenes/UIScene");
-      const { DialogScene } = await import(
-        "../../../game/src/scenes/DialogScene"
+      if (cancelled) return;
+
+      game = new Phaser.Game(
+        createPhaserConfig({ parent: containerRef.current ?? undefined }),
       );
 
-      game = new Phaser.Game({
-        type: Phaser.WEBGL,
-        parent: ref.current ?? undefined,
-        backgroundColor: "#0a0612",
-        pixelArt: true,
-        scale: {
-          mode: Phaser.Scale.RESIZE,
-          autoCenter: Phaser.Scale.CENTER_BOTH,
-        },
-        scene: [BootScene, PreloadScene, WorldScene, UIScene, DialogScene],
-      });
+      // Pull keyboard focus onto the canvas container so the game receives
+      // input immediately after mount — and so screen-reader users land
+      // somewhere useful when they tab into the page.
+      focusTimer = setTimeout(() => {
+        containerRef.current?.focus();
+      }, FOCUS_DELAY_MS);
     })();
-    return () => game?.destroy(true);
+
+    return () => {
+      cancelled = true;
+      if (focusTimer !== undefined) clearTimeout(focusTimer);
+      game?.destroy(true);
+    };
   }, []);
 
   return (
-    <div
-      ref={ref}
-      role="application"
-      aria-label="Dhaniverse game"
-      className="h-screen w-screen"
-    />
+    <>
+      <div
+        ref={containerRef}
+        id="game-root"
+        role="application"
+        aria-label="Money-verse game canvas"
+        tabIndex={0}
+        className="h-screen w-screen"
+      />
+      <div
+        id="game-aria-live"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      />
+      <div
+        id="game-aria-alerts"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        className="sr-only"
+      />
+    </>
   );
 }

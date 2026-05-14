@@ -1,10 +1,12 @@
 {
-  "name": "@dhaniverse/game",
+  "name": "@money-verse/game",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/copy-content.mjs",
     "dev": "vite --port 5173",
+    "prebuild": "node scripts/copy-content.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
@@ -16,15 +18,16 @@
     "clean": "rm -rf dist .turbo node_modules"
   },
   "dependencies": {
-    "@dhaniverse/content": "workspace:*",
-    "@dhaniverse/finance-sim": "workspace:*",
-    "@dhaniverse/game-protocol": "workspace:*",
-    "@dhaniverse/shared": "workspace:*",
+    "@money-verse/content": "workspace:*",
+    "@money-verse/finance-sim": "workspace:*",
+    "@money-verse/game-protocol": "workspace:*",
+    "@money-verse/shared": "workspace:*",
     "colyseus.js": "^0.16.22",
     "easystarjs": "^0.4.4",
     "howler": "^2.2.4",
     "i18next": "^23.15.0",
     "phaser": "^3.90.0",
+    "phaser3-rex-plugins": "~1.80.20",
     "yarn-bound": "^0.5.5"
   },
   "devDependencies": {

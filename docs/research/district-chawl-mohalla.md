@@ -1,6 +1,6 @@
 # Chawl Mohalla — Starting District Research Brief
 
-> Subproblem of [Dhaniverse 2.0 PRD §5](../PRD.md). Domain: Budgeting & expenses. Mentor: *Maya didi.* Setup line: "rent ₹4,800, chai ₹10."
+> Subproblem of [Money-verse PRD §5](../PRD.md). Domain: Budgeting & expenses. Mentor: *Maya didi.* Setup line: "rent ₹4,800, chai ₹10."
 >
 > Method: research → pattern extraction → meta-framework, applied to *first hours in RPGs* and *first lessons in edu products*.
 

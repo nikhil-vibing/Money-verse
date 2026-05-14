@@ -1,0 +1,23 @@
+{
+  "district": "chawl-mohalla",
+  "npcs": [
+    "maya-didi",
+    "bhola-seth",
+    "ravi-anna",
+    "sushila-aunty",
+    "aarav",
+    "lakshmi-dabbawala",
+    "dipu-kaka",
+    "maa-on-phone",
+    "the-postman",
+    "biscuit"
+  ],
+  "notes": {
+    "voiceConvention": "Hinglish baseline (80% English, sprinkled Hindi vocatives: 'arre', 'na', 'yaar', 'beta'). Each NPC keeps a distinct register: Maya warm-patient, Bhola smooth-fast, Ravi tamil-flavoured short, Sushila matter-of-fact, Aarav hype-slangy, Lakshmi terse-efficient, Dipu dignified-slow, Maa worried-warm, Postman bureaucratic-minimal, Biscuit non-verbal action tokens.",
+    "roleConvention": "District 1 (budgeting) frames money as attention, not optimisation. Maya is the mentor (PRD §5). Bhola is the cautionary foil (predatory lender). Aarav is the same-age peer foil (impulsive). Ravi, Sushila, Lakshmi, Dipu are ambient adults each modelling a different relationship to money (information, discipline, systems, patience). Maa-on-phone is the off-screen anchor. The Postman gates weekly content. Biscuit is the affection sub-system.",
+    "diversityNote": "Cast spans ages 9 (Biscuit narratively) to 70+ (Dipu kaka). Gender balance: 5 women (Maya, Sushila, Lakshmi, Maa, Biscuit is gender-neutral), 4 men (Bhola, Ravi, Dipu, Postman), 1 same-age peer (Aarav). Regional cues: South Indian (Ravi), urban Maharashtra-style chawl baseline, post-office RD tradition (Lakshmi, Dipu). No caste or religion markers — deliberately omitted.",
+    "scheduleConvention": "All blocks in 24h in-game time, covering 06:00-22:00 active window. NPCs off-screen outside their blocks are assumed asleep or off-route. Indoor locations (mayas-room, aaravs-room, dipus-room, kirana-shop, chai-stall) are exclusive to one NPC. Suffix '-exterior' (e.g. chai-stall-exterior, kirana-shop-exterior) marks the public threshold where overlap is permitted. Outdoor locations (courtyard, alley, rooftop, building-entrance, street, dabbawala-route) allow free overlap and are encouraged to feel populated. 'phone-line' is a non-spatial channel routed through the player's room landline.",
+    "memoryConvention": "Hooks reference codebase state keys: wallets.inrCash (wallets_inr_*), masteryNodes (mastery_node_gte:<nodeId>:<level>), questsState (completed_quest:<id>, active_quest:<id>, failed_quest:<id>:<count>), streaks.currentLen (streak_current_gte:<n>). NPC-specific keys (tab_balance, pet_count, fed_biscuit_streak, missed_repayment) are local sub-system state owned by the NPC's authored quest chain. <<requires_district_unlock:*>> guards gate dialog branches behind district progression so NPCs don't spoil future content.",
+    "districtUnlockGate": "Budget Mastery I unlocks Bank Bazaar (PRD §5 table). Maya, Lakshmi, and Dipu each have a graduation branch under <<requires_district_unlock:bank-bazaar>>. Bhola and Dipu hint at later districts (Bank Bazaar, Bhavishya Ghat) but never deliver content beyond Chawl Mohalla scope."
+  }
+}

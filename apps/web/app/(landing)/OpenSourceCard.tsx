@@ -21,7 +21,7 @@ export function OpenSourceCard() {
               </span>
             </h2>
             <p className="mt-5 max-w-xl text-[var(--color-ink-muted)]">
-              Every dependency in Dhaniverse 2.0 has a permissive licence. We
+              Every dependency in Money-verse has a permissive licence. We
               only build what doesn't exist in the OSS world — Indian-context
               financial math, HD-2D-lite shaders, the quest engine. Everything
               else, we compose.

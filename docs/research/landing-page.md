@@ -1,4 +1,4 @@
-# Dhaniverse 2.0 — Landing Page Research Brief
+# Money-verse — Landing Page Research Brief
 
 > Research target: a landing page that converts cozy-RPG players, F&O-burned devs, and 16-year-old phone-natives into Day-1 players of a free, open-source Indian financial-literacy RPG. Steal shamelessly. Attribute always.
 
@@ -104,12 +104,12 @@ The goal is not "SaaS hero with a gradient and 3 feature cards." The first 4 sec
 
 ---
 
-## Section 5 — Blueprint for Dhaniverse 2.0
+## Section 5 — Blueprint for Money-verse
 
 ### 5.1 Section list (top → bottom)
 
 1. **Sticky utility bar** (12px): EN/HI toggle · GitHub stars · "Free forever, open-source" pill. Hides on scroll-down, returns on scroll-up.
-2. **Hero diorama** — full-viewport parallax of a Chawl-Mohalla evening. Logo, one-sentence pitch, one CTA *"Step into Dhaniverse →"*. Secondary text-link: *"Watch the 60s trailer."*
+2. **Hero diorama** — full-viewport parallax of a Chawl-Mohalla evening. Logo, one-sentence pitch, one CTA *"Step into Money-verse →"*. Secondary text-link: *"Watch the 60s trailer."*
 3. **Playable beat.** 480×270 interactive: *"It's your first payday. Split ₹15,000."* Three drag-targets (Rent · Save · Spend). A tiny NPC reacts. No signup.
 4. **Seven districts** — illustrated map; each district is a card with an NPC portrait + one-line domain ("Bank Bazaar — where you meet CA Lakshmi aunty").
 5. **Pillars as promises** — 4 cards: *Hide the lesson in the verb · Mastery, not grind · Forgiveness, not punishment · Free forever, no dark patterns.* Each card: one illo, one sentence, one citation (Khan / Celeste / Duolingo / Varsity).
@@ -117,7 +117,7 @@ The goal is not "SaaS hero with a gradient and 3 feature cards." The first 4 sec
 7. **Inspired by** — honest attribution rail: Stardew · Celeste · Duolingo · Khan · Varsity. No fake "as seen in."
 8. **Anti-promise band** — black, white serif: *"No confetti. No leaderboards by P&L. No notifications hyping volatility. No paywalled lessons. Ever."* The moat.
 9. **Open source / contribute** — GitHub card, license, good-first-issues, Discord.
-10. **Final CTA** — repeat *"Step into Dhaniverse"* over a night-palette parallax. Footer: credits, a11y statement, contact.
+10. **Final CTA** — repeat *"Step into Money-verse"* over a night-palette parallax. Footer: credits, a11y statement, contact.
 
 ### 5.2 Hero — 4-second narrative
 
@@ -128,7 +128,7 @@ The goal is not "SaaS hero with a gradient and 3 feature cards." The first 4 sec
 
 **Subline:** A free, hand-painted 2D RPG that teaches Indian financial literacy — without ever pretending speculation is a game.
 
-**Primary CTA:** `Step into Dhaniverse →` · **Secondary:** `Watch the 60s trailer`
+**Primary CTA:** `Step into Money-verse →` · **Secondary:** `Watch the 60s trailer`
 **Trust pill:** `Free forever · Open source · No accounts to start`
 
 ### 5.3 Tone of voice (one paragraph showing how a section reads)
@@ -213,4 +213,4 @@ In `app/(landing)/` as Server Components except where marked `'use client'`:
 
 ## Section 6 — The single biggest steal
 
-If we steal only *one* thing: **Sabotage's diorama-as-hero.** Combined with Varsity's tonal calm and Brilliant's playable-in-hero demo, that triad differentiates Dhaniverse 2.0 from every Indian fintech page and every generic indie-game site in the first four seconds. The rest is execution.
+If we steal only *one* thing: **Sabotage's diorama-as-hero.** Combined with Varsity's tonal calm and Brilliant's playable-in-hero demo, that triad differentiates Money-verse from every Indian fintech page and every generic indie-game site in the first four seconds. The rest is execution.

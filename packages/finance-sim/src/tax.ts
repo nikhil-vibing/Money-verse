@@ -3,7 +3,7 @@ import {
   TAX_NEW_REGIME_FY_2025_26,
   TAX_OLD_REGIME_FY_2025_26,
   type TaxSlab,
-} from "@dhaniverse/shared/constants";
+} from "@money-verse/shared/constants";
 
 export interface TaxBreakdown {
   readonly slabTax: number;

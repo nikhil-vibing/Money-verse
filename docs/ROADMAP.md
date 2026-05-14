@@ -1,4 +1,4 @@
-# Dhaniverse 2.0 — Roadmap
+# Money-verse — Roadmap
 
 > Phased plan. Each phase ends with a public preview build. Pillar compliance (PRD §4) is checked at every phase gate.
 

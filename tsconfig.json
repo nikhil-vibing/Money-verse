@@ -18,16 +18,16 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@dhaniverse/shared": ["./packages/shared/src"],
-      "@dhaniverse/shared/*": ["./packages/shared/src/*"],
-      "@dhaniverse/finance-sim": ["./packages/finance-sim/src"],
-      "@dhaniverse/finance-sim/*": ["./packages/finance-sim/src/*"],
-      "@dhaniverse/game-protocol": ["./packages/game-protocol/src"],
-      "@dhaniverse/game-protocol/*": ["./packages/game-protocol/src/*"],
-      "@dhaniverse/content": ["./packages/content/src"],
-      "@dhaniverse/content/*": ["./packages/content/src/*"],
-      "@dhaniverse/ui": ["./packages/ui/src"],
-      "@dhaniverse/ui/*": ["./packages/ui/src/*"]
+      "@money-verse/shared": ["./packages/shared/src"],
+      "@money-verse/shared/*": ["./packages/shared/src/*"],
+      "@money-verse/finance-sim": ["./packages/finance-sim/src"],
+      "@money-verse/finance-sim/*": ["./packages/finance-sim/src/*"],
+      "@money-verse/game-protocol": ["./packages/game-protocol/src"],
+      "@money-verse/game-protocol/*": ["./packages/game-protocol/src/*"],
+      "@money-verse/content": ["./packages/content/src"],
+      "@money-verse/content/*": ["./packages/content/src/*"],
+      "@money-verse/ui": ["./packages/ui/src"],
+      "@money-verse/ui/*": ["./packages/ui/src/*"]
     }
   },
   "exclude": ["node_modules", "dist", ".next", ".turbo"]

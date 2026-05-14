@@ -1,4 +1,5 @@
 import { HeroDiorama } from "./HeroDiorama";
+import { HeroAtmosphereGate } from "./HeroAtmosphereGate";
 
 export function HeroSection() {
   return (
@@ -7,6 +8,7 @@ export function HeroSection() {
       aria-labelledby="hero-headline"
     >
       <HeroDiorama />
+      <HeroAtmosphereGate />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-2.25rem)] max-w-7xl flex-col justify-end px-6 pb-16 pt-24 sm:px-10 sm:pb-24">
         <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[11px] text-[var(--color-ink-muted)] backdrop-blur">
@@ -37,7 +39,7 @@ export function HeroSection() {
             href="/play"
             className="group inline-flex items-center gap-3 rounded-md bg-[var(--color-saffron)] px-6 py-3.5 text-base font-semibold text-[var(--color-indigo-night)] shadow-[0_0_0_1px_rgba(247,183,51,0.4),0_24px_60px_-20px_rgba(247,183,51,0.5)] transition hover:bg-[var(--color-saffron-bright)]"
           >
-            Step into Dhaniverse
+            Step into Money-verse
             <span aria-hidden className="transition-transform group-hover:translate-x-1">
               →
             </span>

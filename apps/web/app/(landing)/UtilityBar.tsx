@@ -34,7 +34,7 @@ export function UtilityBar() {
               ₹
             </span>
             <span className="font-display text-[13px] tracking-tight">
-              Dhaniverse <span className="text-[var(--color-ink-muted)]">2.0</span>
+              Money-verse <span className="text-[var(--color-ink-muted)]">2.0</span>
             </span>
             <span className="hidden rounded-full bg-[var(--color-mint)]/15 px-2 py-0.5 text-[10px] text-[var(--color-mint)] sm:inline">
               Free forever · Open source

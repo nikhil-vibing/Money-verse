@@ -1,6 +1,6 @@
 # CLAUDE.md — Project guide for Claude Code
 
-> **You are working on Dhaniverse 2.0** — a 2D HD-pixel RPG that teaches financial literacy to Indian users. Open-source-only stack. Better-than-v1 in UI, graphics, experience, and learning.
+> **You are working on Money-verse** — a 2D HD-pixel RPG that teaches financial literacy to Indian users. Open-source-only stack. Better-than-v1 in UI, graphics, experience, and learning.
 >
 > **Before you do anything new, read [docs/PRD.md](./docs/PRD.md), then check the relevant pillar in §4 of that doc.** Pillar violations are blocking.
 

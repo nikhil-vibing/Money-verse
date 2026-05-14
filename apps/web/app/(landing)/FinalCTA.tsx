@@ -35,7 +35,7 @@ export function FinalCTA() {
             href="/play"
             className="group inline-flex items-center gap-3 rounded-md bg-[var(--color-saffron)] px-8 py-4 text-lg font-semibold text-[var(--color-indigo-night)] shadow-[0_0_0_1px_rgba(247,183,51,0.4),0_30px_80px_-20px_rgba(247,183,51,0.5)] transition hover:bg-[var(--color-saffron-bright)]"
           >
-            Step into Dhaniverse
+            Step into Money-verse
             <span aria-hidden className="transition-transform group-hover:translate-x-1">
               →
             </span>

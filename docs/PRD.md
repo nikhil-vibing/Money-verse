@@ -1,4 +1,4 @@
-# Dhaniverse 2.0 — Product Requirements Document
+# Money-verse — Product Requirements Document
 
 **Version:** 1.0 · **Status:** Draft for build · **Owner:** @admin · **Last updated:** 2026-05-14
 
@@ -8,7 +8,7 @@
 
 ## 1. Vision
 
-**One sentence:** *Dhaniverse 2.0 is a 2D HD-pixel RPG that teaches Indians to manage money by making financial life feel like an adventure — without ever pretending speculation is a game.*
+**One sentence:** *Money-verse is a 2D HD-pixel RPG that teaches Indians to manage money by making financial life feel like an adventure — without ever pretending speculation is a game.*
 
 **Pitch:** A hand-authored open-world city set in a near-future India, where you live a financial life. You wake in a chawl, get a first job, learn to budget, open a bank account, file your first taxes, navigate scams, build a portfolio, start a side hustle, and eventually buy a home — all by playing through quests with NPCs modelled on the people you'd actually meet (a chartered accountant aunty, a Zerodha-clone broker, a fixer landlord, an EPF-confused colleague). Multiplayer is async-first: visit friends' apartments, leave gifts, cooperate on weekend market events.
 
@@ -90,7 +90,7 @@ Reflection screen → 1 min         ("today you learned X,
 ## 5. World structure
 
 ### Setting
-*Dhaniverse* — a hand-painted near-future Indian metropolis amalgamating Mumbai's chawls, Bengaluru's tech parks, Delhi's markets, and Kolkata's older banking houses.
+*Money-verse* — a hand-painted near-future Indian metropolis amalgamating Mumbai's chawls, Bengaluru's tech parks, Delhi's markets, and Kolkata's older banking houses.
 
 ### Districts (= skill-tree branches `[M:Khan]`)
 
@@ -110,7 +110,7 @@ Each district has 8–12 authored NPCs, 5–8 quests, 1 boss-tier "challenge eve
 
 | NPC | Role | Inspiration | Function |
 |---|---|---|---|
-| **Maya didi** | Mentor | original Dhaniverse Maya | First-quest guide; replaces "tutorial" |
+| **Maya didi** | Mentor | original Money-verse Maya | First-quest guide; replaces "tutorial" |
 | **CA Lakshmi aunty** | Tax mentor | Real CA archetype | Filing season quests |
 | **Bhola seth** | Predatory lender | Cautionary | Teaches the cost of borrowing |
 | **Karthik bhai** | Broker | Karthik Rangappa nod | Stock-market mentor; never pushes trades |
@@ -339,7 +339,7 @@ This PRD blends:
 - **Varsity-context** (INR + Indian instruments + free forever) —
 explicitly *rejects* Robinhood's dark-pattern playbook.
 
-Deviations from the original Dhaniverse:
+Deviations from the original Money-verse:
 - We move *away* from the "Get rich or die trying" framing (speculative tone) toward "Master your money calmly."
 - We expand to 7 districts with mastery gates vs the original's flatter exploration.
 - We commit to async-first multiplayer (less infra-heavy than persistent sync world).

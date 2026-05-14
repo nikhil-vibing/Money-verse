@@ -2,7 +2,7 @@ import { type VercelConfig, routes } from "@vercel/config/v1";
 
 export const config: VercelConfig = {
   framework: "nextjs",
-  buildCommand: "pnpm turbo run build --filter=@dhaniverse/web",
+  buildCommand: "pnpm turbo run build --filter=@money-verse/web",
   installCommand: "pnpm install --frozen-lockfile",
   outputDirectory: "apps/web/.next",
   rewrites: [

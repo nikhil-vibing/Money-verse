@@ -1,4 +1,4 @@
-# Dhaniverse 2.0 — Architecture
+# Money-verse — Architecture
 
 **Status:** Draft · **Audience:** Engineers + Claude Code agents · **Last updated:** 2026-05-14
 

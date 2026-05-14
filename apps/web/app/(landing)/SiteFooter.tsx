@@ -10,7 +10,7 @@ export function SiteFooter() {
             >
               ₹
             </span>
-            <span className="font-display text-lg">Dhaniverse 2.0</span>
+            <span className="font-display text-lg">Money-verse</span>
           </div>
           <p className="mt-4 max-w-xs text-sm text-[var(--color-ink-muted)]">
             Built in the open. For the rupee that comes in, the rupee that
@@ -49,7 +49,7 @@ export function SiteFooter() {
         />
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-col items-start justify-between gap-3 border-t border-white/5 pt-6 text-[11px] text-[var(--color-ink-muted)]/60 sm:flex-row sm:items-center">
-        <span>© Dhaniverse contributors · AGPL-3.0 · CC-BY 4.0 (art)</span>
+        <span>© Money-verse contributors · AGPL-3.0 · CC-BY 4.0 (art)</span>
         <span>Made with open source. Made in India.</span>
       </div>
     </footer>

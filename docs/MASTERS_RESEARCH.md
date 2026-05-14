@@ -1,8 +1,8 @@
-# Dhaniverse 2.0 — Masters Research Brief
+# Money-verse — Masters Research Brief
 
 > Generated via the **master** skill (research-first execution engine). Every design decision in [PRD.md](./PRD.md) traces back to a pattern documented here.
 
-This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, built on Phaser 3 + Colyseus + Next.js) in the documented practice of people who have actually shipped great educational games, great 2D RPGs, and great financial-education products. Every method below is attributed to a shipped, public source.
+This brief grounds Money-verse (a 2D RPG that teaches financial literacy, built on Phaser 3 + Colyseus + Next.js) in the documented practice of people who have actually shipped great educational games, great 2D RPGs, and great financial-education products. Every method below is attributed to a shipped, public source.
 
 ---
 
@@ -18,7 +18,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Single-concept levels — each puzzle teaches exactly one rule.
   - Friendly, low-fear visual language.
 - **Anti-patterns:** Lectures before play; mixing multiple new rules in one level.
-- **Application to Dhaniverse 2.0:** Teach compounding, diversification, and risk via visual abstractions (growing "saplings" for compound interest, sorting coloured tokens for diversification) **before** introducing formal terms.
+- **Application to Money-verse:** Teach compounding, diversification, and risk via visual abstractions (growing "saplings" for compound interest, sorting coloured tokens for diversification) **before** introducing formal terms.
 
 ### MASTER 2: Luis von Ahn (Duolingo)
 - **Domain:** Educational design / retention
@@ -30,7 +30,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Short sessions (2–5 min) to keep activation energy trivial.
   - Escalating ambient pressure (animated flame, mascot, leagues).
 - **Anti-patterns:** Long lessons; hard resets that destroy long-streak users.
-- **Application to Dhaniverse 2.0:** Daily *market open* ritual — 3-5 min morning loop (check portfolio, claim insight, one micro-lesson). Streaks track financial habits, not lessons. Forgiveness via in-world "vacation days."
+- **Application to Money-verse:** Daily *market open* ritual — 3-5 min morning loop (check portfolio, claim insight, one micro-lesson). Streaks track financial habits, not lessons. Forgiveness via in-world "vacation days."
 
 ### MASTER 3: Sal Khan (Khan Academy)
 - **Domain:** Financial / general education
@@ -42,7 +42,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Bite-sized videos paired with practice — never one without the other.
   - Spaced skill review.
 - **Anti-patterns:** Time-based promotion; passive video without an exercise.
-- **Application to Dhaniverse 2.0:** Skill tree organised by domain (Budgeting → Banking → Investing → Taxes → Insurance → Retirement). Cannot unlock the next *district* until in-game competency is proven.
+- **Application to Money-verse:** Skill tree organised by domain (Budgeting → Banking → Investing → Taxes → Insurance → Retirement). Cannot unlock the next *district* until in-game competency is proven.
 
 ### MASTER 4: Karthik Rangappa / Nithin Kamath (Zerodha Varsity)
 - **Domain:** Financial education (India-specific)
@@ -54,7 +54,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Sequenced curriculum; no parachute-into-options.
   - 100% free, forever.
 - **Anti-patterns:** Jargon without translation; US-centric examples; paywalled foundational content.
-- **Application to Dhaniverse 2.0:** All currency in INR; instruments grounded in Indian reality. 100% free core game. Treat the player as a future evangelist.
+- **Application to Money-verse:** All currency in INR; instruments grounded in Indian reality. 100% free core game. Treat the player as a future evangelist.
 
 ### MASTER 5: Ramit Sethi (I Will Teach You To Be Rich)
 - **Domain:** Financial education / behavior change
@@ -66,7 +66,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Small wins first to build self-efficacy.
   - Concrete scripts ("say exactly these words to your bank").
 - **Anti-patterns:** Latte-shaming; optimising math while ignoring psychology.
-- **Application to Dhaniverse 2.0:** In-game NPC quests mirror IWT scripts. Auto-SIP is a literal building the player constructs. Game rewards systems-thinking, not penny-pinching.
+- **Application to Money-verse:** In-game NPC quests mirror IWT scripts. Auto-SIP is a literal building the player constructs. Game rewards systems-thinking, not penny-pinching.
 
 ### MASTER 6: Eric Barone / ConcernedApe (Stardew Valley)
 - **Domain:** 2D pixel-art RPG craft
@@ -78,7 +78,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Parallel progression vectors (farming/mining/fishing/friendship/museum).
   - Hidden depth — basic loop is friendly; min-max systems exist for the hardcore.
 - **Anti-patterns:** Time pressure that punishes casual sessions; paid DLC for content.
-- **Application to Dhaniverse 2.0:** Authored NPCs with schedules and dialog that responds to financial state. Parallel vectors: career, business, investing, real estate, philanthropy. Free updates as a brand promise.
+- **Application to Money-verse:** Authored NPCs with schedules and dialog that responds to financial state. Parallel vectors: career, business, investing, real estate, philanthropy. Free updates as a brand promise.
 
 ### MASTER 7: Sabotage Studio / Thierry Boulanger (Sea of Stars, The Messenger)
 - **Domain:** 2D pixel-art RPG craft
@@ -90,7 +90,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Timed-hit combat — active inputs inside turn-based structure.
   - Seamless transitions; no loading-screen interrupts.
 - **Anti-patterns:** Grinding gates; random encounters; menu walls.
-- **Application to Dhaniverse 2.0:** Economy advances with skill, not time. Market events are visible and avoidable. Active inputs during financial decisions keep turn-based learning kinetic.
+- **Application to Money-verse:** Economy advances with skill, not time. Market events are visible and avoidable. Active inputs during financial decisions keep turn-based learning kinetic.
 
 ### MASTER 8: Maddy Thorson (Celeste, TowerFall)
 - **Domain:** 2D pixel-art craft + accessibility
@@ -102,7 +102,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Mechanically minimalist (1 button = dash) → maximal expressive depth.
   - Deliberate post-processing (CRT, screen-shake) for game feel.
 - **Anti-patterns:** Naming accessibility "Easy" or "Cheat"; one-difficulty-for-all design.
-- **Application to Dhaniverse 2.0:** Assist Mode for finance — slower market ticks, hint NPCs, exposed math, optional tutorial replays. Forgiveness mechanics; never silently fail.
+- **Application to Money-verse:** Assist Mode for finance — slower market ticks, hint NPCs, exposed math, optional tutorial replays. Forgiveness mechanics; never silently fail.
 
 ### MASTER 9: Toby Fox (Undertale)
 - **Domain:** 2D RPG craft + narrative
@@ -114,7 +114,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Silent protagonist for projection.
   - Soundtrack as narrative engine; motifs evolve with relationships.
 - **Anti-patterns:** Cosmetic dialogue branches; cutscene-heavy storytelling that pauses gameplay.
-- **Application to Dhaniverse 2.0:** Financial decisions ripple through the world. Active mini-games inside otherwise passive financial moments (rhythm-game negotiation, e.g.).
+- **Application to Money-verse:** Financial decisions ripple through the world. Active mini-games inside otherwise passive financial moments (rhythm-game negotiation, e.g.).
 
 ### MASTER 10 (Anti-Master): Robinhood — *what NOT to do*
 - **Domain:** Financial UX
@@ -126,7 +126,7 @@ This brief grounds Dhaniverse 2.0 (a 2D RPG that teaches financial literacy, bui
   - Lottery-style surprise-stock rewards.
   - Tap-to-climb-the-waitlist mini-games training compulsive money interaction.
   - Curated "popular stocks" lists.
-- **Application to Dhaniverse 2.0:** No confetti on speculative wins. Celebrate *consistency*, not transactions. Show drawdown alongside gains. No fake urgency.
+- **Application to Money-verse:** No confetti on speculative wins. Celebrate *consistency*, not transactions. Show drawdown alongside gains. No fake urgency.
 
 ### Honourable mentions
 - **Squad (KSP)** — let the simulation be the textbook.
@@ -196,7 +196,7 @@ Where 3+ masters agree:
 - **Long-term:** Seasonal events tied to Indian financial calendar (Diwali bonus, FY-end March, tax season, monsoon insurance month).
 
 ### 5. Monetization-free engagement
-- 100% free core (Varsity / Khan / original Dhaniverse promise).
+- 100% free core (Varsity / Khan / original Money-verse promise).
 - Cosmetic-only optional pack *if* monetization is ever introduced — never gameplay, never lessons.
 - Treat the player as a future advocate, not a conversion target.
 
@@ -224,5 +224,5 @@ Where 3+ masters agree:
 
 - **Masters studied:** Huynh, von Ahn, Khan, Rangappa/Kamath, Sethi, Barone, Sabotage Studio, Thorson, Toby Fox, + 8 honourable mentions; Robinhood as anti-master.
 - **Key patterns applied:** Hide-the-lesson-in-the-verb, daily-ritual loop, forgiveness mechanics, mastery gates + assist mode, async-first multiplayer, HD-2D-lite visual identity, no-dark-patterns financial UX.
-- **Where we deviate:** We are *more aggressive* than the original Dhaniverse on (a) Indian-context grounding (currency, instruments, festivals), and (b) explicit anti-Robinhood rules; the original markets itself as "Get rich or die trying" — we tone that down to avoid the speculative framing.
+- **Where we deviate:** We are *more aggressive* than the original Money-verse on (a) Indian-context grounding (currency, instruments, festivals), and (b) explicit anti-Robinhood rules; the original markets itself as "Get rich or die trying" — we tone that down to avoid the speculative framing.
 - **Recommended deep-dives:** Zerodha Varsity (free, indispensable for Indian context); *Celeste's accessibility design* (GDC talk); *Designing Sea of Stars combat* (PlayStation Blog); Ramit Sethi's IWT book (chapters 1-3 for automation patterns).
