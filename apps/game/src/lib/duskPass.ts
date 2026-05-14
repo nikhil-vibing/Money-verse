@@ -54,15 +54,27 @@ interface DuskPassOptions {
 const LIGHT_RADIUS_PX = 96;
 /** Outer falloff radius — beyond this, the world dims to AMBIENT_ALPHA. */
 const LIGHT_FALLOFF_PX = 220;
-/** How dark the world is OUTSIDE the player's light. 0=black, 1=clear. */
-const AMBIENT_ALPHA = 0.55;
+/**
+ * Opacity of the dark dimming overlay outside the player's lit disc.
+ * Under MULTIPLY blend: 0 = no dim (clear world), 1 = fully dark to
+ * the fill colour. The previous constant doc said the inverse and
+ * I bumped 0.55 → 0.82 hoping for brighter — actually made it darker.
+ * Settled at 0.22 — a gentle evening tint that keeps the whole map
+ * readable while still giving the player-tracked light something to
+ * push against.
+ */
+const AMBIENT_ALPHA = 0.22;
 /** Depth above sprites but below UI scene. Keeps the dusk under HUD. */
 const LIGHT_DEPTH = 900;
 const EMISSIVE_DEPTH = 905;
-/** Saffron-dusk grade values per the audit's light-rig spec §3. */
-const DUSK_R = 1.08;
-const DUSK_G = 0.96;
-const DUSK_B = 0.85;
+/**
+ * Golden-hour grade values. Softened 2026-05 from (1.08, 0.96, 0.85) to
+ * (1.04, 0.98, 0.92) — at the heavier values the world muddied to mono-
+ * chrome saffron and lost the indigo + terracotta + cream contrast.
+ */
+const DUSK_R = 1.04;
+const DUSK_G = 0.98;
+const DUSK_B = 0.92;
 
 /**
  * Attach a dusk pass to the given scene. Safe to call once per scene.
@@ -134,7 +146,16 @@ export function attachDuskPass(
     // Stamp the gradient so the player area brightens back toward clear.
     // RenderTexture.draw paints alpha *additively* under MULTIPLY blend,
     // which is the wanted "punch a hole in the dimness" effect.
-    light.erase(gradTexKey, opts.target.x, opts.target.y);
+    // erase() places the texture's TOP-LEFT at (x, y) — so we subtract
+    // half the gradient size to centre the lit disc ON the player.
+    // Without the offset the bright disc lands 128px down-and-right of
+    // the character (visible bug 2026-05).
+    const GRAD_HALF = 128; // gradient texture is 256×256
+    light.erase(
+      gradTexKey,
+      opts.target.x - GRAD_HALF,
+      opts.target.y - GRAD_HALF,
+    );
     void LIGHT_RADIUS_PX; // reserved — used by gradient construction
     void LIGHT_FALLOFF_PX;
   };
