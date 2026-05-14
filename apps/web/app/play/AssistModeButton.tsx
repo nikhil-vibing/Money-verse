@@ -42,10 +42,7 @@ export default function AssistModeButton() {
     setEnabled((prev) => {
       const next = !prev;
       try {
-        window.localStorage.setItem(
-          ASSIST_STORAGE_KEY,
-          next ? "true" : "false",
-        );
+        window.localStorage.setItem(ASSIST_STORAGE_KEY, next ? "true" : "false");
       } catch {
         // best effort
       }

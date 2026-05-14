@@ -135,6 +135,14 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     scene.input.on("pointerdown", this.onPointerDown, this);
     scene.input.on("pointermove", this.onPointerMove, this);
     scene.input.on("pointerup", this.onPointerUp, this);
+
+    // B1 (Knuth audit): symmetric teardown of the three pointer handlers so
+    // they don't accumulate across scene restarts (phantom-joystick bug).
+    scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      scene.input.off("pointerdown", this.onPointerDown, this);
+      scene.input.off("pointermove", this.onPointerMove, this);
+      scene.input.off("pointerup", this.onPointerUp, this);
+    });
   }
 
   private onPointerDown(pointer: Phaser.Input.Pointer): void {

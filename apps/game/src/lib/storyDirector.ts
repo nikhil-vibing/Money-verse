@@ -13,12 +13,31 @@
 import * as Phaser from "phaser";
 import { announce } from "./announce";
 
+/**
+ * Resolver invoked when a `say-branch` beat fires. Receives the scene so
+ * it can read the registry (e.g. `firstBudget`) and chooses which line
+ * set to deliver. Returns undefined to skip the beat entirely (the
+ * director treats this as a no-op).
+ */
+export type SayBranchResolver = (
+  scene: Phaser.Scene,
+) => ReadonlyArray<string> | undefined;
+
 /** Discriminated union of every beat the director can run. */
 export type StoryBeat =
   | {
       readonly kind: "say";
       readonly speaker: string;
       readonly lines: ReadonlyArray<string>;
+    }
+  | {
+      // `say-branch` is identical to `say` except the lines are resolved
+      // lazily from a function — used to branch dialog on the player's
+      // recent choices (e.g. Maya's reaction after the envelope split).
+      // The resolver runs once when the beat is reached, never per-line.
+      readonly kind: "say-branch";
+      readonly speaker: string;
+      readonly resolveLines: SayBranchResolver;
     }
   | { readonly kind: "narrate"; readonly lines: ReadonlyArray<string> }
   | { readonly kind: "objective"; readonly text: string }
@@ -62,12 +81,6 @@ export interface DirectorBindings {
   readonly lookupNpc: NpcLookup;
 }
 
-interface InteractInvokeEvent {
-  readonly zoneId?: string;
-  readonly kind?: string;
-  readonly target?: string;
-}
-
 interface CurrencyChangedEvent {
   readonly amount: number;
   readonly total: number;
@@ -101,6 +114,16 @@ export class StoryDirector {
     switch (beat.kind) {
       case "say":
         return this.beatSay(beat.speaker, beat.lines);
+      case "say-branch": {
+        const lines = beat.resolveLines(this.bindings.scene);
+        if (lines === undefined || lines.length === 0) {
+          // Resolver opted out — treat as a no-op so the sequence
+          // doesn't stall. This mirrors how Yarn handles a missing
+          // jump-target.
+          return Promise.resolve();
+        }
+        return this.beatSay(beat.speaker, lines);
+      }
       case "narrate":
         return this.beatNarrate(beat.lines);
       case "objective":
@@ -155,8 +178,10 @@ export class StoryDirector {
   }
 
   private beatObjective(text: string): Promise<void> {
-    const ui = this.bindings.scene.scene.get("UI");
-    ui.events.emit("objective:set", { text });
+    // UIScene listens to objective:set on the WORLD scene's events bus
+    // (see UIScene.bindWorldEvents). Emitting on the UI scene directly
+    // is a silent no-op.
+    this.bindings.scene.events.emit("objective:set", { text });
     announce(`Objective: ${text}`);
     return Promise.resolve();
   }
@@ -164,20 +189,11 @@ export class StoryDirector {
   private beatWaitForInteract(npcId: string): Promise<void> {
     return new Promise((resolve) => {
       const game = this.bindings.scene.game;
-      const handler = (event: InteractInvokeEvent): void => {
-        // World emits interact:invoke for InteractZones, NOT for NPC
-        // talks (NPC talks go straight into dialog:show). We listen on
-        // a separate channel "story:npc-interacted" that WorldScene
-        // emits inside `openDialogFor` when the director is active.
-        void event;
-      };
-      game.events.on("interact:invoke", handler);
-
-      // Direct NPC interact event — WorldScene emits this from
-      // openDialogFor when a director is bound.
+      // WorldScene emits `story:npc-interacted` from openDialogFor when
+      // the director is active (it short-circuits the normal NPC dialog
+      // path so the director controls what dialog appears next).
       const npcHandler = (id: string): void => {
         if (id !== npcId) return;
-        game.events.off("interact:invoke", handler);
         game.events.off("story:npc-interacted", npcHandler);
         resolve();
       };
@@ -190,8 +206,9 @@ export class StoryDirector {
     readonly targetTag?: string;
     readonly hintText: string;
   }): Promise<void> {
-    const ui = this.bindings.scene.scene.get("UI");
-    ui.events.emit("objective:set", { text: beat.hintText });
+    // See beatObjective — objective:set must be emitted on the world
+    // scene's events bus, not the UI scene's.
+    this.bindings.scene.events.emit("objective:set", { text: beat.hintText });
     if (beat.targetNpcId !== undefined) {
       const target = this.bindings.lookupNpc(beat.targetNpcId);
       target?.setQuestIndicator(true);

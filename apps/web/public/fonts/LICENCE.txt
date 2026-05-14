@@ -1,0 +1,25 @@
+Chawl Pixel 8 — Money-verse pixel font
+======================================
+
+This font is authored by Money-verse and dedicated to the public domain
+under the Creative Commons CC0 1.0 Universal Public Domain Dedication.
+
+The .png glyph atlas and the .fnt AngelCode BMFont descriptor are both
+built deterministically by `apps/game/scripts/build-pixel-font.mjs` from
+hand-authored 5x7 glyph grids embedded in that script. You may use,
+modify, redistribute, sublicense, or commercialise the font and the
+generator without attribution.
+
+The full CC0 1.0 deed:
+
+  https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Statement of CC0 dedication:
+
+  To the extent possible under law, the authors have waived all
+  copyright and related or neighbouring rights to "Chawl Pixel 8" and
+  its generator. This work is published from India.
+
+For the canonical CC0 1.0 legalcode, see:
+
+  https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt

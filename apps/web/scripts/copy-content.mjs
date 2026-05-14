@@ -9,6 +9,8 @@ const contentRoot = join(repoRoot, "packages", "content");
 const publicRoot = resolve(__dirname, "..", "public", "content");
 const atlasSrcRoot = resolve(repoRoot, "apps", "game", "public", "atlases");
 const atlasDestRoot = resolve(__dirname, "..", "public", "atlases");
+const fontSrcRoot = resolve(repoRoot, "apps", "game", "public", "fonts");
+const fontDestRoot = resolve(__dirname, "..", "public", "fonts");
 
 const targets = [
   { srcDir: join(contentRoot, "maps"), destDir: join(publicRoot, "maps"), match: /^chawl-mohalla(\.meta)?\.json$/ },
@@ -18,6 +20,10 @@ const targets = [
   // Next.js web app, so atlases must live under apps/web/public/atlases/ to be
   // fetched at /atlases/*.png.
   { srcDir: atlasSrcRoot, destDir: atlasDestRoot, match: /\.(png|md|txt)$/ },
+  // Runtime pixel fonts (BMFont .fnt + .png). Mirror to apps/web/public/fonts/
+  // so the canvas (which lives under the Next.js public root) can fetch from
+  // /fonts/* in production builds.
+  { srcDir: fontSrcRoot, destDir: fontDestRoot, match: /\.(png|fnt|md|txt)$/ },
 ];
 
 async function copyMatching({ srcDir, destDir, match }) {

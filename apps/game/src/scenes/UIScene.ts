@@ -1,8 +1,8 @@
 import * as Phaser from "phaser";
 import type Toast from "phaser3-rex-plugins/templates/ui/toast/Toast";
-import type Label from "phaser3-rex-plugins/templates/ui/label/Label";
 import "../lib/rex-ui";
 import { announce } from "../lib/announce";
+import { FONT, FONT_SIZE, TINT } from "../ui/tokens";
 
 interface UISceneData {
   readonly districtId: string;
@@ -41,12 +41,26 @@ const DISTRICT_LABELS: Readonly<Record<string, string>> = {
   "bank-bazaar": "Bank Bazaar",
 };
 
+/**
+ * UIScene was switched from rexUI Label wrappers to manual Container +
+ * Graphics + BitmapText in 2026-05. rexUI's auto-layout computes child
+ * bounds via `.width` / `.height`, but Phaser BitmapText returns those
+ * lazily on first render — which produced empty saffron rectangles
+ * with no glyphs inside. The manual layout below sizes the bars off
+ * the already-rendered BitmapText each time the prompt changes.
+ */
+type Bar = Phaser.GameObjects.Container & {
+  bg: Phaser.GameObjects.Graphics;
+};
+
 export class UIScene extends Phaser.Scene {
   private districtToast: Toast | undefined;
-  private interactBar: Label | undefined;
-  private interactText: Phaser.GameObjects.Text | undefined;
-  private objectiveBar: Label | undefined;
-  private objectiveText: Phaser.GameObjects.Text | undefined;
+  private interactBar: Bar | undefined;
+  private interactText: Phaser.GameObjects.BitmapText | undefined;
+  private objectiveBar: Bar | undefined;
+  private objectiveText: Phaser.GameObjects.BitmapText | undefined;
+  private objectiveTag: Phaser.GameObjects.BitmapText | undefined;
+  private objectiveTagBg: Phaser.GameObjects.Graphics | undefined;
   private minimap: Phaser.GameObjects.Graphics | undefined;
   private mapWidthPx = 960;
   private mapHeightPx = 640;
@@ -72,36 +86,33 @@ export class UIScene extends Phaser.Scene {
   }
 
   private createObjectiveBar(): void {
-    const text = this.add.text(0, 0, "", {
-      fontSize: "12px",
-      color: "#f5f1ea",
-      fontFamily: "monospace",
-    });
+    // Manual layout: Container + Graphics + BitmapText. See class-level
+    // comment for why we bypass rexUI here.
+    const container = this.add.container(this.scale.width / 2, 70)
+      .setDepth(999)
+      .setScrollFactor(0)
+      .setVisible(false) as Bar;
+    const bg = this.add.graphics();
+    container.bg = bg;
+    container.add(bg);
+
+    // OBJECTIVE chip — saffron tag with indigo glyphs.
+    const tagBg = this.add.graphics();
+    const tagText = this.add
+      .bitmapText(0, 0, FONT, "OBJECTIVE", FONT_SIZE.caption)
+      .setTint(TINT.indigo);
+    container.add(tagBg);
+    container.add(tagText);
+
+    const text = this.add
+      .bitmapText(0, 0, FONT, "", FONT_SIZE.body)
+      .setTint(TINT.cream);
+    container.add(text);
+
+    this.objectiveBar = container;
     this.objectiveText = text;
-
-    const labelTag = this.add.text(0, 0, "OBJECTIVE", {
-      fontSize: "10px",
-      color: "#1a0a26",
-      fontFamily: "monospace",
-      fontStyle: "bold",
-      backgroundColor: "#f7b733",
-      padding: { left: 6, right: 6, top: 2, bottom: 2 },
-    });
-
-    const bar = this.rexUI.add.label({
-      x: this.scale.width / 2,
-      y: 70,
-      background: this.rexUI.add
-        .roundRectangle(0, 0, 2, 2, 6, PANEL_FILL, 0.92)
-        .setStrokeStyle(1, PANEL_STROKE, 0.9),
-      icon: labelTag,
-      text,
-      space: { left: 8, right: 14, top: 6, bottom: 6, icon: 10 },
-    });
-    bar.layout();
-    bar.setDepth(999);
-    bar.setVisible(false);
-    this.objectiveBar = bar;
+    this.objectiveTag = tagText;
+    this.objectiveTagBg = tagBg;
   }
 
   private showDistrictPill(): void {
@@ -114,11 +125,9 @@ export class UIScene extends Phaser.Scene {
       background: this.rexUI.add
         .roundRectangle(0, 0, 2, 2, 14, PANEL_FILL, 0.85)
         .setStrokeStyle(1, PANEL_STROKE, 0.9),
-      text: this.add.text(0, 0, "", {
-        fontSize: "13px",
-        color: "#f5f1ea",
-        fontFamily: "monospace",
-      }),
+      text: this.add
+        .bitmapText(0, 0, FONT, "", FONT_SIZE.display)
+        .setTint(TINT.cream),
       space: { left: 14, right: 14, top: 6, bottom: 6 },
       duration: { in: 220, hold: DISTRICT_PILL_MS, out: 400 },
     });
@@ -128,26 +137,22 @@ export class UIScene extends Phaser.Scene {
   }
 
   private createInteractBar(): void {
-    const text = this.add.text(0, 0, "", {
-      fontSize: "13px",
-      color: "#f7b733",
-      fontFamily: "monospace",
-    });
+    // Manual layout — see class-level comment. The bar's bg is repainted
+    // each time the prompt updates so the panel hugs the text.
+    const container = this.add
+      .container(this.scale.width / 2, this.scale.height - 40)
+      .setDepth(1000)
+      .setScrollFactor(0)
+      .setVisible(false) as Bar;
+    const bg = this.add.graphics();
+    container.bg = bg;
+    container.add(bg);
+    const text = this.add
+      .bitmapText(0, 0, FONT, "", FONT_SIZE.heading)
+      .setTint(TINT.saffron);
+    container.add(text);
+    this.interactBar = container;
     this.interactText = text;
-
-    const bar = this.rexUI.add.label({
-      x: this.scale.width / 2,
-      y: this.scale.height - 40,
-      background: this.rexUI.add
-        .roundRectangle(0, 0, 2, 2, 8, PANEL_FILL, 0.9)
-        .setStrokeStyle(1, PANEL_STROKE, 1),
-      text,
-      space: { left: 18, right: 18, top: 8, bottom: 8 },
-    });
-    bar.layout();
-    bar.setDepth(1000);
-    bar.setVisible(false);
-    this.interactBar = bar;
   }
 
   private createMinimap(): void {
@@ -185,7 +190,7 @@ export class UIScene extends Phaser.Scene {
     const alreadyVisible =
       this.interactBar.visible && this.interactText.text === prompt;
     this.interactText.setText(prompt);
-    this.interactBar.layout();
+    this.layoutInteractBar();
     this.interactBar.setVisible(true);
     if (!alreadyVisible) announce(prompt);
   }
@@ -199,9 +204,78 @@ export class UIScene extends Phaser.Scene {
       return;
     }
     this.objectiveText.setText(text);
-    this.objectiveBar.layout();
+    this.layoutObjectiveBar();
     this.objectiveBar.setVisible(true);
     announce(`Objective: ${text}`);
+  }
+
+  /**
+   * Repaint the interact bar's bg + reposition the text so the panel
+   * hugs the prompt. Called after every setText to keep the chrome tight.
+   */
+  private layoutInteractBar(): void {
+    const bar = this.interactBar;
+    const text = this.interactText;
+    if (bar === undefined || text === undefined) return;
+    const padX = 18;
+    const padY = 8;
+    const w = Math.ceil(text.width) + padX * 2;
+    const h = Math.ceil(text.height) + padY * 2;
+    text.setPosition(-w / 2 + padX, -h / 2 + padY);
+    bar.bg.clear();
+    bar.bg.fillStyle(PANEL_FILL, 0.9);
+    bar.bg.fillRoundedRect(-w / 2, -h / 2, w, h, 8);
+    bar.bg.lineStyle(1, PANEL_STROKE, 1);
+    bar.bg.strokeRoundedRect(-w / 2, -h / 2, w, h, 8);
+  }
+
+  /**
+   * Repaint the objective bar — chip on left, text on right, both inside
+   * an indigo round-rect with a saffron stroke.
+   */
+  private layoutObjectiveBar(): void {
+    const bar = this.objectiveBar;
+    const text = this.objectiveText;
+    const tag = this.objectiveTag;
+    const tagBg = this.objectiveTagBg;
+    if (
+      bar === undefined ||
+      text === undefined ||
+      tag === undefined ||
+      tagBg === undefined
+    ) {
+      return;
+    }
+    const padX = 10;
+    const padY = 6;
+    const tagPadX = 6;
+    const tagPadY = 3;
+    const tagW = Math.ceil(tag.width) + tagPadX * 2;
+    const tagH = Math.ceil(tag.height) + tagPadY * 2;
+    const gap = 10;
+    const textW = Math.ceil(text.width);
+    const textH = Math.ceil(text.height);
+    const contentH = Math.max(tagH, textH);
+    const totalW = tagW + gap + textW + padX * 2;
+    const totalH = contentH + padY * 2;
+
+    // Outer panel.
+    bar.bg.clear();
+    bar.bg.fillStyle(PANEL_FILL, 0.92);
+    bar.bg.fillRoundedRect(-totalW / 2, -totalH / 2, totalW, totalH, 6);
+    bar.bg.lineStyle(1, PANEL_STROKE, 0.9);
+    bar.bg.strokeRoundedRect(-totalW / 2, -totalH / 2, totalW, totalH, 6);
+
+    // Tag chip.
+    const tagX = -totalW / 2 + padX;
+    const tagY = -tagH / 2;
+    tagBg.clear();
+    tagBg.fillStyle(PANEL_STROKE, 1);
+    tagBg.fillRoundedRect(tagX, tagY, tagW, tagH, 3);
+    tag.setPosition(tagX + tagPadX, tagY + tagPadY);
+
+    // Body text — vertically centred next to the tag.
+    text.setPosition(tagX + tagW + gap, -textH / 2);
   }
 
   private drawMinimap(): void {
@@ -234,12 +308,12 @@ export class UIScene extends Phaser.Scene {
   private relayout(): void {
     this.districtToast?.setPosition(this.scale.width / 2, 28);
     this.objectiveBar?.setPosition(this.scale.width / 2, 70);
-    this.objectiveBar?.layout();
+    this.layoutObjectiveBar();
     this.interactBar?.setPosition(
       this.scale.width / 2,
       this.scale.height - 40,
     );
-    this.interactBar?.layout();
+    this.layoutInteractBar();
     this.drawMinimap();
   }
 }

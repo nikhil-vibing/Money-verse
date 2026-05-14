@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
 import { addDropShadow } from "../lib/dropShadow";
+import { FONT, FONT_SIZE, PANEL, TINT } from "../ui/tokens";
 
 const NPC_LABEL_OFFSET_Y = 18;
 const NPC_SPRITE_DEPTH = 40;
@@ -7,6 +8,21 @@ const NPC_SHADOW_DEPTH = 35;
 const CHARACTERS_KEY = "characters";
 const SHADOW_FILL = 0x000000;
 const SHADOW_ALPHA = 0.28;
+// Named NPCs we always show the label above. Per UI audit Fix #2 the
+// label flips from hover-only to always-visible for these — so the
+// chawl reads as a place where the people have names, not a debug
+// scene of unlabelled silhouettes. Biscuit is excluded (it's a dog,
+// it has no "name tag" hovering over it).
+const ALWAYS_LABELLED_NPCS: ReadonlyArray<string> = [
+  "maya-didi",
+  "bhola-seth",
+  "ravi-anna",
+  "sushila-aunty",
+  "aarav",
+  "lakshmi-dabbawala",
+  "dipu-kaka",
+  "the-postman",
+];
 // Ninja Adventure (CC0) character atlas — composite built by
 // scripts/build-ninja-atlases.mjs. Frames 84-95 hold 12 distinct NPC
 // archetypes (the 13th — frame 97 — is the player). Each frame is the
@@ -90,11 +106,13 @@ const NPC_GREETINGS: Readonly<Record<string, ReadonlyArray<string>>> = {
 
 export class Npc extends Phaser.GameObjects.Container {
   readonly npcId: string;
-  private readonly label: Phaser.GameObjects.Text;
+  /** Saffron-stroked round-rect tag — see UI audit Fix #2. */
+  private readonly labelBg: Phaser.GameObjects.Graphics;
+  private readonly label: Phaser.GameObjects.BitmapText;
   private readonly bodyGo: Phaser.GameObjects.GameObject;
   private readonly shadow: Phaser.GameObjects.Ellipse | undefined;
   private idleTween: Phaser.Tweens.Tween | undefined;
-  private questIndicator: Phaser.GameObjects.Text | undefined;
+  private questIndicator: Phaser.GameObjects.BitmapText | undefined;
   private questIndicatorTween: Phaser.Tweens.Tween | undefined;
 
   constructor(scene: Phaser.Scene, x: number, y: number, npcId: string) {
@@ -111,9 +129,12 @@ export class Npc extends Phaser.GameObjects.Container {
       // α-1: preFX drop-shadow on each NPC sprite.
       preFxShadowAdded = addDropShadow(sprite);
       this.bodyGo = sprite;
+      // scaleY pulse instead of y-position tween: an absolute-y capture would
+      // snap-back if anything ever repositions the sprite (the same family of
+      // bug recently fixed on Player). Scale is repositioning-safe.
       this.idleTween = scene.tweens.add({
         targets: sprite,
-        y: { from: 0, to: -1 },
+        scaleY: { from: 1.5, to: 1.5 * 0.97 },
         yoyo: true,
         duration: 1200 + (hashString(npcId) % 600),
         repeat: -1,
@@ -138,16 +159,25 @@ export class Npc extends Phaser.GameObjects.Container {
     }
     children.push(this.bodyGo);
 
+    // UI audit Fix #2: the NPC label is now an 8-px bitmap-font glyph
+    // string on a saffron-stroked indigo round-rect — the "tag" shape
+    // the audit prescribes. The Graphics background is sized on demand
+    // because BitmapText doesn't have a `getBounds()` until it's been
+    // measured; we re-measure right after construction.
+    const displayLabel = getDisplayLabel(npcId);
     this.label = scene.add
-      .text(0, -NPC_LABEL_OFFSET_Y, getDisplayLabel(npcId), {
-        fontSize: "6px",
-        color: "#f5f1ea",
-        fontFamily: "monospace",
-        backgroundColor: "#1a0a26e0",
-        padding: { left: 3, right: 3, top: 1, bottom: 1 },
-      })
-      .setOrigin(0.5, 1)
-      .setVisible(false);
+      .bitmapText(0, -NPC_LABEL_OFFSET_Y, FONT, displayLabel, FONT_SIZE.caption)
+      .setTint(TINT.cream)
+      .setOrigin(0.5, 1);
+    this.labelBg = scene.add.graphics();
+    redrawLabelBg(this.labelBg, this.label);
+    // Named NPCs show the tag always; unnamed crowd NPCs only on
+    // hover (the existing setLabelVisible(true) path). Default state
+    // matches the role.
+    const alwaysVisible = ALWAYS_LABELLED_NPCS.includes(npcId);
+    this.labelBg.setVisible(alwaysVisible);
+    this.label.setVisible(alwaysVisible);
+    children.push(this.labelBg);
     children.push(this.label);
 
     this.add(children);
@@ -157,27 +187,30 @@ export class Npc extends Phaser.GameObjects.Container {
   }
 
   setLabelVisible(visible: boolean): void {
+    // Named NPCs override hover-driven hide — once shown, stay shown.
+    if (!visible && ALWAYS_LABELLED_NPCS.includes(this.npcId)) return;
     this.label.setVisible(visible);
+    this.labelBg.setVisible(visible);
   }
 
   setQuestIndicator(active: boolean): void {
     if (active) {
       if (this.questIndicator !== undefined) return;
+      // Quest "!" — bitmap font at heading size, saffron tint. The vector
+      // path used a 3-px stroke for legibility but bitmap glyphs don't
+      // need a stroke (they're already saturated at native res).
       const exc = this.scene.add
-        .text(0, -28, "!", {
-          fontSize: "11px",
-          color: "#f7b733",
-          fontFamily: "monospace",
-          fontStyle: "bold",
-          stroke: "#1a0a26",
-          strokeThickness: 3,
-        })
+        .bitmapText(0, -28, FONT, "!", FONT_SIZE.heading)
+        .setTint(TINT.saffron)
         .setOrigin(0.5, 1);
       this.add(exc);
       this.questIndicator = exc;
+      // alpha + tiny scale pulse rather than absolute-y; symmetric with the
+      // anti-snap-back posture across the codebase.
       this.questIndicatorTween = this.scene.tweens.add({
         targets: exc,
-        y: { from: -28, to: -32 },
+        alpha: { from: 1, to: 0.55 },
+        scale: { from: 1, to: 1.08 },
         yoyo: true,
         repeat: -1,
         duration: 700,
@@ -198,6 +231,63 @@ export class Npc extends Phaser.GameObjects.Container {
   getGreeting(): ReadonlyArray<string> {
     return NPC_GREETINGS[this.npcId] ?? ["..."];
   }
+
+  /**
+   * Trail a moving target for `durationMs` then return to the spawn pose.
+   *
+   * Whimsy #2 from docs/audit/whimsy-injector.md — "Biscuit trails the
+   * player 3s after a pet, then sits and watches you walk off." No
+   * reward, no XP, no popup; just a moment of warmth (pillar #8).
+   *
+   * Implementation: an exponential-damp tween that recomputes the target
+   * each frame using a per-frame UPDATE handler. We attach a single
+   * timer that fires `detach` at the end of the window, so a second pet
+   * within the window simply refreshes the deadline.
+   */
+  followFor(
+    target: Phaser.GameObjects.GameObject & {
+      readonly x: number;
+      readonly y: number;
+    },
+    durationMs: number,
+  ): void {
+    const scene = this.scene;
+    if (this.followState !== undefined) {
+      // Already following — just extend the deadline.
+      this.followState.expiresAt = scene.time.now + durationMs;
+      return;
+    }
+    const onUpdate = (_time: number, _delta: number): void => {
+      const state = this.followState;
+      if (state === undefined) return;
+      if (scene.time.now >= state.expiresAt) {
+        scene.events.off(Phaser.Scenes.Events.UPDATE, onUpdate);
+        this.followState = undefined;
+        return;
+      }
+      // Exponential damp toward a follow point one tile behind/right of
+      // the target. 0.06 = ~60Hz lerp factor; feels like a dog trotting
+      // a step behind rather than overlapping the player.
+      const lerp = 0.06;
+      const desiredX = target.x + 8;
+      const desiredY = target.y + 4;
+      this.x += (desiredX - this.x) * lerp;
+      this.y += (desiredY - this.y) * lerp;
+    };
+    this.followState = {
+      expiresAt: scene.time.now + durationMs,
+      onUpdate,
+    };
+    scene.events.on(Phaser.Scenes.Events.UPDATE, onUpdate);
+  }
+
+  /** Active follow handle. Undefined when idle. */
+  private followState:
+    | {
+        expiresAt: number;
+        readonly onUpdate: (time: number, delta: number) => void;
+      }
+    | undefined;
 
   getInteractPrompt(): string {
     return `Press E to talk to ${getDisplayLabel(this.npcId)}`;
@@ -226,4 +316,33 @@ function hashString(value: string): number {
     h = (h * 31 + value.charCodeAt(i)) | 0;
   }
   return Math.abs(h);
+}
+
+/**
+ * Paint a saffron-stroked indigo round-rect sized to the label's bounds.
+ *
+ * Phaser BitmapText doesn't carry a built-in background — we draw one
+ * with Graphics behind the glyphs. Padding values come straight from the
+ * UI audit §3 ({l:6, r:6, t:3, b:3}) — the previous {3,3,1,1} read as a
+ * debug AABB.
+ */
+function redrawLabelBg(
+  g: Phaser.GameObjects.Graphics,
+  label: Phaser.GameObjects.BitmapText,
+): void {
+  const padX = 6;
+  const padY = 3;
+  const r = 3;
+  const w = Math.ceil(label.width) + padX * 2;
+  const h = Math.ceil(label.height) + padY * 2;
+  // Label origin is (0.5, 1) — i.e. centred horizontally, anchored to
+  // baseline. We mirror that so the bg hugs the label.
+  const x = -w / 2;
+  const y = -(h + (label.y - (-NPC_LABEL_OFFSET_Y)));
+  g.clear();
+  g.fillStyle(PANEL.fill, 0.93);
+  g.fillRoundedRect(x, label.y - h, w, h, r);
+  g.lineStyle(1, PANEL.stroke, 0.9);
+  g.strokeRoundedRect(x, label.y - h, w, h, r);
+  void y; // y reserved for future arrow-foot variant; not used today
 }

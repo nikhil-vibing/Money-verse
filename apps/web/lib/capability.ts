@@ -39,10 +39,5 @@ export function hasEnoughCores(): boolean {
 }
 
 export function canRender3D(): boolean {
-  return (
-    hasWebGL2() &&
-    !prefersReducedMotion() &&
-    isFastNetwork() &&
-    hasEnoughCores()
-  );
+  return hasWebGL2() && !prefersReducedMotion() && isFastNetwork() && hasEnoughCores();
 }

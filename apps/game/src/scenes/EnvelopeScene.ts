@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import "../lib/rex-ui";
 import { announce } from "../lib/announce";
+import { FONT, FONT_SIZE, TINT } from "../ui/tokens";
 
 /**
  * EnvelopeScene — a modal overlay that paused over WorldScene while the
@@ -48,11 +49,11 @@ const DEFAULT_ALLOCATION: Allocation = {
 
 export class EnvelopeScene extends Phaser.Scene {
   private allocation: Allocation = { ...DEFAULT_ALLOCATION };
-  private rentValueText: Phaser.GameObjects.Text | undefined;
-  private saveValueText: Phaser.GameObjects.Text | undefined;
-  private spendValueText: Phaser.GameObjects.Text | undefined;
-  private confirmButton: Phaser.GameObjects.Text | undefined;
-  private statusLine: Phaser.GameObjects.Text | undefined;
+  private rentValueText: Phaser.GameObjects.BitmapText | undefined;
+  private saveValueText: Phaser.GameObjects.BitmapText | undefined;
+  private spendValueText: Phaser.GameObjects.BitmapText | undefined;
+  private confirmButton: Phaser.GameObjects.BitmapText | undefined;
+  private statusLine: Phaser.GameObjects.BitmapText | undefined;
   private rootContainer: Phaser.GameObjects.Container | undefined;
   private backdrop: Phaser.GameObjects.Rectangle | undefined;
 
@@ -100,28 +101,28 @@ export class EnvelopeScene extends Phaser.Scene {
     container.add(panel);
 
     const title = this.add
-      .text(0, -panelHeight / 2 + 24, "Three Envelopes — Salary ₹15,000", {
-        fontSize: "16px",
-        color: "#f7b733",
-        fontFamily: "monospace",
-        fontStyle: "bold",
-      })
+      .bitmapText(
+        0,
+        -panelHeight / 2 + 24,
+        FONT,
+        "Three Envelopes - Salary ₹15,000",
+        FONT_SIZE.display,
+      )
+      .setTint(TINT.saffron)
       .setOrigin(0.5, 0.5);
     container.add(title);
 
     const subtitle = this.add
-      .text(
+      .bitmapText(
         0,
         -panelHeight / 2 + 50,
-        "Rent first. Then pay yourself. Whatever is left is yours to spend.",
-        {
-          fontSize: "11px",
-          color: "#cdb7d8",
-          fontFamily: "monospace",
-          align: "center",
-          wordWrap: { width: panelWidth - 40 },
-        },
+        FONT,
+        "Rent first. Then pay yourself.\nWhatever is left is yours to spend.",
+        FONT_SIZE.body,
       )
+      .setTint(TINT.lilac)
+      .setMaxWidth(panelWidth - 40)
+      .setCenterAlign()
       .setOrigin(0.5, 0.5);
     container.add(subtitle);
 
@@ -144,13 +145,10 @@ export class EnvelopeScene extends Phaser.Scene {
     this.spendValueText = this.makeReadonlyRow(container, "Spend", 60, panelWidth);
 
     this.statusLine = this.add
-      .text(0, panelHeight / 2 - 70, "", {
-        fontSize: "11px",
-        color: "#cdb7d8",
-        fontFamily: "monospace",
-        align: "center",
-        wordWrap: { width: panelWidth - 40 },
-      })
+      .bitmapText(0, panelHeight / 2 - 70, FONT, "", FONT_SIZE.body)
+      .setTint(TINT.lilac)
+      .setMaxWidth(panelWidth - 40)
+      .setCenterAlign()
       .setOrigin(0.5, 0.5);
     container.add(this.statusLine);
 
@@ -159,12 +157,14 @@ export class EnvelopeScene extends Phaser.Scene {
       .setStrokeStyle(2, PANEL_FILL, 1);
     container.add(confirmBg);
     const confirmText = this.add
-      .text(0, panelHeight / 2 - 32, "CONFIRM (Enter)", {
-        fontSize: "13px",
-        color: "#1a0a26",
-        fontFamily: "monospace",
-        fontStyle: "bold",
-      })
+      .bitmapText(
+        0,
+        panelHeight / 2 - 32,
+        FONT,
+        "CONFIRM (Enter)",
+        FONT_SIZE.heading,
+      )
+      .setTint(TINT.indigo)
       .setOrigin(0.5, 0.5);
     container.add(confirmText);
     this.confirmButton = confirmText;
@@ -184,26 +184,18 @@ export class EnvelopeScene extends Phaser.Scene {
     offsetY: number,
     panelWidth: number,
     onAdjust: (delta: number) => void,
-  ): Phaser.GameObjects.Text {
+  ): Phaser.GameObjects.BitmapText {
     const rowWidth = panelWidth - 60;
 
     const labelText = this.add
-      .text(-rowWidth / 2 + 10, offsetY, label, {
-        fontSize: "13px",
-        color: "#f5f1ea",
-        fontFamily: "monospace",
-        fontStyle: "bold",
-      })
+      .bitmapText(-rowWidth / 2 + 10, offsetY, FONT, label, FONT_SIZE.heading)
+      .setTint(TINT.cream)
       .setOrigin(0, 0.5);
     parent.add(labelText);
 
     const valueText = this.add
-      .text(rowWidth / 2 - 10, offsetY, "₹0", {
-        fontSize: "13px",
-        color: "#f7b733",
-        fontFamily: "monospace",
-        fontStyle: "bold",
-      })
+      .bitmapText(rowWidth / 2 - 10, offsetY, FONT, "₹0", FONT_SIZE.heading)
+      .setTint(TINT.saffron)
       .setOrigin(1, 0.5);
     parent.add(valueText);
 
@@ -211,12 +203,8 @@ export class EnvelopeScene extends Phaser.Scene {
       .rectangle(rowWidth / 2 - 140, offsetY, 36, 24, PANEL_STROKE, 0.18)
       .setStrokeStyle(1, PANEL_STROKE, 0.8);
     const minusText = this.add
-      .text(rowWidth / 2 - 140, offsetY, "−500", {
-        fontSize: "11px",
-        color: "#f7b733",
-        fontFamily: "monospace",
-        fontStyle: "bold",
-      })
+      .bitmapText(rowWidth / 2 - 140, offsetY, FONT, "-500", FONT_SIZE.body)
+      .setTint(TINT.saffron)
       .setOrigin(0.5, 0.5);
     parent.add(minusBg);
     parent.add(minusText);
@@ -227,12 +215,8 @@ export class EnvelopeScene extends Phaser.Scene {
       .rectangle(rowWidth / 2 - 95, offsetY, 36, 24, PANEL_STROKE, 0.18)
       .setStrokeStyle(1, PANEL_STROKE, 0.8);
     const plusText = this.add
-      .text(rowWidth / 2 - 95, offsetY, "+500", {
-        fontSize: "11px",
-        color: "#f7b733",
-        fontFamily: "monospace",
-        fontStyle: "bold",
-      })
+      .bitmapText(rowWidth / 2 - 95, offsetY, FONT, "+500", FONT_SIZE.body)
+      .setTint(TINT.saffron)
       .setOrigin(0.5, 0.5);
     parent.add(plusBg);
     parent.add(plusText);
@@ -248,33 +232,29 @@ export class EnvelopeScene extends Phaser.Scene {
     label: string,
     offsetY: number,
     panelWidth: number,
-  ): Phaser.GameObjects.Text {
+  ): Phaser.GameObjects.BitmapText {
     const rowWidth = panelWidth - 60;
     const labelText = this.add
-      .text(-rowWidth / 2 + 10, offsetY, label, {
-        fontSize: "13px",
-        color: "#cdb7d8",
-        fontFamily: "monospace",
-      })
+      .bitmapText(-rowWidth / 2 + 10, offsetY, FONT, label, FONT_SIZE.heading)
+      .setTint(TINT.lilac)
       .setOrigin(0, 0.5);
     parent.add(labelText);
 
     const valueText = this.add
-      .text(rowWidth / 2 - 10, offsetY, "₹0", {
-        fontSize: "13px",
-        color: "#cdb7d8",
-        fontFamily: "monospace",
-      })
+      .bitmapText(rowWidth / 2 - 10, offsetY, FONT, "₹0", FONT_SIZE.heading)
+      .setTint(TINT.lilac)
       .setOrigin(1, 0.5);
     parent.add(valueText);
 
     const note = this.add
-      .text(rowWidth / 2 - 140, offsetY, "(whatever's left)", {
-        fontSize: "10px",
-        color: "#8a6aa8",
-        fontFamily: "monospace",
-        fontStyle: "italic",
-      })
+      .bitmapText(
+        rowWidth / 2 - 140,
+        offsetY,
+        FONT,
+        "(whatever's left)",
+        FONT_SIZE.caption,
+      )
+      .setTint(TINT.muted)
       .setOrigin(0.5, 0.5);
     parent.add(note);
 
@@ -318,29 +298,29 @@ export class EnvelopeScene extends Phaser.Scene {
 
     const status = this.computeStatus();
     this.statusLine?.setText(status.message);
-    this.statusLine?.setColor(status.color);
+    this.statusLine?.setTint(status.tint);
 
     const canConfirm = this.allocation.rent >= RENT_MINIMUM;
     this.confirmButton?.setAlpha(canConfirm ? 1 : 0.4);
   }
 
-  private computeStatus(): { message: string; color: string } {
+  private computeStatus(): { message: string; tint: number } {
     if (this.allocation.rent < RENT_MINIMUM) {
       return {
         message: `Rent must be at least ₹${RENT_MINIMUM.toLocaleString("en-IN")}. (Press R to add ₹500.)`,
-        color: "#f06363",
+        tint: TINT.warning,
       };
     }
     if (this.allocation.save < SAVE_NUDGE_MINIMUM) {
       return {
         message:
-          "Save is low. ₹2,000 each month becomes ₹24,000 in a year — one emergency you don't borrow for.",
-        color: "#f7b733",
+          "Save is low. ₹2,000 each month becomes ₹24,000 in a year - one emergency you don't borrow for.",
+        tint: TINT.saffron,
       };
     }
     return {
       message: "Balanced. Pay yourself first, every month.",
-      color: "#7bd07a",
+      tint: TINT.green,
     };
   }
 

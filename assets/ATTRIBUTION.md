@@ -34,6 +34,16 @@
 - Author: Abelardo Gonzalez
 - Licence: SIL Open Font Licence 1.1
 
+### Chawl Pixel 8 (in-game BMFont)
+- Source: built at predev/prebuild from `apps/game/scripts/build-pixel-font.mjs`
+- Author: Money-verse (hand-authored 5x7 glyph grids)
+- Licence: CC0 1.0 Universal — see `apps/game/public/fonts/LICENCE.txt`
+- Attribution: not required
+- Dimensions / details: 5x7 glyphs on 128x96 atlas, 9-px line height, 95 printable ASCII glyphs + ₹ (U+20B9)
+- Local path: `apps/game/public/fonts/chawl-pixel-8.{png,fnt}` (mirrored to `apps/web/public/fonts/` by `apps/web/scripts/copy-content.mjs`)
+- Modified: build script is the canonical source; PNG + FNT regenerate deterministically on every checkout
+- Why we ship our own: the UI audit (`docs/audit/ui-designer.md`) identified bilinear sampling of vector fonts at 6px / 3x camera zoom as the root cause of the "names look pixelated, not immersive" complaint. Bitmap fonts side-step that pipeline. Authoring our own font removes every external-licence risk.
+
 ## Sprites — Chawl Mohalla district
 
 > Curated 2026-05-14 by `art-curator`. All entries below are CC0 or CC-BY 4.0 — no CC-BY-SA, no NC, no "free but no redistribute" packs.

@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node scripts/copy-content.mjs",
+    "predev": "node scripts/build-pixel-font.mjs && node scripts/copy-content.mjs",
     "dev": "vite --port 5173",
-    "prebuild": "node scripts/copy-content.mjs",
+    "prebuild": "node scripts/build-pixel-font.mjs && node scripts/copy-content.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",

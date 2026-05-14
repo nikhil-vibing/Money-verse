@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import { Player } from "../entities/Player";
 import { Npc } from "../entities/Npc";
+import { JarOfAchaar } from "../entities/JarOfAchaar";
 import {
   InteractZone,
   type InteractZoneKind,
@@ -17,8 +18,10 @@ import { announce } from "../lib/announce";
 import { getAssistMode, subscribeAssistMode } from "../lib/assist";
 import { detectPerfTier } from "../pipelines/PostFxStack";
 import { attachAmbientParticles } from "../lib/ambientParticles";
+import { attachDuskPass } from "../lib/duskPass";
 import { StoryDirector } from "../lib/storyDirector";
 import { CHAWL_ONBOARDING_SEQUENCE } from "../content/chawlOnboarding";
+import { FONT, FONT_SIZE, TINT } from "../ui/tokens";
 
 interface WorldSceneData {
   readonly districtId: string;
@@ -50,6 +53,12 @@ const ASSIST_PROMPT_COOLDOWN_MS = 800;
 const BANK_BAZAAR_TARGET = "bank-bazaar";
 const NPC_INTERACT_RADIUS_PX = 36;
 const QUEST_GIVER_NPC_ID = "maya-didi";
+/** Whimsy #2 — Biscuit trails the player for 3s after a pet. */
+const BISCUIT_FOLLOW_MS = 3000;
+/** Whimsy #3 — Maa's landline rings after 5min of inactivity. */
+const MAA_STALL_MS = 5 * 60 * 1000;
+/** Whimsy share-move — Maa's achaar jar appears after 10 real minutes. */
+const ACHAAR_JAR_DELAY_MS = 10 * 60 * 1000;
 
 export class WorldScene extends Phaser.Scene {
   private districtId = "chawl-mohalla";
@@ -65,8 +74,20 @@ export class WorldScene extends Phaser.Scene {
   private assistMode = false;
   private unsubscribeAssist: (() => void) | undefined;
   private detachAmbient: (() => void) | undefined;
+  private detachDusk: (() => void) | undefined;
   private storyDirector: StoryDirector | undefined;
   private storyActive = false;
+  /** Named handlers — referenced by both `on` and SHUTDOWN `off`. B2 fix. */
+  private onStoryDialogOpen: (() => void) | undefined;
+  private onStoryDialogClose: (() => void) | undefined;
+  /** Last time the player interacted with anything. Stall timer baseline. */
+  private lastInteractAt = 0;
+  /** Whether Maa's stall interrupt has already fired this session. */
+  private maaInterruptFired = false;
+  /** The jar of achaar — undefined until ACHAAR_JAR_DELAY_MS has elapsed. */
+  private achaarJar: JarOfAchaar | undefined;
+  /** Spawn-on-timer handle; cancelled on shutdown. */
+  private achaarJarTimer: Phaser.Time.TimerEvent | undefined;
 
   constructor() {
     super({ key: "World" });
@@ -91,6 +112,22 @@ export class WorldScene extends Phaser.Scene {
       this.unsubscribeAssist = undefined;
       this.detachAmbient?.();
       this.detachAmbient = undefined;
+      this.detachDusk?.();
+      this.detachDusk = undefined;
+      // Knuth B2: detach story dialog handlers so they can't fire on a
+      // dead scene reference after a `scene.restart`. Pre-2026-05 these
+      // listeners were anonymous arrows and never unbound — the captured
+      // `this` pinned the prior WorldScene in memory.
+      if (this.onStoryDialogOpen !== undefined) {
+        this.events.off("story:dialog-open", this.onStoryDialogOpen);
+        this.onStoryDialogOpen = undefined;
+      }
+      if (this.onStoryDialogClose !== undefined) {
+        this.events.off("story:dialog-close", this.onStoryDialogClose);
+        this.onStoryDialogClose = undefined;
+      }
+      this.achaarJarTimer?.remove(false);
+      this.achaarJarTimer = undefined;
     });
     const meta = this.cache.json.get("district-meta") as
       | DistrictMeta
@@ -159,12 +196,16 @@ export class WorldScene extends Phaser.Scene {
       mapHeightPx: map.heightInPixels,
     });
     this.startOnboardingStory();
+    this.scheduleAchaarJar();
+    this.lastInteractAt = this.time.now;
     void renderedLayers;
   }
 
   override update(): void {
     this.player?.update();
     this.refreshActiveNpc();
+    this.refreshMaaInterrupt();
+    this.refreshAchaarJarRange();
     this.refreshActiveZone();
     this.emitMinimapTick();
   }
@@ -183,13 +224,19 @@ export class WorldScene extends Phaser.Scene {
     this.storyActive = true;
     // Pause player + NPC tracking while director dialog is open so the
     // player can't wander out of the conversation. Director emits these
-    // events around every `say`/`narrate` beat.
-    this.events.on("story:dialog-open", () => {
+    // events around every `say`/`narrate` beat. Named arrow handlers
+    // bound to fields so the SHUTDOWN once-handler can `off` them — see
+    // Knuth audit B2. The arrow form still captures `this`, but only
+    // *until* SHUTDOWN explicitly drops the references; the prior
+    // anonymous form never dropped them.
+    this.onStoryDialogOpen = () => {
       this.inDialog = true;
-    });
-    this.events.on("story:dialog-close", () => {
+    };
+    this.onStoryDialogClose = () => {
       this.inDialog = false;
-    });
+    };
+    this.events.on("story:dialog-open", this.onStoryDialogOpen);
+    this.events.on("story:dialog-close", this.onStoryDialogClose);
     const director = new StoryDirector({
       scene: this,
       lookupNpc: (npcId) => this.npcs.find((n) => n.npcId === npcId),
@@ -441,6 +488,79 @@ export class WorldScene extends Phaser.Scene {
     });
   }
 
+  /**
+   * Whimsy #3 — Maa's landline rings after ≥5 real-time minutes of
+   * inactivity *during onboarding only*. Once per session. No popup
+   * machinery; just routes through the existing DialogScene so it
+   * reads exactly like every other line in the game.
+   */
+  private refreshMaaInterrupt(): void {
+    if (this.maaInterruptFired) return;
+    if (this.inDialog) return;
+    if (!this.storyActive) return; // only during onboarding
+    if (this.time.now - this.lastInteractAt < MAA_STALL_MS) return;
+    this.maaInterruptFired = true;
+    const dialog = this.scene.get("Dialog");
+    dialog.events.emit("dialog:show", {
+      speaker: "Maa",
+      lines: ["Beta, busy ho kya?", "Khaana khaaya?"],
+      onClose: () => {
+        this.lastInteractAt = this.time.now;
+      },
+    });
+  }
+
+  /**
+   * Whimsy share-move — schedule the achaar jar to appear after
+   * ACHAAR_JAR_DELAY_MS. The promise was made during the onboarding
+   * (implicitly — Maya mentions Maa) and the jar is the game keeping
+   * that promise without dialog. Pillar #8: no popup, no XP.
+   */
+  private scheduleAchaarJar(): void {
+    const registry = this.registry;
+    const promisedAtRaw = registry.get("maaAchaarPromisedAt") as unknown;
+    const promisedAt =
+      typeof promisedAtRaw === "number" ? promisedAtRaw : Date.now();
+    registry.set("maaAchaarPromisedAt", promisedAt);
+    const elapsed = Date.now() - promisedAt;
+    const remaining = Math.max(0, ACHAAR_JAR_DELAY_MS - elapsed);
+    this.achaarJarTimer = this.time.delayedCall(remaining, () =>
+      this.spawnAchaarJar(),
+    );
+  }
+
+  private spawnAchaarJar(): void {
+    if (this.achaarJar !== undefined) return;
+    // Place it on the player's kholi table — a couple tiles away from
+    // the spawn point. The current map's spawn is (480, 320); a 16-px
+    // tile shift puts it just east on the same row, which lands on the
+    // table per the Tiled props layout. We don't read the table tile
+    // explicitly because the map doesn't tag it — this is a
+    // best-effort placement that lands inside the kholi for v1.
+    const spawn = (this.cache.json.get("district-meta") as DistrictMeta)
+      ?.spawnPoint ?? { x: 480, y: 320 };
+    const jarX = spawn.x + 24;
+    const jarY = spawn.y - 4;
+    this.achaarJar = new JarOfAchaar(this, jarX, jarY);
+  }
+
+  private refreshAchaarJarRange(): void {
+    const jar = this.achaarJar;
+    const player = this.player;
+    if (jar === undefined || player === undefined) return;
+    if (!jar.isInReadRange(player.x, player.y)) return;
+    // Only show the read prompt when nothing else is competing for the
+    // interact bar (active NPC, active zone). The label flickers on its
+    // own when the player presses E, so we just route the prompt here.
+    if (this.activeNpc !== undefined) return;
+    if (this.activeZone !== undefined) return;
+    this.scene.get("UI").events.emit("interact:show", {
+      prompt: "Press E to read",
+      target: "achaar-jar",
+      kind: "prop",
+    });
+  }
+
   private configureCamera(map: Phaser.Tilemaps.Tilemap): void {
     const cam = this.cameras.main;
     cam.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -449,7 +569,7 @@ export class WorldScene extends Phaser.Scene {
     cam.setBackgroundColor(0x14092a);
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.applyCameraFollow();
-    this.applyCameraPostFx();
+    this.applyCameraPostFx(map);
   }
 
   /**
@@ -460,21 +580,29 @@ export class WorldScene extends Phaser.Scene {
    * Kenney palette and a strong dusk tint murders the green grass.
    * Gated on perf tier — Moto G4 / low tier gets none.
    */
-  private applyCameraPostFx(): void {
+  private applyCameraPostFx(map: Phaser.Tilemaps.Tilemap): void {
     const tier = detectPerfTier();
     if (tier === "low") return;
     if (this.prefersReducedMotion) return;
     const cam = this.cameras.main;
+    // Order matters: bloom first to seize highlights, then dusk grade
+    // bakes the warm-saffron palette, then the player-tracked light
+    // mask multiplies the ambient dim back in (replacing the old
+    // static vignette — see docs/audit/technical-artist.md).
     cam.postFX.addBloom(0xffe9a3, 0.6, 0.6, 1.0, 0.35, 4);
-    cam.postFX.addVignette(0.5, 0.5, 0.75, 0.3);
-    // α-3 (β-6-tuned): only saturation boost. Chained brightness/gradient
-    // were tested against the NA palette and produced unacceptably dark
-    // washed-out frames — the new substrate is much brighter than the
-    // prior Kenney art so the heavy dusk wash murders it. The brief's
-    // suggested 0.22 gradient is reserved for a future palette pass that
-    // re-skins the NA tiles warmer at source. Pass `true` so .saturate is
-    // multiplicative and persists when stacked with the bloom.
     cam.postFX.addColorMatrix().saturate(0.1, true);
+    // MOVE 2 from the bundled PR — the dusk pass. Player-tracked
+    // radial light mask + warm-saffron grade + emissive shop windows.
+    // The detach handle is wired into the existing SHUTDOWN cleanup
+    // so the RenderTextures + per-frame update hook can't leak.
+    const player = this.player;
+    if (player === undefined) return;
+    this.detachDusk = attachDuskPass(this, {
+      mapWidthPx: map.widthInPixels,
+      mapHeightPx: map.heightInPixels,
+      target: player,
+      map,
+    }).detach;
   }
 
   private applyCameraFollow(): void {
@@ -502,19 +630,31 @@ export class WorldScene extends Phaser.Scene {
   }
 
   private handleInteract(): void {
+    this.lastInteractAt = this.time.now;
     const npc = this.activeNpc;
     if (npc !== undefined && !this.inDialog) {
       this.openDialogFor(npc);
       return;
     }
     const zone = this.activeZone;
-    if (zone === undefined) return;
-    this.game.events.emit("interact:invoke", {
-      zoneId: zone.zoneId,
-      kind: zone.kind,
-      target: zone.target,
-      locked: zone.locked,
-    });
+    if (zone !== undefined) {
+      this.game.events.emit("interact:invoke", {
+        zoneId: zone.zoneId,
+        kind: zone.kind,
+        target: zone.target,
+        locked: zone.locked,
+      });
+      return;
+    }
+    // Whimsy share-move — pressing E near the achaar jar flickers its
+    // hand-written marker for ~2s. Pillar #8: no popup, no XP, no toast.
+    const jar = this.achaarJar;
+    const player = this.player;
+    if (jar !== undefined && player !== undefined) {
+      if (jar.isInReadRange(player.x, player.y)) {
+        jar.revealLabel();
+      }
+    }
   }
 
   private openDialogFor(npc: Npc): void {
@@ -524,6 +664,13 @@ export class WorldScene extends Phaser.Scene {
     if (this.storyActive) {
       this.game.events.emit("story:npc-interacted", npc.npcId);
       return;
+    }
+
+    // Whimsy #2 — Biscuit trails the player for 3s after a pet. No XP,
+    // no reward, no popup. Triggered before the dialog so the trail
+    // starts while the player reads "*wags tail*".
+    if (npc.npcId === "biscuit" && this.player !== undefined) {
+      npc.followFor(this.player, BISCUIT_FOLLOW_MS);
     }
 
     this.inDialog = true;
@@ -549,11 +696,14 @@ export class WorldScene extends Phaser.Scene {
 
   private showLoadError(msg: string): void {
     this.add
-      .text(this.scale.width / 2, this.scale.height / 2, msg, {
-        fontSize: "16px",
-        color: "#f7b733",
-        fontFamily: "monospace",
-      })
+      .bitmapText(
+        this.scale.width / 2,
+        this.scale.height / 2,
+        FONT,
+        msg,
+        FONT_SIZE.display,
+      )
+      .setTint(TINT.saffron)
       .setOrigin(0.5);
     announce(msg, "assertive");
   }

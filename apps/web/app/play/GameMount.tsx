@@ -14,14 +14,10 @@ export default function GameMount() {
 
     void (async () => {
       const Phaser = await import("phaser");
-      const { createPhaserConfig } = await import(
-        "../../../game/src/createPhaserConfig"
-      );
+      const { createPhaserConfig } = await import("../../../game/src/createPhaserConfig");
       if (cancelled) return;
 
-      game = new Phaser.Game(
-        createPhaserConfig({ parent: containerRef.current ?? undefined }),
-      );
+      game = new Phaser.Game(createPhaserConfig({ parent: containerRef.current ?? undefined }));
 
       // Pull keyboard focus onto the canvas container so the game receives
       // input immediately after mount — and so screen-reader users land
@@ -45,7 +41,6 @@ export default function GameMount() {
         id="game-root"
         role="application"
         aria-label="Money-verse game canvas"
-        tabIndex={0}
         className="h-screen w-screen"
       />
       <div

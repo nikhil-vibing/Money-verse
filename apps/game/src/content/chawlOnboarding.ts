@@ -21,9 +21,33 @@
  * yarn and stay register-consistent.
  */
 import type { StorySequence } from "../lib/storyDirector";
+import { readFirstBudget } from "../lib/storyDirector";
 
 const MAYA = "Maya didi";
 const RAVI = "Ravi anna";
+
+/**
+ * Maya's reaction after the player confirms the envelope split.
+ *
+ * The audit asked for two branches off `readFirstBudget(scene)`:
+ *   - balanced (save >= 2000 AND rent >= 4800): warm, send-on-your-way
+ *   - shaky   (everything else):                 gentle, try-again
+ *
+ * Today the executor wires the branch as a `say-branch` beat — a thin
+ * extension of `say` that picks lines from a resolver. The resolver runs
+ * once when the beat fires (after the envelope has stamped `firstBudget`
+ * in the registry) and returns the line list to display. See
+ * lib/storyDirector.ts for the implementation.
+ */
+const MAYA_REACTION_BALANCED: ReadonlyArray<string> = [
+  "Good, na. You saw the shape of it.",
+  "Now go buy chai. Three rupees over budget is fine.",
+];
+
+const MAYA_REACTION_SHAKY: ReadonlyArray<string> = [
+  "Hmm. Save is thin, beta. One emergency wipes it.",
+  "Try again tomorrow. The envelope doesn't run away.",
+];
 
 export const CHAWL_ONBOARDING_SEQUENCE: StorySequence = {
   id: "chawl-onboarding",
@@ -80,12 +104,21 @@ export const CHAWL_ONBOARDING_SEQUENCE: StorySequence = {
       kind: "show-envelope-split",
     },
     {
-      kind: "say",
+      // Maya's reaction now branches on the player's actual split. The
+      // resolver reads `firstBudget` out of the scene registry (stamped
+      // by EnvelopeScene.tryConfirm) and picks the warm or the gentle
+      // line set. The hardcoded single-line beat was the audit's last
+      // remaining "in-flight" gap — wired here so neither branch is
+      // dead-code.
+      kind: "say-branch",
       speaker: MAYA,
-      lines: [
-        "Achha. You paid Bhola, you paid yourself, and you still have chai money.",
-        "Tomorrow Aarav will try to sell you AirPods. Now your envelope can say no.",
-      ],
+      resolveLines: (scene) => {
+        const result = readFirstBudget(scene);
+        if (result === undefined) return MAYA_REACTION_BALANCED;
+        return result.grade === "balanced"
+          ? MAYA_REACTION_BALANCED
+          : MAYA_REACTION_SHAKY;
+      },
     },
     {
       kind: "indicator",

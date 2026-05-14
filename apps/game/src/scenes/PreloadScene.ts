@@ -7,6 +7,11 @@ export const CHAWL_TILESET_KEY = "chawl-tileset";
 export const CHAWL_TILESET_NAME = "kenney-tiny-town";
 export const CHARACTERS_KEY = "characters";
 const CHARACTER_FRAME_SIZE = 16;
+// 5x7 glyph bitmap font built at predev/prebuild from
+// scripts/build-pixel-font.mjs. CC0, authored in-house. Loading happens here
+// so every scene that ships text can call `add.bitmapText(..., FONT_PIXEL, ...)`
+// without a load-on-demand stall. See docs/audit/ui-designer.md.
+export const FONT_PIXEL = "chawl-pixel-8";
 
 const TIPS: ReadonlyArray<string> = [
   "Keep the chai receipt. It tells the story your bank statement hides.",
@@ -17,6 +22,11 @@ const TIPS: ReadonlyArray<string> = [
 ];
 
 export class PreloadScene extends Phaser.Scene {
+  // Tip text is intentionally still a Phaser.GameObjects.Text here:
+  // BootScene → Preload runs BEFORE the bitmap font has finished loading
+  // (we're literally inside `preload()` watching for `complete`). Using
+  // vector text on the loading screen is the one place vector glyphs are
+  // unavoidable; every other scene uses BitmapText.
   private tipText: Phaser.GameObjects.Text | undefined;
   private tipIndex = 0;
   private tipTimer: Phaser.Time.TimerEvent | undefined;
@@ -59,11 +69,25 @@ export class PreloadScene extends Phaser.Scene {
       frameWidth: CHARACTER_FRAME_SIZE,
       frameHeight: CHARACTER_FRAME_SIZE,
     });
+    // P0 from docs/audit/ui-designer.md — load the CC0 BMFont before
+    // any scene needs it. Phaser's loader returns Promises so the
+    // `complete` handler below already gates the WorldScene start on
+    // this asset being parsed.
+    this.load.bitmapFont(
+      FONT_PIXEL,
+      "/fonts/chawl-pixel-8.png",
+      "/fonts/chawl-pixel-8.fnt",
+    );
 
     this.load.on("complete", () => {
       this.tipTimer?.remove(false);
-      this.scene.start("World", { districtId: DISTRICT_ID });
+      // Launch Dialog FIRST so its create() runs and registers the
+      // dialog:show listener before WorldScene starts its onboarding
+      // story (which fires events into Dialog from beat 0). Without
+      // this the opening narration card is silently dropped.
+      this.scene.launch("Dialog");
       this.scene.launch("UI", { districtId: DISTRICT_ID });
+      this.scene.start("World", { districtId: DISTRICT_ID });
     });
   }
 
