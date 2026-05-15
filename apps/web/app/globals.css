@@ -168,6 +168,42 @@ body {
   animation: hero-fade-down 700ms var(--ease-out-quart) both;
 }
 
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+@keyframes idle-pulse {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-1px) scaleY(0.97);
+  }
+}
+
+.anim-idle-pulse {
+  animation: idle-pulse 1.4s ease-in-out infinite;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+@keyframes coin-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.anim-coin-float {
+  animation: coin-float 1.8s ease-in-out infinite;
+}
+
 @keyframes cursor-blink {
   0%,
   49% {

@@ -114,44 +114,6 @@ export function useInView<T extends HTMLElement>(
   return { ref, inView };
 }
 
-export function useScrollProgress(targetRef: RefObject<HTMLElement | null>): number {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const el = targetRef.current;
-    if (!el) return;
-
-    let raf = 0;
-    const update = () => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const total = rect.height + vh;
-      const passed = vh - rect.top;
-      const p = Math.max(0, Math.min(1, passed / total));
-      setProgress(p);
-    };
-
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        update();
-      });
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, [targetRef]);
-
-  return progress;
-}
-
 export const easeOutExpo = (t: number) => 1 - 2 ** (-10 * t);
 export const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
 

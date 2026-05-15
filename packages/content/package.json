@@ -11,7 +11,7 @@
     "./i18n/*": "./i18n/*"
   },
   "scripts": {
-    "build": "tsc && pnpm content:compile",
+    "build": "pnpm content:compile",
     "test": "vitest run",
     "lint": "biome check src",
     "typecheck": "tsc --noEmit",

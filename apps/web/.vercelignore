@@ -1,0 +1,18 @@
+# Local production build (Vercel rebuilds)
+.next
+.turbo
+
+# Tests
+coverage
+playwright-report
+test-results
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+
+# OS / IDE
+.DS_Store

@@ -55,3 +55,7 @@ drizzle/
 
 # Aseprite backups
 *.aseprite.bak
+
+# Scratch / screenshots / config backups
+*.bak
+Money/auto-*.png

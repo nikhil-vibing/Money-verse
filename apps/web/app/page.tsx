@@ -1,28 +1,23 @@
-import { AntiPromise } from "./(landing)/AntiPromise";
-import { FinalCTA } from "./(landing)/FinalCTA";
-import { HeroSection } from "./(landing)/HeroSection";
-import { MechanicDemo } from "./(landing)/MechanicDemo";
-import { OpenSourceSection } from "./(landing)/OpenSourceSection";
-import { PersonaSection } from "./(landing)/PersonaSection";
-import { ProofSection } from "./(landing)/ProofSection";
+import { Hero } from "./(landing)/Hero";
+import { MeetTheCast } from "./(landing)/MeetTheCast";
+import { PaydayDemo } from "./(landing)/PaydayDemo";
+import { PlayBand } from "./(landing)/PlayBand";
 import { SiteFooter } from "./(landing)/SiteFooter";
-import { SmoothScroll } from "./(landing)/SmoothScroll";
+import { ThreeVerbs } from "./(landing)/ThreeVerbs";
 import { UtilityBar } from "./(landing)/UtilityBar";
 
 export default function HomePage() {
   return (
-    <SmoothScroll>
+    <>
       <UtilityBar />
       <main id="main" className="relative">
-        <HeroSection />
-        <ProofSection />
-        <MechanicDemo />
-        <PersonaSection />
-        <AntiPromise />
-        <OpenSourceSection />
-        <FinalCTA />
+        <Hero />
+        <ThreeVerbs />
+        <MeetTheCast />
+        <PaydayDemo />
+        <PlayBand />
       </main>
       <SiteFooter />
-    </SmoothScroll>
+    </>
   );
 }

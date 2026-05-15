@@ -1,0 +1,54 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs (Vercel rebuilds)
+**/.next
+**/dist
+**/build
+**/out
+
+# Turbo cache (Vercel rebuilds)
+**/.turbo
+
+# Test artifacts
+coverage
+playwright-report
+test-results
+
+# Source art and atlases (regenerated from source)
+assets
+apps/game/public/atlases
+**/*.compiled.json
+
+# Game app — landing deploys only apps/web
+apps/game/.next
+apps/game/dist
+apps/game/node_modules
+
+# Server app — deploys to Fly.io, not Vercel
+apps/server/dist
+apps/server/.turbo
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# IDE / OS
+.DS_Store
+.vscode
+.idea
+
+# Vercel CLI cache itself
+.vercel/cache
+
+# Backups / scratch
+*.bak
+vercel.ts.bak
+
+# Documentation source (Vercel doesn't need)
+docs

@@ -9,7 +9,7 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "echo skip-tsc-source-only",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "biome check src",
